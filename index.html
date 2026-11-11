@@ -67,13 +67,11 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .think .bub::after{content:"";position:absolute;left:2rem;bottom:-.5rem;width:.9375rem;height:.9375rem;background:#fff;border:solid var(--g200);border-width:0 1px 1px 0;border-radius:0 0 .25rem 0;transform:rotate(45deg) skew(8deg,8deg)}
 .think .bub:nth-child(2){align-self:flex-end}
 .think .bub:nth-child(2)::after{left:auto;right:2rem}
-.think .ask{margin-top:1.25rem;background:var(--b600);border-radius:1.5rem;padding:1.875rem 2.25rem;display:flex;flex-direction:column;gap:.375rem;
-  box-shadow:0 1.75rem 3rem -1.5rem color-mix(in oklch,var(--b600) 70%,transparent)}
-.think .ask span{font-size:1.25rem;font-weight:500;color:var(--b100)}
-.think .ask b{font-size:1.75rem;font-weight:800;letter-spacing:-.02em;color:#fff}
+.think .ask{margin-top:1.5rem;border-left:.25rem solid var(--b500);padding:.25rem 0 .25rem 1.5rem;font-size:1.625rem;font-weight:700;line-height:1.5;letter-spacing:-.01em}
+.think .ask b{color:var(--b600);font-weight:800}
 .rcol{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;display:flex;flex-direction:column;gap:1.5rem}
 .rcol .composer{position:static;translate:none;width:auto}
-.rcol .composer .field.area{min-height:4rem}
+.rcol .composer .field{min-height:6.5rem}
 /* AI 추천 질문: 서비스의 추천 카드(흰 카드, 파란 배지, Q. 제목, 본문) 모양 */
 .aiq{opacity:0;transform:translateY(1rem);transition:opacity .7s var(--arrive),transform .7s var(--arrive)}
 .aiq.in{opacity:1;transform:none}
@@ -87,22 +85,17 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .aiq p i{font-style:normal;color:var(--b600);margin-right:.375rem}
 .aiq small{font-size:.9375rem;line-height:1.6;color:var(--g600);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .composer{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;background:#fff;border:1px solid var(--g200);border-radius:1.25rem;
-  box-shadow:0 1.5rem 3.5rem -1.5rem oklch(13% .028 261.7/.18);padding:1.5rem 1.75rem 1.75rem}
+  box-shadow:0 1.5rem 3.5rem -1.5rem oklch(13% .028 261.7/.18);padding:1.75rem}
 .composer .who{display:flex;align-items:center;gap:.75rem;font-size:.9375rem;color:var(--g500)}
 .composer .who img{width:2.25rem;height:2.25rem;border-radius:50%;object-fit:cover;background:var(--b50);flex:none}
 .composer .who b{color:var(--g900);font-weight:600}
-.composer label{display:block;font-size:.9375rem;font-weight:700;margin-top:1.125rem}
-.composer .field{margin-top:.5rem;min-height:3.25rem;display:flex;align-items:center;border:1px solid var(--g200);background:var(--g50);border-radius:.75rem;padding:.75rem 1rem;font-size:1.0625rem;font-weight:500;line-height:1.5;white-space:nowrap}
-.composer .field.focus{border-color:var(--b600);background:#fff;box-shadow:0 0 0 .1875rem var(--b50)}
-.composer .field.area{align-items:flex-start;min-height:5.5rem}
-.composer .field .ph{color:var(--g400);font-weight:400}
+.composer .field{margin-top:1.25rem;min-height:9.5rem;font-size:1.5rem;font-weight:700;line-height:1.5;border-bottom:1px solid var(--g100);padding-bottom:1.25rem}
+.composer .field .ph{color:var(--g300)}
 .caret{display:inline-block;width:.125rem;height:1.15em;background:var(--b500);vertical-align:-.18em;margin-left:.1em;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .composer .foot{display:flex;justify-content:space-between;align-items:center;margin-top:1.25rem;font-size:.9375rem;color:var(--g400)}
 .btn{height:2.75rem;padding:0 1.25rem;border-radius:.5rem;background:var(--b500);color:#fff;font-weight:500;font-size:1rem;display:inline-flex;align-items:center;transition:background .3s,color .3s}
 .btn.off{background:var(--g100);color:var(--g400)}
-.composer .btn{background:var(--g900);font-weight:600}
-.composer .btn.off{background:var(--g100);color:var(--g400)}
 .stat{display:flex;align-items:flex-end;gap:2.75rem;margin-top:2.75rem}
 .stat div{display:flex;flex-direction:column;gap:.375rem}
 .stat b{font-size:5.5rem;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
@@ -114,33 +107,41 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .s-pivot .txt{position:absolute;left:7rem;top:5.75rem;width:76rem}
 .s-pivot h2{font-size:3.25rem;margin-top:1.25rem}
 .s-pivot .lead b{color:var(--g900);font-weight:700}
-.flow{position:absolute;left:7rem;top:21rem;width:76rem;height:30rem}
-.srcs{position:absolute;left:0;top:0;width:30rem;display:flex;flex-direction:column;gap:.75rem}
-.src{height:3.5rem;display:flex;align-items:center;gap:.75rem;padding:0 1rem;border:1px solid var(--g200);border-radius:.875rem;background:#fff;font-size:.9375rem;color:var(--g700);
-  opacity:0;transform:translateX(-1.5rem);transition:opacity .7s var(--arrive),transform .7s var(--arrive);transition-delay:calc(var(--i)*130ms + .5s)}
-.on .src{opacity:1;transform:none}
-.src span:last-child{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.flow{position:absolute;left:7rem;top:20.5rem;width:76rem;height:27rem;display:grid;grid-template-columns:30rem 8rem 38rem;align-items:center}
+.flow .cap{font-size:.875rem;font-weight:600;color:var(--g500);margin-bottom:.625rem}
+.flow .box{background:#fff;border:1px solid var(--g200);border-radius:1rem}
+.raw,.xpc,.arrow{opacity:0;transform:translateY(1.25rem);transition:opacity .9s var(--arrive),transform .9s var(--arrive)}
+.raw{transition-delay:.9s}.arrow{transition-delay:1.5s}.xpc{transition-delay:1.9s}
+.on .raw,.on .xpc,.on .arrow{opacity:1;transform:none}
+.raw .box{padding:.375rem 1.5rem}
+.raw .mrow{padding:1.125rem 0}
+.raw .mrow:first-child{border-top:0}
+.raw .mrow .ti{font-size:1.0625rem}
+.arrow{display:flex;flex-direction:column;align-items:center;gap:.5rem;color:var(--b500)}
+.arrow svg{width:5rem;height:.75rem;overflow:visible}
+.arrow path{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .7s var(--travel) 1.7s}
+.on .arrow path{stroke-dashoffset:0}
+.arrow span{order:-1;font-size:.8125rem;font-weight:700;color:var(--b600);background:var(--b50);border-radius:99rem;padding:.2rem .7rem}
+.xpc .box{padding:1.75rem 2rem;box-shadow:0 1.5rem 3.5rem -1.75rem oklch(13% .028 261.7/.22);display:flex;flex-direction:column;align-items:flex-start;gap:.625rem}
+.xpc small{font-size:.875rem;font-weight:500;color:var(--g500)}
+.xpc h3{font-size:1.25rem;font-weight:700}
+.xpc .hl{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.xpc .hl li{display:flex;gap:.625rem;font-size:.9375rem;line-height:1.62;color:var(--g600)}
+.xpc .hl li::before{content:"";flex:none;width:.25rem;height:.25rem;border-radius:50%;background:var(--g400);margin-top:.65rem}
+.xpc .pill{margin-top:.375rem}
+.xpc .so{list-style:none;align-self:stretch;border:1px solid var(--g200);border-radius:.75rem;padding:.375rem;box-shadow:0 .5rem 1.25rem -.5rem oklch(13% .028 261.7/.16);
+  opacity:0;transform:translateY(-.5rem);transition:opacity .6s var(--arrive) 2.7s,transform .6s var(--arrive) 2.7s}
+.on .xpc .so{opacity:1;transform:none}
+.xpc .so li{display:flex;align-items:center;gap:.625rem;padding:.5rem .625rem;font-size:.8125rem;color:var(--g600)}
+.xpc .so li span:nth-child(2){min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.xpc .so li em{margin-left:auto;font-style:normal;font-size:.75rem;color:var(--g400);flex:none}
 .badge{flex:none;font-size:.75rem;font-weight:700;border-radius:.25rem;padding:.125rem .375rem;background:var(--b50);color:var(--b600)}
 .badge.gr{background:var(--gr50);color:var(--gr600)}
-.wires{position:absolute;left:30rem;top:0;width:8rem;height:20rem;overflow:visible}
-.wires path{fill:none;stroke:var(--b400);stroke-width:.09;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s var(--travel) 1.3s}
-.on .wires path{stroke-dashoffset:0}
-.xp{position:absolute;left:38rem;width:38rem;background:#fff;border:1px solid var(--g200);border-radius:1.125rem;padding:1.5rem 1.75rem;box-shadow:0 1.25rem 3rem -1.5rem oklch(13% .028 261.7/.2);
-  opacity:0;transform:translateY(1.25rem);transition:opacity .9s var(--arrive),transform .9s var(--arrive)}
-.xp.a{top:-1.5rem;transition-delay:2s}.xp.b{top:14.25rem;transition-delay:2.25s}
-.on .xp{opacity:1;transform:none}
-.xp small{font-size:.875rem;font-weight:500;color:var(--g500)}
-.xp h3{font-size:1.25rem;font-weight:700;margin-top:.375rem}
-.xp ul{list-style:none;margin-top:.75rem;display:flex;flex-direction:column;gap:.5rem}
-.xp li{display:flex;gap:.625rem;font-size:.9375rem;line-height:1.6;color:var(--g600)}
-.xp li::before{content:"";flex:none;width:.25rem;height:.25rem;border-radius:50%;background:var(--g400);margin-top:.625rem}
-.xp .pill{margin-top:.875rem}
 .pill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--g200);border-radius:99rem;padding:.25rem .75rem .25rem .25rem;font-size:.875rem;font-weight:600;color:var(--g600);background:#fff}
 .pill .dots{display:flex}
 .sb{width:1.25rem;height:1.25rem;border-radius:50%;background:var(--b50);color:var(--b600);font-size:.5rem;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 2px #fff;flex:none}
 .sb+.sb{margin-left:-.375rem}
 .pill em{font-style:normal;font-size:.75rem;color:var(--g400)}
-.fadefoot{position:absolute;left:0;right:0;bottom:0;height:9rem;background:linear-gradient(transparent,#fff 78%);pointer-events:none}
 
 /* ---------- 5. 시연 ---------- */
 .demo{position:relative;height:700vh}
@@ -402,7 +403,7 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
       <div class="bub rv" style="--i:3">포트폴리오에는 어떤 경험을 담아야 할까?</div>
       <div class="bub rv" style="--i:5">AI 시대, 개발자 취업은 어떻게 준비해야 할까?</div>
       <div class="bub rv" style="--i:7">신입 개발자에게 기업이 기대하는 역량은 뭘까?</div>
-      <div class="ask rv" style="--i:11"><span>이 사용자에게 필요한 정보를,</span><b>어떻게 빠르게 전달할 수 있을까?</b></div>
+      <p class="ask rv" style="--i:11">사용자에게 필요한 정보를<br>어떻게 <b>직관적으로</b> 전달할 수 있을까?</p>
     </div>
   </div>
 </section>
@@ -417,11 +418,8 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
     </div>
     <div class="composer rv" style="--i:2">
       <div class="who"><img src="assets/avatar-charles.jpg" alt=""><div><b>샤를</b> 님의 질문</div></div>
-      <label>제목</label>
-      <div class="field focus"><span class="tx"></span><span class="caret"></span></div>
-      <label>내용</label>
-      <div class="field area"><span class="ph">질문의 배경과 궁금한 점을 구체적으로 적어 주세요</span></div>
-      <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">등록하기</span></div>
+      <div class="field"><span class="tx"></span><span class="caret"></span></div>
+      <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">질문 등록</span></div>
     </div>
   </div>
 </section>
@@ -441,18 +439,15 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
     <div class="rcol">
       <div class="composer rv" style="--i:2">
         <div class="who"><img src="assets/avatar-charles.jpg" alt=""><div><b>샤를</b> 님의 질문</div></div>
-        <label>제목</label>
-        <div class="field focus"><span class="tx"></span><span class="caret"></span></div>
-        <label>내용</label>
-        <div class="field area"><span class="ph">질문의 배경과 궁금한 점을 구체적으로 적어 주세요</span></div>
-        <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">등록하기</span></div>
+        <div class="field"><span class="tx"></span><span class="caret"></span></div>
+        <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">질문 등록</span></div>
       </div>
       <div class="aiq" id="aiq">
         <div class="hd"><b>이런 질문도 궁금한가요?</b><span>AI가 제안한 질문을 살펴보고, 함께 이야기해 보세요.</span></div>
         <div class="qc">
           <div class="h"><span>AI 추천 질문</span><em>아직 등록되지 않았어요</em></div>
-          <p><i>Q.</i>느린 API의 병목을 찾을 때 무엇부터 확인하나요?</p>
-          <small>특정 목록 API의 응답 시간이 길어졌어요. 쿼리, 외부 호출, 커넥션 풀 중 어떤 순서로 확인하는지 궁금합니다. 성능 개선 전후를 비교할 때 사용한 지표도 알고 싶어요.</small>
+          <p><i>Q.</i>신입 면접에서 프로젝트 경험은 어떻게 설명하면 좋을까요?</p>
+          <small>프로젝트에서 맡은 역할과 기술을 고른 이유를 면접에서 어떻게 풀어내야 할지 고민이에요. 선배 크루들은 어떤 흐름으로 설명했는지, 꼬리 질문에는 어떻게 대비했는지 궁금합니다.</small>
         </div>
       </div>
     </div>
@@ -468,36 +463,31 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
       <p class="lead rv" style="--i:2">크루들의 프로젝트 경험을 <b>직관적으로</b> 전하기 위해, <b>프로젝트 탭을 본격적으로 개편했습니다.</b></p>
     </div>
     <div class="flow">
-      <div class="srcs">
-        <div class="src" style="--i:0"><span class="badge">PR</span><span>피드 인기순 정렬을 저장된 좋아요와 댓글 수로 조회 #505</span></div>
-        <div class="src" style="--i:1"><span class="badge">PR</span><span>'내가 누른 반응' 확인용 사용자 기준 인덱스 추가 #478</span></div>
-        <div class="src" style="--i:2"><span class="badge gr">팀 문서</span><span>[ALL/RFC] 연관된 질문 추천 기능의 구현 전 의사결정 문서</span></div>
-        <div class="src" style="--i:3"><span class="badge">PR</span><span>Gemini 장애 시 OpenAI로 질문 추천 대체 #475</span></div>
+      <div class="raw">
+        <p class="cap">GitHub에 공개된 PR</p>
+        <div class="box">
+          <div class="mrow"><div class="m"><span class="badge">PR</span><b>샤라웃</b><span>2026년 10월 21일</span></div><div class="ti"><svg class="gh"></svg><span>[BE/refactor] 피드 인기순 정렬을 저장된 좋아요와 댓글 수로 조회 (#504)</span></div></div>
+          <div class="mrow"><div class="m"><span class="badge">PR</span><b>샤라웃</b><span>2026년 10월 16일</span></div><div class="ti"><svg class="gh"></svg><span>[BE/refactor] 피드 목록의 '내가 누른 반응' 확인용 사용자 기준 인덱스 추가 (#477)</span></div></div>
+        </div>
       </div>
-      <svg class="wires" viewBox="0 0 8 20" preserveAspectRatio="none">
-        <path pathLength="1" d="M0 1.75C4 1.75 4 3.5 8 3.5"/><path pathLength="1" d="M0 6C4 6 4 3.5 8 3.5"/>
-        <path pathLength="1" d="M0 10.25C4 10.25 4 17.5 8 17.5"/><path pathLength="1" d="M0 14.5C4 14.5 4 17.5 8 17.5"/>
-      </svg>
-      <div class="xp a">
-        <small>쿼리 최적화</small>
-        <h3>피드 조회 최적화와 동시성 정합성 검증</h3>
-        <ul>
-          <li>인기순 조회의 전체 집계를 반정규화와 인덱스 조회로 바꿔, 피드 15,000개에서 18.34ms → 0.32ms로 줄임</li>
-          <li>8개 스레드의 동시 요청 테스트 7개로 집계 정합성을 검증함</li>
-        </ul>
-        <span class="pill"><span class="dots"><span class="sb">PR</span><span class="sb">PR</span></span>출처 2개</span>
-      </div>
-      <div class="xp b">
-        <small>설계</small>
-        <h3>AI 추천의 비동기 처리와 장애 대체 설계</h3>
-        <ul>
-          <li>약 97.3%의 제출 구간 이탈률을 근거로 Outbox, SQS 기반의 비동기 추천 구조를 제안함</li>
-          <li>Gemini 실패 시 OpenAI 대체와 지수 백오프, 지터를 구현함</li>
-        </ul>
-        <span class="pill"><span class="dots"><span class="sb">PR</span><span class="sb">PR</span><span class="sb">D</span></span>출처 4개</span>
+      <div class="arrow"><svg viewBox="0 0 112 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path pathLength="1" d="M2 8h104"/><path pathLength="1" d="M100 2l8 6-8 6"/></svg><span>가공</span></div>
+      <div class="xpc">
+        <p class="cap">프로젝트 탭의 경험</p>
+        <div class="box">
+          <small>쿼리 최적화</small>
+          <h3>피드 조회 최적화와 동시성 정합성 검증</h3>
+          <ul class="hl">
+            <li>피드 인기순 조회의 좋아요, 댓글 전체 집계를 반정규화와 인덱스 조회로 대체해 피드 15,000개에서 18.34ms → 0.32ms로 줄임</li>
+            <li>DB 원자적 증감과 실제 변경 여부에 따른 집계 갱신을 8개 스레드의 동시 요청 테스트 7개로 검증함</li>
+          </ul>
+          <span class="pill"><span class="dots"><span class="sb">PR</span><span class="sb">PR</span></span>출처 2개 <em>▴</em></span>
+          <ul class="so">
+            <li><span class="sb">PR</span><span>[BE/refactor] 피드 목록의 '내가 누른 반응' 확인용 사용자 기준 인덱스 추가 (#477)</span><em>#478</em></li>
+            <li><span class="sb">PR</span><span>[BE/refactor] 피드 인기순 정렬을 저장된 좋아요와 댓글 수로 조회 (#504)</span><em>#505</em></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="fadefoot"></div>
   </div>
 </section>
 
@@ -624,11 +614,11 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 <!-- 7. 마무리 -->
 <section class="slide s-end" data-stop>
   <div class="frame">
-    <h2 class="rv">막연했던 포트폴리오 준비,<br>이제 프로젝트 탭에서 <span class="grad">경험을 바로 찾습니다.</span></h2>
+    <h2 class="rv">막연했던 취업 준비,<br>이제 프로젝트 탭에서 <span class="grad">필요한 정보만 바로 찾아보세요.</span></h2>
     <div class="three">
-      <div class="rv" style="--i:2"><small>찾고</small><b>기술 주제로 프로젝트 찾기</b><p>같은 문제를 겪은 팀만 모아 봐요.</p></div>
-      <div class="rv" style="--i:3"><small>읽고</small><b>프로젝트의 경험 읽기</b><p>무엇을 왜 했는지 이력서 문장으로 봐요.</p></div>
-      <div class="rv" style="--i:4"><small>따라가고</small><b>출처와 자료 따라가기</b><p>PR, 팀 문서, 테코톡으로 이어져요.</p></div>
+      <div class="rv" style="--i:2"><small>기술로</small><b>기술 검색</b><p>궁금한 기술을 다른 팀이 어떻게 구현했는지 찾아요.</p></div>
+      <div class="rv" style="--i:3"><small>채용공고로</small><b>채용공고로 찾기</b><p>공고가 찾는 역량을 키운 크루들의 경험을 봐요.</p></div>
+      <div class="rv" style="--i:4"><small>프로젝트로</small><b>전체 프로젝트 보기</b><p>프로젝트의 경험을 읽고, 출처와 자료까지 따라가요.</p></div>
     </div>
     <div class="addr rv" style="--i:6"><img src="assets/logo.png" alt="">shout-ou.tz</div>
   </div>
@@ -641,8 +631,8 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 const QUESTION = '첫 포트폴리오, 프로젝트 경험을 어떻게 써야 할까요?';
 const AI_IMPROVE = '12%';                                           // 임시로 넣은 값. 실제 측정값이 아니다. 발표 전에 실제 수치로 바꾼다.
 const COPIES = [
-  ['이 기술, 다른 팀은 어떻게\n썼는지 궁금하세요?', '기술 이름으로 검색하면 블로그, PR, 팀 문서, 테코톡을 한 번에 찾아요.'],
-  ['이 공고가 찾는 역량이\n궁금하세요?', '공고가 찾는 역량을 고르면, 그 역량을 다룬 크루들의 자료가 나와요.'],
+  ['“무중단 배포”\n다른 팀은 어떻게\n구현했는지 궁금하세요?', '기술 이름으로 검색하면 블로그, PR, 팀 문서, 테코톡을 한 번에 찾아요.'],
+  ['채용 공고가 찾는 역량을\n어떻게 채워야 할지\n막막한가요?', '공고의 역량을 고르면, 그 역량을 키운 크루들의 경험이 나와요.'],
   ['이 기술을 써 본 팀이\n궁금하세요?', '프로젝트 이름, 소개, 기술로 바로 찾아보세요.'],
   ['같은 문제를 겪은 팀이\n궁금하세요?', '기술 주제를 고르면, 그 주제를 다룬 프로젝트만 남아요.'],
   ['그 팀이 실제로 한 일이\n궁금하세요?', 'PR과 팀 문서, 블로그에서 찾은 경험을 이력서 문장으로 읽어요.'],
@@ -686,6 +676,8 @@ const KW_BLOGS = [
   ['blog', '야구보구', '2025-08-29', '[Infra] Nginx와 Docker로 구현하는 단일 서버 Blue-Green 무중단 배포', 'Nginx, Docker, Blue-Green 배포로 트래픽 전환 구조를 구성하는 과정이라, 보안 그룹 제약 속 무중단 배포를 설계할 때 참고하기 좋아요.'],
   ['blog', '모우다', '2024-11-12', '무중단 배포 과정에서의 불확실성 개선 [2] - AWS CLI의 wait API 적용', 'AWS CLI, ELB, wait 명령어로 트래픽 중단과 재개를 확인하는 과정이라, 무중단 배포의 대기 조건을 설계할 때 참고하기 좋아요.'],
   ['blog', '코딩해듀오', '2024-10-27', '우리도 무중단 배포 할래요.', 'Blue/Green, Docker, Nginx로 추가 인스턴스 없이 무중단 배포를 구성하고, 다중 인스턴스의 전환 시점 문제를 살필 때 참고하기 좋아요.'],
+  ['blog', '하루스터디', '2023-10-29', '데이터베이스 호환성을 고려한 무중단 배포 진행하기', '롤링 배포, API 버저닝, MySQL 트리거로 진행 중인 사용자와 데이터 호환성을 고려한 무중단 배포를 설계할 때 참고하기 좋아요.'],
+  ['blog', '달록', '2022-10-26', '달록 무중단 배포 도입기', '블루그린 배포, Nginx, Jenkins로 단일 EC2의 배포 중단을 줄이는 과정이라, 무중단 배포를 도입할 때 참고하기 좋아요.'],
 ];
 const KW_DOCS = [
   ['pr', '히유', '2026-10-22', 'infra: 개발 서버 blue green 무중단 배포 적용', 'Blue-Green, Nginx, Alloy로 배포 전환과 관측 데이터 보호를 설계한 과정이라, 무중단 배포의 실패 지점을 점검할 때 참고하기 좋아요.'],
@@ -796,7 +788,7 @@ const scenes = {};
   $('#aiImprove').textContent = AI_IMPROVE;
   scenes.problem = {
     enter() {
-      if (STATIC) { tx.innerHTML = '<span class="ph">궁금한 내용을 한 줄로 적어 주세요</span>'; num.textContent = '97.3'; aiq.classList.add('in'); return; }
+      if (STATIC) { tx.innerHTML = '<span class="ph">궁금한 점을 질문해 보세요</span>'; num.textContent = '97.3'; aiq.classList.add('in'); return; }
       const wait = run.begin(); tx.textContent = QUESTION; btn.classList.remove('off'); num.textContent = '0.0'; aiq.classList.remove('in');
       guard((async () => {
         await wait(900);
@@ -804,7 +796,7 @@ const scenes = {};
         for (;;) { const k = Math.min(1, (performance.now() - t0) / 1400), e = 1 - Math.pow(1 - k, 3); num.textContent = (97.3 * e).toFixed(1); if (k === 1) break; await wait(16); }
         await wait(500);
         for (let n = QUESTION.length - 1; n >= 0; n--) { tx.textContent = QUESTION.slice(0, n); await wait(34); }
-        btn.classList.add('off'); tx.innerHTML = '<span class="ph">궁금한 내용을 한 줄로 적어 주세요</span>';
+        btn.classList.add('off'); tx.innerHTML = '<span class="ph">궁금한 점을 질문해 보세요</span>';
         await wait(900); aiq.classList.add('in');   // 막연함을 덜어 주려고 넣은 AI 추천 질문
       })());
     },
@@ -862,13 +854,13 @@ const demo = (() => {
     $('#chips').innerHTML = `<small>${TABS[t][1]}</small>` + TABS[t][2].map((c) => `<span class="chip">${c}</span>`).join('');
     showPanes();
   }
-  // 기술 검색 결과. filter 는 ALL, DOC 중 하나이고 null 이면 검색 전 화면이다.
+  // 기술 검색 결과. filter 는 ALL, BLOG 중 하나이고 null 이면 검색 전 화면이다.
   function setKwResult(filter) {
     kwFilter = filter; showPanes();
     $$('#chips .chip').forEach((e) => e.classList.toggle('act', !!filter && e.textContent === SEARCH_WORD));
     $$('#kchips .chip').forEach((e) => e.classList.toggle('act', e.dataset.k === filter));
     const sec = (name, n, rows) => `<div class="rsec stag"><h5>${name} <span class="cnt">${n}</span></h5>${rows.map((r) => matRow(r)).join('')}</div>`;
-    $('#resBody').innerHTML = !filter ? '' : (filter === 'ALL' ? sec('블로그', KW_COUNT.BLOG, KW_BLOGS) : '') + sec('PR과 팀 문서', KW_COUNT.DOC, KW_DOCS);
+    $('#resBody').innerHTML = !filter ? '' : filter === 'ALL' ? sec('블로그', KW_COUNT.BLOG, KW_BLOGS.slice(0, 3)) + sec('PR과 팀 문서', KW_COUNT.DOC, KW_DOCS) : sec('블로그', KW_COUNT.BLOG, KW_BLOGS);
   }
   // 채용공고 상세에서 고른 역량들. 고른 역량의 자료를 하나로 모아 종류별로 보여 준다.
   function setReqs(sel) {
@@ -943,9 +935,9 @@ const demo = (() => {
   }
 
   const steps = [
-    // 1. 기술 검색: 기술 이름으로 찾고, 종류를 골라 PR과 팀 문서만 보기
+    // 1. 기술 검색: 기술 이름으로 찾고, 종류를 골라 블로그만 보기
     async () => {
-      setCopy(0); await wait(900);
+      await wait(900);
       await move($('#inp'), 0.5, 0.62, 700); await click(); setFocus(true); await wait(280);
       for (const f of typeFrames(SEARCH_WORD)) { setQuery(f); await wait(95); }
       await wait(300);
@@ -953,12 +945,13 @@ const demo = (() => {
       setKwResult('ALL'); await wait(250);
       scrollCam($('#camX'), $('#xtabs'), 1.25);
       await stagger($$('#paneRes .stag'), 130); await wait(1100);
-      await move($('#kchips [data-k=DOC]'), 0.62, 0.62, 650); await click();
-      setKwResult('DOC'); await stagger($$('#paneRes .stag'), 130);
+      await move($('#kchips [data-k=BLOG]'), 0.62, 0.62, 650); await click();
+      setKwResult('BLOG'); await stagger($$('#paneRes .stag'), 130); await wait(500);
+      scrollCam($('#camX'), $('#paneRes'), 1.25); cur.classList.remove('show');   // 블로그 글을 더 보이게 조금 내린다.
     },
     // 2. 채용공고로 찾기: 공고를 열고, 찾는 역량을 골라 그 역량의 자료 보기
     async () => {
-      setCopy(1); await wait(400);
+      await wait(400);
       await move($('#xtabs [data-t=job]'), 0.6, 0.7, 700); await click(); setKwResult(null); setQuery(''); setTab('job'); await wait(200);
       await stagger($$('#paneJob .stag'), 70); await wait(500);
       const c = $('#paneJob .jc'); await move(c, 0.62, 0.55, 650); c.classList.add('hov'); await wait(300); await click();
@@ -971,7 +964,7 @@ const demo = (() => {
     },
     // 3. 탐색으로 돌아와 프로젝트 탭에서 이름, 소개, 기술로 찾기
     async () => {
-      setCopy(2); await wait(400);
+      await wait(400);
       await move($('.gnb .act'), 0.55, 0.62, 750); await click();
       setPage('explore'); setTab('keyword'); scrollCam($('#camX')); await wait(750);
       await move($('#xtabs [data-t=project]'), 0.72, 0.7); await click(); setTab('project'); await wait(650);
@@ -983,7 +976,7 @@ const demo = (() => {
     },
     // 2. 직군을 고르고 기술 주제로 거르기
     async () => {
-      setCopy(1); await wait(350);
+      await wait(350);
       scrollCam($('#camX'), $('#xtabs'), 1.25); await wait(950);
       await move($('#roles [data-role=BE]'), 0.7, 0.6, 700); await click(); setRole('BE'); await wait(550);
       await move($(`#groups [data-topic="${TOPIC}"]`), 0.62, 0.62, 620); await click();
@@ -991,7 +984,7 @@ const demo = (() => {
     },
     // 3. 프로젝트를 열어 경험 읽기
     async () => {
-      setCopy(2); await wait(350);
+      await wait(350);
       await move(card['shout-outz'], 0.62, 0.42, 800); card['shout-outz'].classList.add('hov'); await wait(380); await click();
       setPage('detail'); setDetailTab('exp'); cur.classList.remove('show'); await wait(350);
       card['shout-outz'].classList.remove('hov');
@@ -1000,14 +993,14 @@ const demo = (() => {
     },
     // 4. 출처 펼치기
     async () => {
-      setCopy(3); await wait(350);
+      await wait(350);
       const e = $$('.exp')[1]; scrollCam($('#camD'), e, 0.25); await wait(950);
       await move($('.pill', e), 0.8, 0.6, 700); $('.pill', e).classList.add('hov'); await wait(250); await click(); openSrc(1, true); await wait(650);
       const li = $$('.srcbox li', e)[1]; await move(li, 0.72, 0.6, 550); $('.pill', e).classList.remove('hov'); li.classList.add('hov');
     },
     // 5. 자료 탭에서 같은 주제의 다른 자료 보기
     async () => {
-      setCopy(4); await wait(350);
+      await wait(350);
       $$('.srcbox li').forEach((l) => l.classList.remove('hov'));
       scrollCam($('#camD')); await wait(950);
       await move($('#utabs [data-t=mat]'), 0.7, 0.65, 700); await click(); setDetailTab('mat'); await wait(300);
@@ -1025,7 +1018,7 @@ const demo = (() => {
       stage.offsetWidth; stage.classList.remove('instant'); instant = false;
       if (STATIC) { setCopy(k); at = k; return; }
     }
-    wait = w; busy = true; at = k - 1;
+    setCopy(k); wait = w; busy = true; at = k - 1;
     await guard(steps[k]().then(() => { at = k; busy = false; }));
   }
   reset();
