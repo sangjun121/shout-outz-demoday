@@ -60,34 +60,49 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .two h2{font-size:3.25rem;margin-top:1.5rem}
 .two .lead{margin-top:1.75rem}
 .two .lead b{color:var(--g900);font-weight:700}
-.think{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;display:flex;flex-direction:column;gap:1rem}
-.think .bub{align-self:flex-start;background:#fff;border:1px solid var(--g200);border-radius:1.25rem 1.25rem 1.25rem .375rem;padding:.875rem 1.25rem;font-size:1.1875rem;font-weight:500;color:var(--g700);box-shadow:0 .75rem 2rem -1.25rem oklch(13% .028 261.7/.25)}
-.think .bub:nth-child(2){align-self:flex-end;border-radius:1.25rem 1.25rem .375rem 1.25rem}
-.think .ask{margin-top:1.5rem;background:var(--b50);border:1px solid var(--b100);border-radius:1.25rem;padding:1.5rem 1.75rem}
-.think .ask small{font-size:.9375rem;font-weight:700;color:var(--b600)}
-.think .ask p{font-size:1.5rem;font-weight:700;line-height:1.45;margin-top:.5rem}
-.aiq{position:absolute;right:7rem;top:calc(50% + 11.5rem);width:35rem;border:1px solid var(--b100);background:color-mix(in oklch,var(--b50) 55%,#fff);border-radius:.875rem;padding:1.125rem 1.375rem;
-  opacity:0;transform:translateY(1rem);transition:opacity .7s var(--arrive),transform .7s var(--arrive)}
+.think{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;display:flex;flex-direction:column;gap:1.5rem}
+/* 말풍선: 둥근 상자 아래에 꼬리를 단다. 꼬리는 45도 돌린 작은 사각형의 아래 두 변만 테두리를 그린 것이다. */
+.think .bub{position:relative;align-self:flex-start;background:#fff;border:1px solid var(--g200);border-radius:1.5rem;padding:1rem 1.5rem;font-size:1.1875rem;font-weight:500;color:var(--g800);
+  box-shadow:0 1rem 2.25rem -1.25rem oklch(13% .028 261.7/.3)}
+.think .bub::after{content:"";position:absolute;left:2rem;bottom:-.5rem;width:.9375rem;height:.9375rem;background:#fff;border:solid var(--g200);border-width:0 1px 1px 0;border-radius:0 0 .25rem 0;transform:rotate(45deg) skew(8deg,8deg)}
+.think .bub:nth-child(2){align-self:flex-end}
+.think .bub:nth-child(2)::after{left:auto;right:2rem}
+.think .ask{margin-top:1.25rem;background:var(--b600);border-radius:1.5rem;padding:1.875rem 2.25rem;display:flex;flex-direction:column;gap:.375rem;
+  box-shadow:0 1.75rem 3rem -1.5rem color-mix(in oklch,var(--b600) 70%,transparent)}
+.think .ask span{font-size:1.25rem;font-weight:500;color:var(--b100)}
+.think .ask b{font-size:1.75rem;font-weight:800;letter-spacing:-.02em;color:#fff}
+.rcol{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;display:flex;flex-direction:column;gap:1.5rem}
+.rcol .composer{position:static;translate:none;width:auto}
+.rcol .composer .field.area{min-height:4rem}
+/* AI 추천 질문: 서비스의 추천 카드(흰 카드, 파란 배지, Q. 제목, 본문) 모양 */
+.aiq{opacity:0;transform:translateY(1rem);transition:opacity .7s var(--arrive),transform .7s var(--arrive)}
 .aiq.in{opacity:1;transform:none}
-.aiq .h{display:flex;justify-content:space-between;align-items:center;font-size:.8125rem;font-weight:500}
-.aiq .h span{display:inline-flex;align-items:center;gap:.375rem;color:var(--b600)}
-.aiq .h svg{width:1rem;height:1rem}
-.aiq .h em{font-style:normal;color:var(--g500)}
-.aiq p{font-size:1.0625rem;font-weight:600;margin-top:.625rem}
-.aiq p i{font-style:normal;color:var(--b600);margin-right:.25rem}
-.aiq small{display:block;font-size:.8125rem;font-weight:500;color:var(--b600);margin-top:.625rem}
+.aiq .hd b{display:block;font-size:1rem;font-weight:700}
+.aiq .hd span{display:block;font-size:.875rem;color:var(--g500);margin-top:.2rem}
+.aiq .qc{margin-top:.875rem;background:#fff;border:1px solid var(--g200);border-radius:.75rem;padding:1.25rem;display:flex;flex-direction:column;gap:.625rem}
+.aiq .h{display:flex;justify-content:space-between;align-items:center;font-size:.8125rem}
+.aiq .h span{background:var(--b50);color:var(--b600);border-radius:.25rem;padding:.125rem .5rem;font-weight:700}
+.aiq .h em{font-style:normal;color:var(--g400)}
+.aiq p{font-size:1.0625rem;font-weight:700}
+.aiq p i{font-style:normal;color:var(--b600);margin-right:.375rem}
+.aiq small{font-size:.9375rem;line-height:1.6;color:var(--g600);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .composer{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;background:#fff;border:1px solid var(--g200);border-radius:1.25rem;
-  box-shadow:0 1.5rem 3.5rem -1.5rem oklch(13% .028 261.7/.18);padding:1.75rem}
+  box-shadow:0 1.5rem 3.5rem -1.5rem oklch(13% .028 261.7/.18);padding:1.5rem 1.75rem 1.75rem}
 .composer .who{display:flex;align-items:center;gap:.75rem;font-size:.9375rem;color:var(--g500)}
 .composer .who img{width:2.25rem;height:2.25rem;border-radius:50%;object-fit:cover;background:var(--b50);flex:none}
 .composer .who b{color:var(--g900);font-weight:600}
-.composer .field{margin-top:1.25rem;min-height:9.5rem;font-size:1.5rem;font-weight:700;line-height:1.5;border-bottom:1px solid var(--g100);padding-bottom:1.25rem}
-.composer .field .ph{color:var(--g300)}
+.composer label{display:block;font-size:.9375rem;font-weight:700;margin-top:1.125rem}
+.composer .field{margin-top:.5rem;min-height:3.25rem;display:flex;align-items:center;border:1px solid var(--g200);background:var(--g50);border-radius:.75rem;padding:.75rem 1rem;font-size:1.0625rem;font-weight:500;line-height:1.5;white-space:nowrap}
+.composer .field.focus{border-color:var(--b600);background:#fff;box-shadow:0 0 0 .1875rem var(--b50)}
+.composer .field.area{align-items:flex-start;min-height:5.5rem}
+.composer .field .ph{color:var(--g400);font-weight:400}
 .caret{display:inline-block;width:.125rem;height:1.15em;background:var(--b500);vertical-align:-.18em;margin-left:.1em;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .composer .foot{display:flex;justify-content:space-between;align-items:center;margin-top:1.25rem;font-size:.9375rem;color:var(--g400)}
 .btn{height:2.75rem;padding:0 1.25rem;border-radius:.5rem;background:var(--b500);color:#fff;font-weight:500;font-size:1rem;display:inline-flex;align-items:center;transition:background .3s,color .3s}
 .btn.off{background:var(--g100);color:var(--g400)}
+.composer .btn{background:var(--g900);font-weight:600}
+.composer .btn.off{background:var(--g100);color:var(--g400)}
 .stat{display:flex;align-items:flex-end;gap:2.75rem;margin-top:2.75rem}
 .stat div{display:flex;flex-direction:column;gap:.375rem}
 .stat b{font-size:5.5rem;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
@@ -384,10 +399,10 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
       <p class="lead rv" style="--i:2">핵심 타깃은 <b>프로젝트와 포트폴리오를 시작하기 전,<br>막연한 취업 준비생</b>이었어요.</p>
     </div>
     <div class="think">
-      <div class="bub rv" style="--i:3">프로젝트, 뭐부터 시작하지?</div>
-      <div class="bub rv" style="--i:5">다른 팀은 이 문제를 어떻게 풀었을까?</div>
-      <div class="bub rv" style="--i:7">포트폴리오에는 뭘 써야 하지?</div>
-      <div class="ask rv" style="--i:11"><small>그래서 붙잡은 질문</small><p>이 사용자에게 필요한 정보를,<br>어떻게 빠르게 전할 수 있을까?</p></div>
+      <div class="bub rv" style="--i:3">포트폴리오에는 어떤 경험을 담아야 할까?</div>
+      <div class="bub rv" style="--i:5">AI 시대, 개발자 취업은 어떻게 준비해야 할까?</div>
+      <div class="bub rv" style="--i:7">신입 개발자에게 기업이 기대하는 역량은 뭘까?</div>
+      <div class="ask rv" style="--i:11"><span>이 사용자에게 필요한 정보를,</span><b>어떻게 빠르게 전달할 수 있을까?</b></div>
     </div>
   </div>
 </section>
@@ -402,8 +417,11 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
     </div>
     <div class="composer rv" style="--i:2">
       <div class="who"><img src="assets/avatar-charles.jpg" alt=""><div><b>샤를</b> 님의 질문</div></div>
-      <div class="field"><span class="tx"></span><span class="caret"></span></div>
-      <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">질문 등록</span></div>
+      <label>제목</label>
+      <div class="field focus"><span class="tx"></span><span class="caret"></span></div>
+      <label>내용</label>
+      <div class="field area"><span class="ph">질문의 배경과 궁금한 점을 구체적으로 적어 주세요</span></div>
+      <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">등록하기</span></div>
     </div>
   </div>
 </section>
@@ -413,22 +431,30 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
   <div class="frame">
     <div class="txt">
       <p class="eyebrow rv">결과</p>
-      <h2 class="rv" style="--i:1">답변은 잘 달렸지만,<br>질문이 남지 않았습니다.</h2>
+      <h2 class="rv" style="--i:1">답변은 잘 달렸지만,<br>질문 작성 비율이<br>현저히 낮았습니다.</h2>
       <div class="stat rv" style="--i:2">
         <div class="big"><b><span class="num">97.3</span>%</b><span>질문을 제출하지 않고 나간 사용자</span></div>
         <div class="small"><b>150%</b><span>평균 답변 비율</span></div>
       </div>
       <p class="lead rv" style="--i:3">“질문이 잘 떠오르지 않고 막연하다”는 피드백에,<br><b>AI 추천 질문</b>을 도입해 <b id="aiImprove"></b> 개선했습니다.</p>
     </div>
-    <div class="composer rv" style="--i:2">
-      <div class="who"><img src="assets/avatar-charles.jpg" alt=""><div><b>샤를</b> 님의 질문</div></div>
-      <div class="field"><span class="tx"></span><span class="caret"></span></div>
-      <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">질문 등록</span></div>
-    </div>
-    <div class="aiq" id="aiq">
-      <div class="h"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7L19 16Z"/></svg>AI 추천 질문</span><em>아직 등록되지 않았어요</em></div>
-      <p><i>Q.</i> 느린 API의 병목을 찾을 때 무엇부터 확인하나요?</p>
-      <small>궁금하다면 질문해 보세요 ↗</small>
+    <div class="rcol">
+      <div class="composer rv" style="--i:2">
+        <div class="who"><img src="assets/avatar-charles.jpg" alt=""><div><b>샤를</b> 님의 질문</div></div>
+        <label>제목</label>
+        <div class="field focus"><span class="tx"></span><span class="caret"></span></div>
+        <label>내용</label>
+        <div class="field area"><span class="ph">질문의 배경과 궁금한 점을 구체적으로 적어 주세요</span></div>
+        <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">등록하기</span></div>
+      </div>
+      <div class="aiq" id="aiq">
+        <div class="hd"><b>이런 질문도 궁금한가요?</b><span>AI가 제안한 질문을 살펴보고, 함께 이야기해 보세요.</span></div>
+        <div class="qc">
+          <div class="h"><span>AI 추천 질문</span><em>아직 등록되지 않았어요</em></div>
+          <p><i>Q.</i>느린 API의 병목을 찾을 때 무엇부터 확인하나요?</p>
+          <small>특정 목록 API의 응답 시간이 길어졌어요. 쿼리, 외부 호출, 커넥션 풀 중 어떤 순서로 확인하는지 궁금합니다. 성능 개선 전후를 비교할 때 사용한 지표도 알고 싶어요.</small>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -439,7 +465,7 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
     <div class="txt">
       <p class="eyebrow rv">같은 맥락에서</p>
       <h2 class="rv" style="--i:1">공개된 프로젝트 정보를 한곳에 모아,<br><span class="grad">바로 쓸 수 있는 경험</span>으로 가공했습니다.</h2>
-      <p class="lead rv" style="--i:2">크루들의 프로젝트 경험을 직접 전하기 위해, <b>프로젝트 탭을 본격적으로 개편했습니다.</b></p>
+      <p class="lead rv" style="--i:2">크루들의 프로젝트 경험을 <b>직관적으로</b> 전하기 위해, <b>프로젝트 탭을 본격적으로 개편했습니다.</b></p>
     </div>
     <div class="flow">
       <div class="srcs">
@@ -770,7 +796,7 @@ const scenes = {};
   $('#aiImprove').textContent = AI_IMPROVE;
   scenes.problem = {
     enter() {
-      if (STATIC) { tx.innerHTML = '<span class="ph">궁금한 점을 질문해 보세요</span>'; num.textContent = '97.3'; aiq.classList.add('in'); return; }
+      if (STATIC) { tx.innerHTML = '<span class="ph">궁금한 내용을 한 줄로 적어 주세요</span>'; num.textContent = '97.3'; aiq.classList.add('in'); return; }
       const wait = run.begin(); tx.textContent = QUESTION; btn.classList.remove('off'); num.textContent = '0.0'; aiq.classList.remove('in');
       guard((async () => {
         await wait(900);
@@ -778,7 +804,7 @@ const scenes = {};
         for (;;) { const k = Math.min(1, (performance.now() - t0) / 1400), e = 1 - Math.pow(1 - k, 3); num.textContent = (97.3 * e).toFixed(1); if (k === 1) break; await wait(16); }
         await wait(500);
         for (let n = QUESTION.length - 1; n >= 0; n--) { tx.textContent = QUESTION.slice(0, n); await wait(34); }
-        btn.classList.add('off'); tx.innerHTML = '<span class="ph">궁금한 점을 질문해 보세요</span>';
+        btn.classList.add('off'); tx.innerHTML = '<span class="ph">궁금한 내용을 한 줄로 적어 주세요</span>';
         await wait(900); aiq.classList.add('in');   // 막연함을 덜어 주려고 넣은 AI 추천 질문
       })());
     },
