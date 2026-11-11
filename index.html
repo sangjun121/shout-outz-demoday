@@ -1,0 +1,1058 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>샤라웃, 최종 데모데이</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 1440 x 810 을 기준 화면으로 잡고, 화면 크기에 맞춰 통째로 커지거나 작아진다. */
+html{font-size:min(1.1111vw,1.9753vh);scroll-snap-type:y mandatory;scrollbar-width:none;background:#fff}
+html::-webkit-scrollbar{display:none}
+:root{
+  --bg:#fff;
+  --g50:oklch(98.7% .0018 243.9);--g100:oklch(97% .0027 260.6);--g200:oklch(93.5% .0054 260.6);--g300:oklch(88.5% .0091 254.4);
+  --g400:oklch(73.7% .02 257.4);--g500:oklch(59.7% .0246 260.4);--g600:oklch(48.3% .0273 252.9);--g700:oklch(40.4% .031 255.8);
+  --g800:oklch(30.1% .0301 252.9);--g900:oklch(22.7% .031 260.7);
+  --b50:oklch(97.2% .0135 250.4);--b100:oklch(93.9% .0298 251.8);--b200:oklch(88.6% .0568 253);--b400:oklch(71.3% .1513 256.3);
+  --b500:oklch(64.1% .1934 258.2);--b600:oklch(55.8% .2173 259.1);--b800:oklch(40.5% .1686 260.4);
+  --gr50:oklch(97.7% .0093 170.3);--gr600:oklch(59.7% .1334 156.8);
+  --r500:oklch(65.4% .2328 21);
+  --travel:cubic-bezier(.45,0,.1,1);--arrive:cubic-bezier(.25,.8,.25,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  color:var(--g900);background:var(--bg);word-break:keep-all;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block}
+[hidden]{display:none!important}
+.static *,.static *::before,.static *::after{transition:none!important;animation:none!important}
+
+/* ---------- 슬라이드 공통 ---------- */
+.slide{height:100vh;position:relative;overflow:hidden;scroll-snap-align:start;scroll-snap-stop:always;display:grid;place-items:center}
+.frame{width:90rem;height:50.625rem;position:relative}
+.rv{opacity:0;transform:translateY(1.25rem);transition:opacity .9s var(--arrive),transform .9s var(--arrive);transition-delay:calc(var(--i,0)*110ms + .2s)}
+.on .rv{opacity:1;transform:none}
+.eyebrow{font-size:1.0625rem;font-weight:700;color:var(--b600)}
+h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
+.lead{font-size:1.375rem;line-height:1.6;color:var(--g600)}
+.grad{background:linear-gradient(90deg,var(--b800),var(--b500));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- 1. 표지 ---------- */
+.s-cover{background:radial-gradient(60rem 36rem at 78% 46%,var(--b50),transparent 70%)}
+.s-cover .txt{position:absolute;left:7rem;top:50%;translate:0 -50%;width:40rem}
+.brand{display:flex;align-items:center;gap:.625rem;font-size:1.125rem;font-weight:700}
+.brand img{width:2rem;height:2rem}
+.s-cover h1{font-size:3.375rem;margin-top:1.75rem;line-height:1.3}
+.slot{display:block;height:1.3em;overflow:hidden}
+.slot>span{display:block;animation:slot 7s cubic-bezier(.65,0,.35,1) infinite}
+.slot b{display:block;height:1.3em;white-space:nowrap;font-weight:800}
+@keyframes slot{0%,43%{transform:translateY(0)}50%,93%{transform:translateY(-1.3em)}100%{transform:translateY(-2.6em)}}
+.s-cover .lead{margin-top:1.5rem;font-size:1.1875rem}
+.s-cover .meta{margin-top:2.5rem;font-size:1rem;color:var(--g500);display:flex;gap:1.25rem;align-items:center}
+.s-cover .meta i{width:1px;height:1rem;background:var(--g300)}
+.s-cover .hero{position:absolute;right:5.5rem;top:0;bottom:0;margin:auto 0;width:31rem;opacity:0;transform:translateY(2rem) scale(.94);
+  transition:opacity 1s var(--arrive) .35s,transform 1.2s var(--arrive) .35s}
+.s-cover.on .hero{opacity:1;transform:none}
+
+/* ---------- 2, 3. 시작과 문제 ---------- */
+.two .txt{position:absolute;left:7rem;top:50%;translate:0 -50%;width:37rem}
+.two h2{font-size:3.25rem;margin-top:1.5rem}
+.two .lead{margin-top:1.75rem}
+.two .lead b{color:var(--g900);font-weight:700}
+.think{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;display:flex;flex-direction:column;gap:1rem}
+.think .bub{align-self:flex-start;background:#fff;border:1px solid var(--g200);border-radius:1.25rem 1.25rem 1.25rem .375rem;padding:.875rem 1.25rem;font-size:1.1875rem;font-weight:500;color:var(--g700);box-shadow:0 .75rem 2rem -1.25rem oklch(13% .028 261.7/.25)}
+.think .bub:nth-child(2){align-self:flex-end;border-radius:1.25rem 1.25rem .375rem 1.25rem}
+.think .ask{margin-top:1.5rem;background:var(--b50);border:1px solid var(--b100);border-radius:1.25rem;padding:1.5rem 1.75rem}
+.think .ask small{font-size:.9375rem;font-weight:700;color:var(--b600)}
+.think .ask p{font-size:1.5rem;font-weight:700;line-height:1.45;margin-top:.5rem}
+.aiq{position:absolute;right:7rem;top:calc(50% + 11.5rem);width:35rem;border:1px solid var(--b100);background:color-mix(in oklch,var(--b50) 55%,#fff);border-radius:.875rem;padding:1.125rem 1.375rem;
+  opacity:0;transform:translateY(1rem);transition:opacity .7s var(--arrive),transform .7s var(--arrive)}
+.aiq.in{opacity:1;transform:none}
+.aiq .h{display:flex;justify-content:space-between;align-items:center;font-size:.8125rem;font-weight:500}
+.aiq .h span{display:inline-flex;align-items:center;gap:.375rem;color:var(--b600)}
+.aiq .h svg{width:1rem;height:1rem}
+.aiq .h em{font-style:normal;color:var(--g500)}
+.aiq p{font-size:1.0625rem;font-weight:600;margin-top:.625rem}
+.aiq p i{font-style:normal;color:var(--b600);margin-right:.25rem}
+.aiq small{display:block;font-size:.8125rem;font-weight:500;color:var(--b600);margin-top:.625rem}
+.composer{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;background:#fff;border:1px solid var(--g200);border-radius:1.25rem;
+  box-shadow:0 1.5rem 3.5rem -1.5rem oklch(13% .028 261.7/.18);padding:1.75rem}
+.composer .who{display:flex;align-items:center;gap:.75rem;font-size:.9375rem;color:var(--g500)}
+.composer .who img{width:2.25rem;height:2.25rem;border-radius:50%;object-fit:cover;background:var(--b50);flex:none}
+.composer .who b{color:var(--g900);font-weight:600}
+.composer .field{margin-top:1.25rem;min-height:9.5rem;font-size:1.5rem;font-weight:700;line-height:1.5;border-bottom:1px solid var(--g100);padding-bottom:1.25rem}
+.composer .field .ph{color:var(--g300)}
+.caret{display:inline-block;width:.125rem;height:1.15em;background:var(--b500);vertical-align:-.18em;margin-left:.1em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.composer .foot{display:flex;justify-content:space-between;align-items:center;margin-top:1.25rem;font-size:.9375rem;color:var(--g400)}
+.btn{height:2.75rem;padding:0 1.25rem;border-radius:.5rem;background:var(--b500);color:#fff;font-weight:500;font-size:1rem;display:inline-flex;align-items:center;transition:background .3s,color .3s}
+.btn.off{background:var(--g100);color:var(--g400)}
+.stat{display:flex;align-items:flex-end;gap:2.75rem;margin-top:2.75rem}
+.stat div{display:flex;flex-direction:column;gap:.375rem}
+.stat b{font-size:5.5rem;font-weight:800;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .big b{color:var(--b600)}
+.stat div>span{font-size:1.0625rem;color:var(--g500)}
+.stat .small b{font-size:3rem;color:var(--g900)}
+
+/* ---------- 4. 전환 ---------- */
+.s-pivot .txt{position:absolute;left:7rem;top:5.75rem;width:76rem}
+.s-pivot h2{font-size:3.25rem;margin-top:1.25rem}
+.s-pivot .lead b{color:var(--g900);font-weight:700}
+.flow{position:absolute;left:7rem;top:21rem;width:76rem;height:30rem}
+.srcs{position:absolute;left:0;top:0;width:30rem;display:flex;flex-direction:column;gap:.75rem}
+.src{height:3.5rem;display:flex;align-items:center;gap:.75rem;padding:0 1rem;border:1px solid var(--g200);border-radius:.875rem;background:#fff;font-size:.9375rem;color:var(--g700);
+  opacity:0;transform:translateX(-1.5rem);transition:opacity .7s var(--arrive),transform .7s var(--arrive);transition-delay:calc(var(--i)*130ms + .5s)}
+.on .src{opacity:1;transform:none}
+.src span:last-child{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.badge{flex:none;font-size:.75rem;font-weight:700;border-radius:.25rem;padding:.125rem .375rem;background:var(--b50);color:var(--b600)}
+.badge.gr{background:var(--gr50);color:var(--gr600)}
+.wires{position:absolute;left:30rem;top:0;width:8rem;height:20rem;overflow:visible}
+.wires path{fill:none;stroke:var(--b400);stroke-width:.09;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s var(--travel) 1.3s}
+.on .wires path{stroke-dashoffset:0}
+.xp{position:absolute;left:38rem;width:38rem;background:#fff;border:1px solid var(--g200);border-radius:1.125rem;padding:1.5rem 1.75rem;box-shadow:0 1.25rem 3rem -1.5rem oklch(13% .028 261.7/.2);
+  opacity:0;transform:translateY(1.25rem);transition:opacity .9s var(--arrive),transform .9s var(--arrive)}
+.xp.a{top:-1.5rem;transition-delay:2s}.xp.b{top:14.25rem;transition-delay:2.25s}
+.on .xp{opacity:1;transform:none}
+.xp small{font-size:.875rem;font-weight:500;color:var(--g500)}
+.xp h3{font-size:1.25rem;font-weight:700;margin-top:.375rem}
+.xp ul{list-style:none;margin-top:.75rem;display:flex;flex-direction:column;gap:.5rem}
+.xp li{display:flex;gap:.625rem;font-size:.9375rem;line-height:1.6;color:var(--g600)}
+.xp li::before{content:"";flex:none;width:.25rem;height:.25rem;border-radius:50%;background:var(--g400);margin-top:.625rem}
+.xp .pill{margin-top:.875rem}
+.pill{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--g200);border-radius:99rem;padding:.25rem .75rem .25rem .25rem;font-size:.875rem;font-weight:600;color:var(--g600);background:#fff}
+.pill .dots{display:flex}
+.sb{width:1.25rem;height:1.25rem;border-radius:50%;background:var(--b50);color:var(--b600);font-size:.5rem;font-weight:800;display:grid;place-items:center;box-shadow:0 0 0 2px #fff;flex:none}
+.sb+.sb{margin-left:-.375rem}
+.pill em{font-style:normal;font-size:.75rem;color:var(--g400)}
+.fadefoot{position:absolute;left:0;right:0;bottom:0;height:9rem;background:linear-gradient(transparent,#fff 78%);pointer-events:none}
+
+/* ---------- 5. 시연 ---------- */
+.demo{position:relative;height:700vh}
+.pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--g50)}
+.snaps{position:absolute;inset:0;pointer-events:none}
+.snaps i{display:block;height:100vh;scroll-snap-align:start;scroll-snap-stop:always}
+.pin .frame{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+.dcol{position:absolute;left:5.5rem;top:11.5rem;width:24rem}
+.crumb{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:600;color:var(--g500)}
+.crumb b{color:var(--b600);background:var(--b50);border-radius:.5rem;padding:.3rem .65rem;font-weight:600}
+.dcopies{position:relative;margin-top:2rem;height:20rem}
+.dcopy{position:absolute;inset:0;opacity:0;transform:translateY(1rem);transition:opacity .45s var(--travel),transform .6s var(--arrive);pointer-events:none}
+.dcopy.cur{opacity:1;transform:none;transition-delay:.25s}
+.dcopy .n{font-size:.9375rem;font-weight:700;color:var(--b600);font-variant-numeric:tabular-nums}
+.dcopy h2{font-size:2.25rem;margin-top:.75rem;white-space:pre-line}
+.dcopy p{font-size:1.125rem;line-height:1.65;color:var(--g600);margin-top:1.25rem}
+.ticks{position:absolute;left:5.5rem;top:40.5rem;display:flex;gap:.5rem}
+.ticks i{width:1.75rem;height:.25rem;border-radius:1rem;background:var(--g200);transition:background .4s,width .5s var(--travel)}
+.ticks i.cur{background:var(--b500);width:3rem}
+
+.win{position:absolute;left:31rem;top:4.25rem;width:55rem;height:54rem;background:#fff;border:1px solid var(--g200);border-radius:1rem 1rem 0 0;
+  box-shadow:0 2.5rem 6rem -2rem oklch(13% .028 261.7/.28),0 0 0 1px oklch(13% .028 261.7/.02);overflow:hidden;
+  opacity:0;transform:translateY(2.5rem);transition:opacity .9s var(--arrive) .1s,transform 1.1s var(--arrive) .1s}
+.pin.on .win{opacity:1;transform:none}
+.bar{height:2.5rem;display:flex;align-items:center;gap:.4rem;padding:0 .875rem;background:var(--g50);border-bottom:1px solid var(--g200)}
+.bar>i{width:.625rem;height:.625rem;border-radius:50%;background:var(--g300)}
+.url{margin-left:.875rem;flex:1;max-width:26rem;height:1.5rem;border-radius:.4rem;background:#fff;border:1px solid var(--g200);font-size:.75rem;color:var(--g500);display:flex;align-items:center;padding:0 .625rem}
+.gnb{height:3.5rem;display:flex;align-items:center;padding:0 2rem;border-bottom:1px solid var(--g200);gap:.5rem;font-size:.875rem;position:relative;z-index:2;background:#fff}
+.gnb img{width:1.625rem;height:1.625rem}
+.gnb strong{font-size:1.0625rem;margin-right:1.25rem}
+.gnb a{padding:.375rem .75rem;border-radius:.5rem;color:var(--g600);font-weight:500}
+.gnb a.act{background:var(--b50);color:var(--b600)}
+.gnb .login{margin-left:auto;border:1px solid var(--g200);border-radius:.5rem;padding:.375rem .75rem;color:var(--g700);font-weight:500}
+.view{position:relative;height:calc(100% - 6rem);overflow:hidden}
+.page{position:absolute;left:0;right:0;top:0;padding:2rem 2.25rem 6rem;opacity:0;transform:translateX(1.5rem);pointer-events:none;
+  transition:opacity .35s var(--travel),transform .5s var(--arrive)}
+.page.show{opacity:1;transform:none}
+.cam{transition:transform .9s var(--travel)}
+
+/* 탐색 화면 */
+.hero-x{text-align:center}
+.hero-x .t{font-size:1.75rem;font-weight:800;letter-spacing:-.02em;line-height:1.4}
+.hero-x .d{font-size:.875rem;color:var(--g600);margin-top:.625rem}
+.tabs{display:inline-flex;gap:.25rem;background:var(--g50);border-radius:.75rem;padding:.25rem;margin-top:1.25rem}
+.tabs span{padding:.375rem .75rem;border-radius:.5rem;font-size:.875rem;font-weight:500;color:var(--g600);transition:background .18s,color .18s}
+.tabs span.act{background:var(--b50);color:var(--b600);font-weight:600}
+.search{display:flex;gap:.5rem;max-width:34rem;margin:1.25rem auto 0}
+.inp{flex:1;height:2.75rem;border:1px solid var(--g200);border-radius:.75rem;display:flex;align-items:center;gap:.5rem;padding:0 1rem;font-size:.9375rem;
+  box-shadow:0 1px 2px oklch(13% .028 261.7/.06);transition:border-color .18s,box-shadow .18s;text-align:left;white-space:nowrap;overflow:hidden}
+.inp.focus{border-color:var(--b400);box-shadow:0 0 0 .25rem var(--b100)}
+.inp svg{width:1.125rem;height:1.125rem;color:var(--g500);flex:none}
+.inp .ph{color:var(--g400)}
+.inp .caret{display:none}.inp.focus .caret{display:inline-block}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:.5rem;margin-top:.875rem;min-height:1.875rem}
+.chips small{font-size:.75rem;font-weight:500;color:var(--g500);margin-right:.25rem}
+.chip{font-size:.8125rem;font-weight:500;padding:.3rem .7rem;border-radius:99rem;background:var(--g100);color:var(--g600);transition:background .18s,color .18s}
+.chip.act{background:var(--g900);color:#fff}
+.body-x{position:relative;margin-top:2.25rem;text-align:left}
+.pane{transition:opacity .35s var(--travel)}
+.pane.off{opacity:0;position:absolute;inset:0 0 auto 0;pointer-events:none}
+.kw h4{font-size:1.125rem;font-weight:700}
+.kw h5{font-size:.8125rem;font-weight:700;color:var(--g700);margin:1.25rem 0 .25rem}
+.proj{display:flex;gap:2.5rem}
+.tnav{width:10.5rem;flex:none;font-size:.8125rem}
+.tnav p{font-weight:700;padding:0 .75rem .5rem;font-size:.8125rem}
+.tnav p span,.cnt{font-weight:500;color:var(--g400)}
+.tnav .box{background:var(--g50);border-radius:.75rem;padding:.25rem;display:flex;flex-direction:column;gap:.125rem}
+.tnav .it{display:flex;justify-content:space-between;gap:.5rem;padding:.4rem .75rem;border-radius:.5rem;font-weight:500;color:var(--g600);transition:background .18s,color .18s}
+.tnav .it span{color:var(--g400);font-weight:500}
+.tnav .it.act{background:var(--b50);color:var(--b600);font-weight:600}
+.tnav .grp{margin-top:1.25rem}
+.listx{flex:1;min-width:0}
+.lh{display:flex;justify-content:space-between;align-items:flex-end;min-height:3.25rem}
+.lh .h{font-size:1.125rem;font-weight:700}
+.lh .cap{font-size:.8125rem;color:var(--g500);margin-top:.2rem;height:1.2rem;transition:opacity .3s}
+.lh .cap b{color:var(--g900);font-weight:600}
+.lh .sort{font-size:.8125rem;color:var(--g500)}.lh .sort b{color:var(--g900)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.75rem 1.125rem;margin-top:1rem}
+.card{min-width:0;transition:transform .6s var(--travel),opacity .3s var(--travel)}
+.card.out,.card.in0{opacity:0;transform:scale(.97)}
+.card .th{aspect-ratio:8/5;border-radius:.75rem;overflow:hidden;background:var(--g100);box-shadow:inset 0 0 0 1px oklch(13% .028 261.7/.05)}
+.card .th img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.card.hov .th img{transform:scale(1.03)}
+.card small{display:block;margin-top:.625rem;font-size:.6875rem;color:var(--g500)}
+.card b{display:block;font-size:1rem;font-weight:700;margin-top:.1rem}
+.card.hov b{text-decoration:underline}
+.card p{font-size:.8125rem;line-height:1.55;color:var(--g600);margin-top:.2rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card em{display:block;font-style:normal;font-size:.6875rem;color:var(--g500);margin-top:.4rem}
+
+/* 프로젝트 상세 */
+.dh{display:flex;align-items:center;gap:1.5rem}
+.dh img{width:5.5rem;height:5.5rem;border-radius:1rem;object-fit:cover}
+.dh .t{font-size:1.75rem;font-weight:800;letter-spacing:-.02em}
+.dh .d{font-size:.9375rem;color:var(--g600);margin-top:.375rem}
+.dh .l{display:flex;gap:1.25rem;margin-top:.5rem;font-size:.8125rem;color:var(--g600)}
+.dh .l span{text-decoration:underline;text-decoration-color:var(--g200);text-underline-offset:.2rem}
+.like{margin-left:auto;display:flex;align-items:center;gap:.4rem;border:1px solid var(--g200);border-radius:99rem;padding:.4rem .875rem;font-size:.875rem;font-weight:600;color:var(--g700)}
+.like svg{width:1rem;height:1rem}
+.utabs{display:flex;border-bottom:1px solid var(--g200);margin-top:1.5rem}
+.utabs span{padding:.375rem .75rem;font-size:.875rem;font-weight:500;color:var(--g500);border-bottom:3px solid transparent;margin-bottom:-1px;transition:color .18s,border-color .18s}
+.utabs span.act{color:var(--g900);border-color:var(--g900);font-weight:600}
+.panel{position:relative;padding-top:1rem}
+.dots-t{display:flex;gap:1.125rem;font-size:.875rem;font-weight:500;color:var(--g400)}
+.dots-t span{display:inline-flex;align-items:center;gap:.375rem}
+.dots-t span::before{content:"";width:.375rem;height:.375rem;border-radius:50%}
+.dots-t .act{color:var(--g900);font-weight:600}.dots-t .act::before{background:var(--g900)}
+.dots-t i{font-style:normal;color:var(--g400);font-weight:500}
+.exp{padding:1.5rem 0;border-top:1px solid var(--g100);display:flex;flex-direction:column;gap:.5rem;align-items:flex-start}
+.exp:first-of-type{border-top:0;padding-top:1.25rem}
+.exp small{font-size:.8125rem;font-weight:500;color:var(--g500)}
+.exp b{font-size:1.125rem;font-weight:700}
+.exp ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.exp li{display:flex;gap:.625rem;font-size:.875rem;line-height:1.62;color:var(--g600)}
+.exp li::before{content:"";flex:none;width:.25rem;height:.25rem;border-radius:50%;background:var(--g400);margin-top:.6rem}
+.exp .pill{margin-top:.375rem;transition:background .18s}
+.exp .pill.hov{background:var(--g50)}
+.srcbox{width:34rem;display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .45s var(--travel),opacity .3s}
+.srcbox.open{grid-template-rows:1fr;opacity:1}
+.srcbox>div{overflow:hidden}
+.srcbox ul{border:1px solid var(--g200);border-radius:.75rem;padding:.375rem;gap:0;box-shadow:0 .5rem 1.25rem -.5rem oklch(13% .028 261.7/.16);margin:.125rem 0 .75rem}
+.srcbox li{align-items:center;padding:.5rem .625rem;border-radius:.5rem;font-size:.8125rem;line-height:1.3;transition:background .18s}
+.srcbox li::before{display:none}
+.srcbox li.hov{background:var(--b50);color:var(--b600)}
+.srcbox li span:nth-child(2){min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.srcbox li em{margin-left:auto;font-style:normal;font-size:.75rem;color:var(--g400);flex:none}
+.stag{opacity:0;transform:translateY(.875rem);transition:opacity .6s var(--arrive),transform .6s var(--arrive)}
+.stag.in{opacity:1;transform:none}
+.mat{display:flex;gap:2.5rem;margin-top:1.75rem}
+.mnav{width:11rem;flex:none;display:flex;flex-direction:column;gap:1.125rem;font-size:.8125rem}
+.mnav h6{font-size:.6875rem;font-weight:600;color:var(--g400);margin-bottom:.3rem}
+.mnav div span{display:flex;justify-content:space-between;padding:.25rem 0 .25rem .625rem;border-left:2px solid transparent;color:var(--g600)}
+.mnav div span i{font-style:normal;color:var(--g400)}
+.mnav div span.act{border-color:var(--g900);color:var(--g900);font-weight:600}
+.mbody{flex:1;min-width:0}
+.mbody .meta{font-size:.8125rem;color:var(--g500)}
+.mbody .tt{font-size:1.5rem;font-weight:800;margin-top:.3rem}
+.msec{margin-top:1.5rem}
+.msec h5{font-size:1.0625rem;font-weight:700}
+.msec h5+p{font-size:.8125rem;color:var(--g500);margin-top:.2rem}
+.mrow{padding:1rem 0;border-top:1px solid var(--g100);display:flex;flex-direction:column;gap:.5rem}
+.msec h5+.mrow{border-top:0}
+.mrow .m{display:flex;align-items:center;gap:.5rem;font-size:.8125rem;color:var(--g400)}
+.mrow .m b{color:var(--g600);font-weight:600}
+.mrow .ti{display:flex;gap:.5rem;font-size:1rem;font-weight:700;line-height:1.4}
+.mrow .ti svg{width:1.125rem;height:1.125rem;flex:none;margin-top:.15rem}
+.talks{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:.875rem}
+.talks img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:.75rem}
+.talks p{font-size:.8125rem;font-weight:600;line-height:1.4;margin-top:.4rem}
+.talks .badge{display:inline-block;margin-top:.5rem}
+
+/* 기술 검색 결과 */
+.res .sum{font-size:.875rem;color:var(--g600)}
+.res .sum b{color:var(--b600);font-weight:700}
+.kchips{display:flex;gap:.5rem;margin-top:.75rem}
+.kchips i,.dots-t i{font-style:normal}
+.kchips i{opacity:.6;font-size:.75rem;margin-left:.2rem}
+.rsec{margin-top:1.5rem}
+.rsec h5{font-size:.875rem;font-weight:700;color:var(--g700);margin-bottom:.5rem}
+.mrow .su{font-size:.875rem;line-height:1.6;color:var(--g800)}
+.mrow .ex{font-size:.75rem;color:var(--g400)}
+.fav{width:1.125rem;height:1.125rem;border-radius:.2rem;background:var(--g200);flex:none;margin-top:.15rem}
+
+/* 채용공고 목록과 상세 */
+.jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.jc{border:1px solid var(--g200);border-radius:1rem;padding:1.125rem;display:flex;flex-direction:column;min-height:11.75rem;transition:background .18s,opacity .6s var(--arrive),transform .6s var(--arrive)}
+.jc.hov{background:var(--g50)}
+.jc .top{display:flex;align-items:center;gap:.625rem}
+.jlogo{width:2.5rem;height:2.5rem;border-radius:.625rem;display:grid;place-items:center;font-weight:700;font-size:1.0625rem;flex:none}
+.jc .co{font-size:.8125rem;color:var(--g700)}
+.jc .ro{font-size:.6875rem;font-weight:500;color:var(--b600);margin-top:.1rem;display:flex;gap:.4rem}
+.jc .dl{margin-left:auto;background:var(--g100);border-radius:.5rem;padding:.2rem .5rem;font-size:.6875rem;font-weight:700;color:var(--g700);flex:none}
+.jc>b{font-size:1rem;font-weight:700;margin-top:.875rem;line-height:1.35}
+.jc .tg{font-size:.8125rem;color:var(--g500);margin-top:.3rem;display:flex;flex-wrap:wrap;gap:0 .625rem}
+.jc .rq{margin-top:auto;padding-top:.875rem;font-size:.8125rem;font-weight:600;color:var(--g700)}
+.jc.up.in{opacity:.5}
+.jc.up .jlogo{background:var(--g200);color:var(--g400)}
+.jwrap{display:grid;grid-template-columns:3fr 1fr;gap:2.25rem}
+.jmain{min-width:0}
+.jh{display:flex;align-items:center;gap:1.5rem}
+.jh .jlogo{width:5.5rem;height:5.5rem;border-radius:1.15rem;font-size:2.25rem}
+.jh .t{font-size:1.625rem;font-weight:800;letter-spacing:-.02em;line-height:1.25}
+.jh .d{font-size:.9375rem;color:var(--g600);margin-top:.4rem}
+.jh .l{display:inline-block;font-size:.8125rem;color:var(--g600);margin-top:.4rem;text-decoration:underline;text-decoration-color:var(--g200);text-underline-offset:.2rem}
+.jreq{margin-top:1.5rem;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200);padding:1.25rem 0}
+.jreq p{font-size:.75rem;font-weight:600;color:var(--g500)}
+.jreq p span{font-weight:400;color:var(--g400)}
+.pills{display:flex;flex-wrap:wrap;gap:.25rem .375rem;margin-top:.75rem}
+.rqp{border-radius:99rem;padding:.25rem .75rem;font-size:.875rem;font-weight:500;color:var(--g500);transition:background .18s,color .18s}
+.rqp.hov{background:var(--g50)}
+.rqp.act{background:var(--b50);color:var(--b600);font-weight:600}
+#jdots{margin-top:2rem}
+.jsec{margin-top:1.75rem}
+.jsec h5{font-size:1.0625rem;font-weight:700;margin-bottom:.25rem}
+.jside{border-left:1px solid var(--g200);padding-left:1.25rem;align-self:start}
+.jside h6{font-size:.875rem;font-weight:700;padding-bottom:.625rem}
+.jf{border-top:1px solid var(--g100);padding:.875rem 0;display:flex;flex-direction:column;gap:.375rem}
+.jf small{font-size:.6875rem;font-weight:500;color:var(--g500)}
+.jf small b{color:var(--b600);font-weight:500}
+.jf strong{font-size:.8125rem;line-height:1.4}
+.jf strong i{font-style:normal;color:var(--b600)}
+.jf p{font-size:.6875rem;line-height:1.6;color:var(--g600);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.jf em{font-style:normal;font-size:.6875rem;color:var(--g500);display:flex;justify-content:space-between}
+
+.cursor{position:absolute;left:0;top:0;width:1.5rem;height:1.5rem;z-index:20;opacity:0;pointer-events:none;
+  transition:transform .75s var(--travel),opacity .3s;filter:drop-shadow(0 .15rem .25rem oklch(13% .028 261.7/.35))}
+.cursor svg{width:100%;height:100%;transition:transform .12s}
+.cursor.down svg{transform:scale(.84)}
+.cursor.show{opacity:1}
+.instant .cursor,.instant .cam,.instant .page,.instant .card,.instant .stag,.instant .srcbox,.instant .pane,.instant .tabs span,.instant .chip,.instant .tnav .it,.instant .inp,.instant .jc,.instant .rqp{transition:none!important}
+
+/* ---------- 6. 마무리 ---------- */
+.s-end{background:radial-gradient(64rem 40rem at 50% 108%,var(--b50),transparent 70%)}
+.s-end .frame{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.s-end h2{font-size:3.75rem;line-height:1.35}
+.three{display:flex;gap:1.25rem;margin-top:3.25rem}
+.three div{width:16.5rem;border:1px solid var(--g200);background:#fff;border-radius:1.125rem;padding:1.5rem 1.5rem 1.625rem;text-align:left}
+.three b{font-size:1.25rem;font-weight:700}
+.three p{font-size:1rem;line-height:1.6;color:var(--g600);margin-top:.5rem}
+.three small{font-size:.875rem;font-weight:700;color:var(--b600);display:block;margin-bottom:.625rem}
+.addr{margin-top:3.25rem;display:flex;align-items:center;gap:.875rem;font-size:1.5rem;font-weight:700}
+.addr img{width:2.5rem;height:2.5rem}
+
+/* ---------- 진행 표시 ---------- */
+.hud{position:fixed;left:0;right:0;bottom:0;z-index:50;pointer-events:none}
+.hud .pg{height:.2rem;background:var(--b500);width:0;transition:width .5s var(--travel)}
+.hud .no{position:absolute;right:1.5rem;bottom:1rem;font-size:.8125rem;color:var(--g400);font-variant-numeric:tabular-nums}
+.hud .tm{position:absolute;left:1.5rem;bottom:1rem;font-size:.9375rem;font-weight:600;color:var(--g500);font-variant-numeric:tabular-nums;display:none}
+.hud .tm.show{display:block}.hud .tm.over{color:var(--r500)}
+@media (prefers-reduced-motion:reduce){.slot>span{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- 1. 표지 -->
+<section class="slide s-cover" data-stop>
+  <div class="frame">
+    <div class="txt">
+      <div class="brand rv"><img src="assets/logo.png" alt="">shout-outz</div>
+      <h1 class="rv" style="--i:1">
+        <span class="slot"><span><b class="grad">프로젝트를 만들 때,</b><b class="grad">취업을 준비할 때,</b><b class="grad">프로젝트를 만들 때,</b></span></span>
+        우아한테크코스 크루들은<br>어떻게 했을까요?
+      </h1>
+      <p class="lead rv" style="--i:2">우아한테크코스 크루들의 프로젝트와 취업 경험을 한곳에, 샤라웃</p>
+      <div class="meta rv" style="--i:3"><span>우아한테크코스 8기</span><i></i><span>최종 데모데이</span></div>
+    </div>
+    <img class="hero" src="assets/character.webp" alt="확성기를 든 샤라웃 캐릭터">
+  </div>
+</section>
+
+<!-- 2. 시작: 누구를 위한 서비스인가 -->
+<section class="slide two s-target" data-stop>
+  <div class="frame">
+    <div class="txt">
+      <p class="eyebrow rv">시작</p>
+      <h2 class="rv" style="--i:1">IT 취업 준비생을 위한<br>정보 카탈로그 서비스로<br>시작했습니다.</h2>
+      <p class="lead rv" style="--i:2">핵심 타깃은 <b>프로젝트와 포트폴리오를 시작하기 전,<br>막연한 취업 준비생</b>이었어요.</p>
+    </div>
+    <div class="think">
+      <div class="bub rv" style="--i:3">프로젝트, 뭐부터 시작하지?</div>
+      <div class="bub rv" style="--i:5">다른 팀은 이 문제를 어떻게 풀었을까?</div>
+      <div class="bub rv" style="--i:7">포트폴리오에는 뭘 써야 하지?</div>
+      <div class="ask rv" style="--i:11"><small>그래서 붙잡은 질문</small><p>이 사용자에게 필요한 정보를,<br>어떻게 빠르게 전할 수 있을까?</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 첫 번째 시도: 커뮤니티와 질문 -->
+<section class="slide two s-start" data-stop data-scene="start">
+  <div class="frame">
+    <div class="txt">
+      <p class="eyebrow rv">첫 번째 시도</p>
+      <h2 class="rv" style="--i:1">커뮤니티와 질문 기능을<br>먼저 도입했습니다.</h2>
+      <p class="lead rv" style="--i:2">선배 크루에게 직접 묻는 것이, 필요한 정보를<br>가장 빠르게 얻는 방법이라고 가정했어요.</p>
+    </div>
+    <div class="composer rv" style="--i:2">
+      <div class="who"><img src="assets/avatar-charles.jpg" alt=""><div><b>샤를</b> 님의 질문</div></div>
+      <div class="field"><span class="tx"></span><span class="caret"></span></div>
+      <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">질문 등록</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 결과: 답변은 달렸지만 질문이 남지 않음, AI 추천 질문 도입 -->
+<section class="slide two s-problem" data-stop data-scene="problem">
+  <div class="frame">
+    <div class="txt">
+      <p class="eyebrow rv">결과</p>
+      <h2 class="rv" style="--i:1">답변은 잘 달렸지만,<br>질문이 남지 않았습니다.</h2>
+      <div class="stat rv" style="--i:2">
+        <div class="big"><b><span class="num">97.3</span>%</b><span>질문을 제출하지 않고 나간 사용자</span></div>
+        <div class="small"><b>150%</b><span>평균 답변 비율</span></div>
+      </div>
+      <p class="lead rv" style="--i:3">“질문이 잘 떠오르지 않고 막연하다”는 피드백에,<br><b>AI 추천 질문</b>을 도입해 <b id="aiImprove"></b> 개선했습니다.</p>
+    </div>
+    <div class="composer rv" style="--i:2">
+      <div class="who"><img src="assets/avatar-charles.jpg" alt=""><div><b>샤를</b> 님의 질문</div></div>
+      <div class="field"><span class="tx"></span><span class="caret"></span></div>
+      <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">질문 등록</span></div>
+    </div>
+    <div class="aiq" id="aiq">
+      <div class="h"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM19 16l.7 1.8 1.8.7-1.8.7L19 21l-.7-1.8-1.8-.7 1.8-.7L19 16Z"/></svg>AI 추천 질문</span><em>아직 등록되지 않았어요</em></div>
+      <p><i>Q.</i> 느린 API의 병목을 찾을 때 무엇부터 확인하나요?</p>
+      <small>궁금하다면 질문해 보세요 ↗</small>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 전환: 프로젝트 탭 개편 -->
+<section class="slide s-pivot" data-stop>
+  <div class="frame">
+    <div class="txt">
+      <p class="eyebrow rv">같은 맥락에서</p>
+      <h2 class="rv" style="--i:1">공개된 프로젝트 정보를 한곳에 모아,<br><span class="grad">바로 쓸 수 있는 경험</span>으로 가공했습니다.</h2>
+      <p class="lead rv" style="--i:2">크루들의 프로젝트 경험을 직접 전하기 위해, <b>프로젝트 탭을 본격적으로 개편했습니다.</b></p>
+    </div>
+    <div class="flow">
+      <div class="srcs">
+        <div class="src" style="--i:0"><span class="badge">PR</span><span>피드 인기순 정렬을 저장된 좋아요와 댓글 수로 조회 #505</span></div>
+        <div class="src" style="--i:1"><span class="badge">PR</span><span>'내가 누른 반응' 확인용 사용자 기준 인덱스 추가 #478</span></div>
+        <div class="src" style="--i:2"><span class="badge gr">팀 문서</span><span>[ALL/RFC] 연관된 질문 추천 기능의 구현 전 의사결정 문서</span></div>
+        <div class="src" style="--i:3"><span class="badge">PR</span><span>Gemini 장애 시 OpenAI로 질문 추천 대체 #475</span></div>
+      </div>
+      <svg class="wires" viewBox="0 0 8 20" preserveAspectRatio="none">
+        <path pathLength="1" d="M0 1.75C4 1.75 4 3.5 8 3.5"/><path pathLength="1" d="M0 6C4 6 4 3.5 8 3.5"/>
+        <path pathLength="1" d="M0 10.25C4 10.25 4 17.5 8 17.5"/><path pathLength="1" d="M0 14.5C4 14.5 4 17.5 8 17.5"/>
+      </svg>
+      <div class="xp a">
+        <small>쿼리 최적화</small>
+        <h3>피드 조회 최적화와 동시성 정합성 검증</h3>
+        <ul>
+          <li>인기순 조회의 전체 집계를 반정규화와 인덱스 조회로 바꿔, 피드 15,000개에서 18.34ms → 0.32ms로 줄임</li>
+          <li>8개 스레드의 동시 요청 테스트 7개로 집계 정합성을 검증함</li>
+        </ul>
+        <span class="pill"><span class="dots"><span class="sb">PR</span><span class="sb">PR</span></span>출처 2개</span>
+      </div>
+      <div class="xp b">
+        <small>설계</small>
+        <h3>AI 추천의 비동기 처리와 장애 대체 설계</h3>
+        <ul>
+          <li>약 97.3%의 제출 구간 이탈률을 근거로 Outbox, SQS 기반의 비동기 추천 구조를 제안함</li>
+          <li>Gemini 실패 시 OpenAI 대체와 지수 백오프, 지터를 구현함</li>
+        </ul>
+        <span class="pill"><span class="dots"><span class="sb">PR</span><span class="sb">PR</span><span class="sb">D</span></span>출처 4개</span>
+      </div>
+    </div>
+    <div class="fadefoot"></div>
+  </div>
+</section>
+
+<!-- 6. 시연: 한 화면을 고정해 두고 일곱 단계로 나눠 보여 준다 -->
+<section class="demo">
+  <div class="pin" id="pin">
+    <div class="frame" id="stage">
+      <div class="dcol">
+        <div class="crumb">탐색 <span>›</span> <b id="crumb">기술 검색</b></div>
+        <div class="dcopies" id="copies"></div>
+      </div>
+      <div class="ticks" id="ticks"></div>
+      <div class="win">
+        <div class="bar"><i></i><i></i><i></i><div class="url" id="url"></div></div>
+        <div class="gnb"><img src="assets/logo.png" alt=""><strong>shout-outz</strong><a>홈</a><a class="act">탐색</a><a>커뮤니티</a><a>프로젝트</a><a>매거진</a><a>소식</a><span class="login">로그인</span></div>
+        <div class="view">
+          <div class="page show" id="pgExplore"><div class="cam" id="camX">
+            <div class="hero-x">
+              <div class="t"><span class="grad">프로젝트를 만들 때,</span><br>우아한테크코스 크루들은 어떻게 했을까요?</div>
+              <div class="d">우아한테크코스 크루들의 프로젝트 경험과 취업 과정을 모았어요.</div>
+              <div class="tabs" id="xtabs"><span data-t="keyword">기술 검색</span><span data-t="job">채용공고로 찾기</span><span data-t="project">전체 프로젝트 보기</span></div>
+              <div class="search" id="xsearch">
+                <div class="inp" id="inp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20 20-4.6-4.6"/></svg><span id="q"></span><span class="caret"></span><span class="ph" id="ph"></span></div>
+                <span class="btn" id="go">검색</span>
+              </div>
+              <div class="chips" id="chips"></div>
+            </div>
+            <div class="body-x">
+              <div class="pane kw" id="paneKw">
+                <h4>이런 컨텐츠는 어때요?</h4>
+                <h5>최근 올라온 크루 블로그</h5>
+                <div class="mrow" style="border-top:0"><div class="m"><span class="badge">블로그</span><b>페스타북</b><span>2025년 10월 6일</span></div><div class="ti">[Database] MySQL(InnoDB) 락(Lock) (2)</div></div>
+                <div class="mrow"><div class="m"><span class="badge">블로그</span><b>투룻</b><span>2024년 11월 24일</span></div><div class="ti">[MySQL] INSERT IGNORE 는 데이터 중복 시 왜 새로운 데이터의 삽입을 막을까?</div></div>
+                <div class="mrow"><div class="m"><span class="badge">블로그</span><b>동글</b><span>2023년 10월 13일</span></div><div class="ti">분산락(Named Lock)으로 동시성 관리하기</div></div>
+              </div>
+              <div class="pane res off" id="paneRes">
+                <p class="sum stag"><b id="resWord"></b> 주제로 찾았어요.</p>
+                <div class="kchips stag" id="kchips"></div>
+                <div id="resBody"></div>
+              </div>
+              <div class="pane off" id="paneJob"><div class="jobs" id="jobs"></div></div>
+              <div class="pane proj off" id="paneProj">
+                <div class="tnav">
+                  <p>직군</p>
+                  <div class="box" id="roles"></div>
+                  <div id="groups"></div>
+                </div>
+                <div class="listx">
+                  <div class="lh"><div><div class="h">프로젝트 <span class="cnt" id="cnt">80</span></div><div class="cap" id="cap"></div></div><div class="sort"><b>최신 등록순</b> · 좋아요순</div></div>
+                  <div class="grid" id="grid"></div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+
+          <div class="page" id="pgJob"><div class="cam" id="camJ">
+            <div class="jwrap">
+              <div class="jmain">
+                <div class="jh stag" id="jh"></div>
+                <div class="jreq stag" id="jreq"><p>이 공고가 찾는 역량 <span>· 중복 선택 가능</span></p><div class="pills" id="reqs"></div></div>
+                <div class="dots-t stag" id="jdots"></div>
+                <div id="jbody"></div>
+              </div>
+              <aside class="jside stag">
+                <h6>연관 질문</h6>
+                <div class="jf"><small><b>질문</b> · 취업 준비 · 2026.10.16</small><strong><i>Q. </i>금융권 취업 방향성</strong><p>안녕하세요! 현재 금융권을 우선적으로 취업준비하고 있는 학생입니다. 금융권 취업에 앞서 중요한 고려 요소들에 대해 여쭤보고 싶습니다.</p><em><span>익명 크루</span><span>궁금해요 5, 답변 4</span></em></div>
+                <div class="jf"><small><b>질문</b> · 취업 준비 · 2026.10.02</small><strong><i>Q. </i>금융권 준비에 투운사가 필요한가요?</strong><p>오늘 투운사 접수일이라서 금융권 IT 취업에도 투운사가 있다면 이점이 있는지 궁금합니다.</p><em><span>익명 크루</span><span>궁금해요 1, 답변 1</span></em></div>
+                <div class="jf"><small><b>질문</b> · 이력서, 자소서 · 2026.09.21</small><strong><i>Q. </i>포트폴리오, 프로젝트마다 어떤 내용을 담으셨나요?</strong><p>안녕하세요! 포트폴리오를 준비하면서 프로젝트 경험을 어떻게 정리할지 고민하고 있습니다. 구현한 기능을 나열하기보다는 제가 고민하고 해결한 과정을 보여주고 싶은데, 어디까지 자세히 써야 할지 어렵더라고요.</p><em><span>익명 크루</span><span>궁금해요 4, 답변 2</span></em></div>
+              </aside>
+            </div>
+          </div></div>
+
+          <div class="page" id="pgDetail"><div class="cam" id="camD">
+            <div class="dh">
+              <img src="assets/p-shout-outz.jpg" alt="">
+              <div><div class="t">샤라웃</div><div class="d">우아한테크코스 크루들의 경험을 나누는 IT 취업 준비 커뮤니티</div><div class="l"><span>서비스 바로가기 ↗</span><span>GitHub 저장소 ↗</span></div></div>
+              <span class="like"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20.5s-7.5-4.4-7.5-10A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.9c0 5.6-7.5 10-7.5 10Z"/></svg>7</span>
+            </div>
+            <div class="utabs" id="utabs"><span data-t="exp">경험</span><span data-t="mat">자료</span><span data-t="intro">소개</span></div>
+            <div class="panel">
+              <div class="pane" id="paneExp">
+                <div class="dots-t"><span class="act">백엔드</span><span>프론트엔드</span></div>
+                <div id="exps"></div>
+              </div>
+              <div class="pane off" id="paneMat">
+                <div class="dots-t"><span class="act">전체 <i>37</i></span><span>백엔드 <i>29</i></span><span>프론트엔드 <i>8</i></span></div>
+                <div class="mat">
+                  <div class="mnav stag">
+                    <div><h6>백엔드 프레임워크</h6><span class="act">동시성 제어/락 <i>2</i></span><span>트랜잭션/데드락 <i>1</i></span></div>
+                    <div><h6>데이터</h6><span>인덱스/쿼리 최적화 <i>2</i></span><span>JPA/Hibernate <i>1</i></span></div>
+                    <div><h6>인프라, DevOps</h6><span>CI/CD <i>3</i></span><span>무중단 배포 <i>1</i></span></div>
+                    <div><h6>아키텍처, 설계</h6><span>인증/인가 <i>6</i></span></div>
+                  </div>
+                  <div class="mbody">
+                    <div class="stag"><div class="meta">샤라웃의 자료 37 · 블로그 1 · PR 26 · 팀 문서 10</div><div class="tt">동시성 제어/락</div></div>
+                    <div class="msec stag"><h5>샤라웃의 이야기 <span class="cnt">2</span></h5>
+                      <div class="mrow"><div class="m"><span class="badge">PR</span><b>샤라웃</b><span>2026년 10월 21일</span></div><div class="ti"><svg class="gh"></svg>[BE/refactor] 피드 인기순 정렬을 저장된 좋아요와 댓글 수로 조회 (#504)</div></div>
+                      <div class="mrow"><div class="m"><span class="badge">PR</span><b>샤라웃</b><span>2026년 10월 16일</span></div><div class="ti"><svg class="gh"></svg>[BE/refactor] 피드 목록의 '내가 누른 반응' 확인용 사용자 기준 인덱스 추가 (#477)</div></div>
+                    </div>
+                    <div class="msec stag"><h5>관련 테코톡 <span class="cnt">3</span></h5>
+                      <div class="talks">
+                        <div><img src="assets/yt-At4Gyezw8WA.jpg" alt=""><span class="badge gr">테코톡</span><p>[10분 테코톡] 벨로의 Race Condition 이해하기</p></div>
+                        <div><img src="assets/yt-VzgLlSXm4g.jpg" alt=""><span class="badge gr">테코톡</span><p>[10분 테코톡] 한스의 MySQL의 락</p></div>
+                        <div><img src="assets/yt-gbxOmKhzXmM.jpg" alt=""><span class="badge gr">테코톡</span><p>[10분 테코톡] 제리의 세마포어</p></div>
+                      </div>
+                    </div>
+                    <div class="msec stag"><h5>다른 팀의 이야기 <span class="cnt">3</span></h5><p>같은 주제를 다룬 다른 팀의 자료예요.</p>
+                      <div class="mrow" style="border-top:0"><div class="m"><span class="badge">PR</span><b>쏙</b><span>2026년 10월 12일</span></div><div class="ti"><svg class="gh"></svg>fix: 다운로드 잡 동시 생성 제한 레이스 컨디션 수정</div></div>
+                      <div class="mrow"><div class="m"><span class="badge gr">팀 문서</span><b>자리하나?</b><span>2026년 10월 13일</span></div><div class="ti"><svg class="gh"></svg>ADR 0020. 초대 합류는 unique 제약과 낙관적 잠금으로 충돌을 처리한다</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div></div>
+        </div>
+      </div>
+      <div class="cursor" id="cursor"><svg viewBox="0 0 24 24"><path d="M5 3.2v16.2l4.4-4.1 2.9 6.5 2.6-1.2-2.9-6.4h6L5 3.2Z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
+    </div>
+  </div>
+  <div class="snaps"><i data-stop data-demo="0"></i><i data-stop data-demo="1"></i><i data-stop data-demo="2"></i><i data-stop data-demo="3"></i><i data-stop data-demo="4"></i><i data-stop data-demo="5"></i><i data-stop data-demo="6"></i></div>
+</section>
+
+<!-- 7. 마무리 -->
+<section class="slide s-end" data-stop>
+  <div class="frame">
+    <h2 class="rv">막연했던 포트폴리오 준비,<br>이제 프로젝트 탭에서 <span class="grad">경험을 바로 찾습니다.</span></h2>
+    <div class="three">
+      <div class="rv" style="--i:2"><small>찾고</small><b>기술 주제로 프로젝트 찾기</b><p>같은 문제를 겪은 팀만 모아 봐요.</p></div>
+      <div class="rv" style="--i:3"><small>읽고</small><b>프로젝트의 경험 읽기</b><p>무엇을 왜 했는지 이력서 문장으로 봐요.</p></div>
+      <div class="rv" style="--i:4"><small>따라가고</small><b>출처와 자료 따라가기</b><p>PR, 팀 문서, 테코톡으로 이어져요.</p></div>
+    </div>
+    <div class="addr rv" style="--i:6"><img src="assets/logo.png" alt="">shout-ou.tz</div>
+  </div>
+</section>
+
+<div class="hud"><div class="tm" id="tm">0:00</div><div class="no" id="no"></div><div class="pg" id="pg"></div></div>
+
+<script>
+/* ============ 고쳐 쓰는 값 ============ */
+const QUESTION = '첫 포트폴리오, 프로젝트 경험을 어떻게 써야 할까요?';
+const AI_IMPROVE = '○○%';                                          // AI 추천 질문 도입 뒤 개선된 수치. 실제 값으로 바꾼다.
+const COPIES = [
+  ['이 기술, 다른 팀은 어떻게\n썼는지 궁금하세요?', '기술 이름으로 검색하면 블로그, PR, 팀 문서, 테코톡을 한 번에 찾아요.'],
+  ['이 공고가 찾는 역량이\n궁금하세요?', '공고가 찾는 역량을 고르면, 그 역량을 다룬 크루들의 자료가 나와요.'],
+  ['이 기술을 써 본 팀이\n궁금하세요?', '프로젝트 이름, 소개, 기술로 바로 찾아보세요.'],
+  ['같은 문제를 겪은 팀이\n궁금하세요?', '기술 주제를 고르면, 그 주제를 다룬 프로젝트만 남아요.'],
+  ['그 팀이 실제로 한 일이\n궁금하세요?', 'PR과 팀 문서, 블로그에서 찾은 경험을 이력서 문장으로 읽어요.'],
+  ['근거가 궁금하세요?', '모든 경험은 출처로 이어져요. 누르면 실제 PR이 열려요.'],
+  ['다른 팀은 어떻게 풀었는지\n궁금하세요?', '같은 주제의 테코톡과 다른 팀의 자료까지 이어서 봐요.'],
+];
+// 왼쪽 위 "탐색 > ..." 에 단계마다 보여 줄 이름
+const CRUMBS = ['기술 검색', '채용공고로 찾기', '프로젝트 탭', '프로젝트 탭', '프로젝트 탭', '프로젝트 탭', '프로젝트 탭'];
+const SEARCH_WORD = '무중단 배포';                                  // 기술 검색과 프로젝트 탭에서 타이핑하는 검색어
+const TOPIC = '동시성 제어/락';
+// 운영 서비스에 실제로 올라와 있는 프로젝트(이름, 기수, 좋아요, 소개)
+const P = {
+  'jachwi-sunbae': ['자취선배', 8, 1, '자취할 동네를 찾고, 직접 본 방들을 편하게 기록하고 비교하는 서비스'],
+  devica: ['Devica', 8, 1, '전자제품을 구매할 때 사용 목적에 맞는 제품을 선택하기 어려운 사용자를 돕습니다.'],
+  knot: ['Knot', 8, 1, '팀의 결정을 모두의 기억으로, Knot'],
+  jarihana: ['자리하나?', 8, 2, '부트캠프 간 네트워킹 커뮤니티 서비스'],
+  yeogidam: ['여기담', 8, 2, '릴스 속 장소를 공유 한 번으로 지도에 저장하세요!'],
+  sssok: ['쏙', 8, 2, '링크 하나로 빠르게 사진/동영상 공유하는 서비스'],
+  yesulin: ['예술in', 8, 6, '연극, 뮤지컬 현장의 오디션과 공연 예매를 한곳에서.'],
+  'gachi-gacha': ['가치가챠', 8, 4, '원하는 가챠를 파는 매장을 지도에서 찾고, 안 나온 캐릭터는 교환할 수 있는 서비스입니다.'],
+  jumin: ['주차의 민족', 8, 8, '목적지를 검색하고 주차장을 추천받는 서비스, 주차의 민족입니다!'],
+  'shout-outz': ['샤라웃', 8, 7, '우아한테크코스 크루들의 경험을 나누는 IT 취업 준비 커뮤니티'],
+  rilog: ['Rilog.', 8, 5, '개발자를 위한 새로운 블로그 플랫폼입니다.'],
+  pheeeew: ['히유', 8, 4, '답답하고 힘든 부정적 감정을 유쾌하고 재밌게 승화하는 스트레스 공유 서비스예요'],
+  'bom-bom': ['봄봄', 7, 1, '뉴스레터를 더 쉽게, 더 꾸준히, 더 가치 있게. 뉴스레터 리딩 플랫폼'],
+  chongchong: ['총총', 8, 8, '스터디 관리하기 어렵지 않나요 ? 지금 당장 총총으로 관리해 보세요.'],
+};
+const LIST_ALL = ['jachwi-sunbae', 'devica', 'knot', 'jarihana', 'yeogidam', 'sssok', 'yesulin', 'gachi-gacha', 'jumin'];
+const LIST_SEARCH = ['pheeeew', 'chongchong', 'knot', 'yesulin'];  // 무중단 배포 PR, 팀 문서가 실제로 있는 8기 팀. 운영 검색 결과는 아니다.
+const LIST_TOPIC = ['shout-outz', 'sssok', 'jarihana', 'rilog', 'pheeeew', 'bom-bom'];
+const TOPIC_COUNT = 14;                                            // 예시 값. 주제 API 가 운영에 나가면 실제 수로 바꾼다.
+const TABS = {   // 검색창 문구, 추천 검색어 앞 문구, 추천 검색어
+  keyword: ['예: LLM, 동시성, 무중단 배포', '이런 주제를 찾아보세요', ['LLM', '동시성', '부하 테스트', '무중단 배포', '쿼리 최적화', '모니터링']],
+  job: ['회사, 직무, 기술로 검색 (예: 토스, 프론트엔드, Kafka)', '이런 공고를 찾아보세요', ['토스뱅크', '토스증권', 'Kotlin', 'Spring', 'TypeScript']],
+  project: ['프로젝트 이름, 소개, 기술로 찾아보세요', '이런 주제를 찾아보세요', ['JPA/Hibernate', '동시성 제어/락', '인덱스/쿼리 최적화', 'DB 설계/정규화', '트랜잭션/데드락']],
+};
+// 기술 검색 '무중단 배포' 결과. 서비스 소개 페이지에 저장된 실제 자료(frontend/src/pages/about/data/topics.json)에서 가져왔다.
+// 한 줄: [종류, 팀, 날짜, 제목, 한 줄 소개]
+const KW_COUNT = { ALL: 39, BLOG: 12, DOC: 24, TALK: 3 };
+const KW_BLOGS = [
+  ['blog', '야구보구', '2025-08-29', '[Infra] Nginx와 Docker로 구현하는 단일 서버 Blue-Green 무중단 배포', 'Nginx, Docker, Blue-Green 배포로 트래픽 전환 구조를 구성하는 과정이라, 보안 그룹 제약 속 무중단 배포를 설계할 때 참고하기 좋아요.'],
+  ['blog', '모우다', '2024-11-12', '무중단 배포 과정에서의 불확실성 개선 [2] - AWS CLI의 wait API 적용', 'AWS CLI, ELB, wait 명령어로 트래픽 중단과 재개를 확인하는 과정이라, 무중단 배포의 대기 조건을 설계할 때 참고하기 좋아요.'],
+  ['blog', '코딩해듀오', '2024-10-27', '우리도 무중단 배포 할래요.', 'Blue/Green, Docker, Nginx로 추가 인스턴스 없이 무중단 배포를 구성하고, 다중 인스턴스의 전환 시점 문제를 살필 때 참고하기 좋아요.'],
+];
+const KW_DOCS = [
+  ['pr', '히유', '2026-10-22', 'infra: 개발 서버 blue green 무중단 배포 적용', 'Blue-Green, Nginx, Alloy로 배포 전환과 관측 데이터 보호를 설계한 과정이라, 무중단 배포의 실패 지점을 점검할 때 참고하기 좋아요.'],
+  ['doc', '예술in', '2026-10-21', 'PROD 무중단 배포, 롤백 검증 기록 (2026-10-21)', 'CodeDeploy, ASG, OneAtATime으로 배포 가용성과 롤백을 검증한 기록이라, 무중단 배포 구성과 DB 호환성을 점검할 때 참고하기 좋아요.'],
+  ['doc', 'Knot', '2026-10-21', 'Dev 단일 EC2 Blue-Green 자동 배포 계획', 'Blue-Green, CodeDeploy, Nginx로 배포 중 연결 종료 대기가 실패한 원인을 짚어, 모니터링 연결과 실제 요청을 구분할 때 참고하기 좋아요.'],
+  ['pr', '총총', '2026-10-21', '[fix] Nginx 프로세스 조회 실패로 인한 무중단 배포 중단 수정', 'Docker, Nginx, CodeDeploy의 프로세스 조회 오류를 재현하고 검증한 과정이라, 무중단 배포 장애를 해결할 때 참고하기 좋아요.'],
+];
+// 채용공고. 공고와 역량은 프론트 목 데이터(frontend/src/api/mock/job-posting.ts)의 예시이고, 역량별 자료는 위와 같은 실제 자료다.
+// 한 줄: [회사, 로고 배경색, 로고 글자색, 직군, 마감, 제목, 해시태그, 찾는 역량 수]
+const JOBS = [
+  ['토스뱅크', '#0064FF', '#fff', 'Backend', '상시', 'Server Developer (Product)', ['Server', 'Kotlin', 'Spring', 'Product'], 7],
+  ['토스증권', '#3182F6', '#fff', 'Frontend', '상시', 'Frontend Developer', ['Frontend', 'TypeScript', 'JavaScript'], 7],
+  ['우아한형제들', '#2AC1BC', '#fff', 'Backend', 'D-3', '배달 서비스 백엔드 신입 개발자', ['Java', 'Spring', 'MySQL'], 4],
+  ['당근', '#FF6F0F', '#fff', 'Frontend', 'D-day', 'Web Frontend Engineer', ['React', 'TypeScript', 'Web'], 3],
+  ['카카오', '#FEE500', '#191919', 'Android', 'D-14', 'Android Developer', ['Android', 'Kotlin', 'Compose'], 3],
+];
+const JOB_REQS = ['Kotlin, Spring', '동시성 제어', 'DB 설계, 쿼리 튜닝', '무중단 배포', '실시간 통신', '모니터링, 장애 대응', '협업, 코드 리뷰'];
+const JOB_REQ = '무중단 배포';                                     // 시연에서 추가로 고르는 역량
+const JOB_MATS = {
+  'Kotlin, Spring': [
+    ['doc', '총총', '2026-08-20', '0010. 내 스터디 목록에서 스터디별 집계 쿼리를 사용한다', 'GROUP BY, 프로젝션, N+1의 비용과 복잡성을 비교해, 제한된 데이터 규모에서 집계 방식을 고를 때 참고하기 좋아요.'],
+    ['doc', 'moment', '2026-02-06', '배치 조회 패턴 기술 보고서', '배치 조회, IN절, GROUP BY로 댓글 좋아요 조회를 묶는 과정이라, N+1 해결과 조회 규모별 대안을 검토할 때 참고하기 좋아요.'],
+    ['blog', 'Kerdy', '2026-01-01', '[JPA] 다대다 관계에서 FetchJoin으로 N+1 문제 해결하기', 'JPA, Fetch Join, 지연 로딩을 다루며, 다대다 관계의 N+1 문제를 줄이고 적용 제약을 확인할 때 참고하기 좋아요.'],
+    ['pr', 'PhotoGather', '2025-12-12', 'refactor: Space 관련 리팩터링', 'JOIN FETCH, IN 쿼리, GROUP BY로 목록 조회를 개선한 과정이라, N+1 해결과 집계 누락 처리를 설계할 때 참고하기 좋아요.'],
+    ['pr', 'PhotoGather', '2025-11-22', 'refactor: 방명록 조회 시 2N+1 문제 해결', 'DTO 프로젝션, 조인, 서브쿼리로 추가 조회를 줄인 과정이라, 페이지네이션의 N+1 문제를 해결할 때 참고하기 좋아요.'],
+    ['pr', '페스타북', '2025-10-12', '[BE] Place 전체 조회 API 개선', 'N+1, fetch join, Grafana k6로 조회 전략을 비교한 과정이라, 성능과 유지보수를 함께 고려할 때 참고하기 좋아요.'],
+  ],
+  '무중단 배포': [
+    ...KW_DOCS.slice(0, 2),
+    ['doc', '예술in', '2026-10-21', '백엔드 배포', 'CodeDeploy, ALB, Expand-Contract로 무중단 배포와 롤백 안전성을 설계할 때 참고하기 좋아요.'],
+    KW_DOCS[2],
+    ['pr', '히유', '2026-10-21', 'infra: 무중단 배포 준비를 위한 개발 서버 compose 분리', 'Docker Compose, Nginx reload, 외부 네트워크로 배포 의존성을 분리하는 과정이라, 무중단 배포 기반을 설계할 때 참고하기 좋아요.'],
+    KW_DOCS[3],
+  ],
+};
+const GROUPS = {   // 주제별 프로젝트 수는 예시 값
+  COMMON: ['공통', 31, [['CI/CD', 18], ['무중단 배포', 12], ['인증/인가', 11], ['모니터링', 9]]],
+  BE: ['BE', 42, [['동시성 제어/락', TOPIC_COUNT], ['인덱스/쿼리 최적화', 12], ['JPA/Hibernate', 11], ['N+1 문제', 9], ['트랜잭션/데드락', 7], ['DB 설계/정규화', 6]]],
+  FE: ['FE', 35, [['React 렌더링/훅', 13], ['웹 성능 최적화', 10], ['번들러/빌드 최적화', 8], ['상태 관리', 6]]],
+  AN: ['AN', 14, [['Android', 14], ['Compose', 6]]],
+};
+const EXPS = [
+  ['장애 대응', '저사양 EC2의 JVM 메모리 반복 종료 대응', [
+    '1GB EC2에서 비율 기반 힙 설정이 물리 메모리를 초과하는 문제에 대응해 전체 903MB의 메모리 예산을 산정하고 힙 상한을 -Xmx320m으로 변경함',
+    'Metaspace 부족으로 1분마다 종료되던 dev 서버의 상한을 128MB에서 256MB로 조정하고, 이미지 업로드 후에도 종료되지 않음을 확인함'],
+    [['[BE/infra] 힙 메모리 한도 조정으로 백엔드 강제 종료 방지 (#193)', 194], ['[BE/hotfix] Metaspace 부족으로 서버가 1분마다 꺼지는 문제 해결 (#292)', 293]]],
+  ['쿼리 최적화', '피드 조회 최적화와 동시성 정합성 검증', [
+    '피드 인기순 조회의 좋아요, 댓글 전체 집계를 반정규화와 인덱스 조회로 대체해 피드 15,000개에서 18.34ms → 0.32ms로 줄임',
+    'DB 원자적 증감과 실제 변경 여부에 따른 집계 갱신을 8개 스레드의 동시 요청 테스트 7개로 검증함'],
+    [["[BE/refactor] 피드 목록의 '내가 누른 반응' 확인용 사용자 기준 인덱스 추가 (#477)", 478], ['[BE/refactor] 피드 인기순 정렬을 저장된 좋아요와 댓글 수로 조회 (#504)', 505]]],
+  ['설계', 'AI 추천의 비동기 처리와 장애 대체 설계', [
+    '질문 작성 부담 인터뷰와 약 97.3%의 제출 구간 이탈률을 근거로 Outbox, SQS 기반의 비동기 추천 구조를 제안하고, Gemini 실패 시 OpenAI 대체를 구현함',
+    '사용된 추천의 반복 노출을 조건부 UPDATE와 사용 기록, Outbox 요청의 단일 트랜잭션 저장으로 해결함'],
+    [['[BE/feature] AI 연관 추천 질문 생성 기능 도입 (#461)', 462], ['[BE/feat] Gemini 장애 시 OpenAI로 질문 추천 대체 (#472)', 475]]],
+];
+
+/* ============ 공통 도구 ============ */
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const params = new URLSearchParams(location.search);
+const STATIC = params.has('static');            // 움직임 없이 끝 모습만(화면 확인용)
+if (STATIC) document.documentElement.classList.add('static');
+const STOP = Symbol('stop');
+const rem = () => parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+// 한글을 실제 입력기처럼 한 타씩 조합해 가는 중간 글자들을 만든다. 커뮤 -> 커뮨 -> 커뮤니
+const CHO = 'ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ';
+const JONG = ['', 'ㄱ', 'ㄲ', 'ㄳ', 'ㄴ', 'ㄵ', 'ㄶ', 'ㄷ', 'ㄹ', 'ㄺ', 'ㄻ', 'ㄼ', 'ㄽ', 'ㄾ', 'ㄿ', 'ㅀ', 'ㅁ', 'ㅂ', 'ㅄ', 'ㅅ', 'ㅆ', 'ㅇ', 'ㅈ', 'ㅊ', 'ㅋ', 'ㅌ', 'ㅍ', 'ㅎ'];
+function typeFrames(text) {
+  const out = []; let done = '';
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i], c = ch.charCodeAt(0) - 0xac00;
+    if (c < 0 || c > 11171) { done += ch; out.push(done); continue; }
+    const cho = Math.floor(c / 588), jung = Math.floor((c % 588) / 28), jong = c % 28;
+    const p = i > 0 ? text.charCodeAt(i - 1) - 0xac00 : -1, j = JONG.indexOf(CHO[cho]);
+    out.push(p >= 0 && p <= 11171 && p % 28 === 0 && j > 0 ? done.slice(0, -1) + String.fromCharCode(text.charCodeAt(i - 1) + j) : done + CHO[cho]);
+    out.push(done + String.fromCharCode(0xac00 + cho * 588 + jung * 28));
+    if (jong) out.push(done + ch);
+    done += ch;
+  }
+  return out;
+}
+
+// 장면마다 하나씩 두는 진행표. 새로 시작하면 앞서 돌던 것은 다음 기다림에서 멈춘다.
+function makeRunner() {
+  let tok = 0;
+  return {
+    begin() { const my = ++tok; return (ms) => new Promise((res, rej) => setTimeout(() => (my === tok ? res() : rej(STOP)), ms)); },
+    cancel() { tok++; },
+  };
+}
+const guard = (p) => p.catch((e) => { if (e !== STOP) throw e; });
+
+/* ============ 2, 3. 질문 작성 장면 ============ */
+const scenes = {};
+{
+  const run = makeRunner(), el = $('.s-start'), tx = $('.tx', el), btn = $('.btn', el), frames = typeFrames(QUESTION);
+  scenes.start = {
+    enter() {
+      if (STATIC) { tx.textContent = QUESTION; btn.classList.remove('off'); return; }
+      const wait = run.begin(); tx.textContent = ''; btn.classList.add('off');
+      guard((async () => { await wait(1300); for (const f of frames) { tx.textContent = f; await wait(48); } await wait(350); btn.classList.remove('off'); })());
+    },
+    leave() { run.cancel(); },
+  };
+}
+{
+  const run = makeRunner(), el = $('.s-problem'), tx = $('.tx', el), btn = $('.btn', el), num = $('.num', el), aiq = $('#aiq');
+  $('#aiImprove').textContent = AI_IMPROVE;
+  scenes.problem = {
+    enter() {
+      if (STATIC) { tx.innerHTML = '<span class="ph">궁금한 점을 질문해 보세요</span>'; num.textContent = '97.3'; aiq.classList.add('in'); return; }
+      const wait = run.begin(); tx.textContent = QUESTION; btn.classList.remove('off'); num.textContent = '0.0'; aiq.classList.remove('in');
+      guard((async () => {
+        await wait(900);
+        const t0 = performance.now();
+        for (;;) { const k = Math.min(1, (performance.now() - t0) / 1400), e = 1 - Math.pow(1 - k, 3); num.textContent = (97.3 * e).toFixed(1); if (k === 1) break; await wait(16); }
+        await wait(500);
+        for (let n = QUESTION.length - 1; n >= 0; n--) { tx.textContent = QUESTION.slice(0, n); await wait(34); }
+        btn.classList.add('off'); tx.innerHTML = '<span class="ph">궁금한 점을 질문해 보세요</span>';
+        await wait(900); aiq.classList.add('in');   // 막연함을 덜어 주려고 넣은 AI 추천 질문
+      })());
+    },
+    leave() { run.cancel(); },
+  };
+}
+
+/* ============ 5. 시연 장면 ============ */
+const demo = (() => {
+  const stage = $('#stage'), cur = $('#cursor'), grid = $('#grid'), run = makeRunner();
+  let instant = false, wait = () => Promise.resolve(), at = -1, busy = false;
+  const GH = '<path fill="currentColor" d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"/>';
+  $$('svg.gh').forEach((s) => { s.setAttribute('viewBox', '0 0 16 16'); s.innerHTML = GH; });
+  // 자료 한 줄(종류 배지, 팀, 날짜, 제목, 한 줄 소개). 탐색 검색 결과와 채용공고 추천 자료가 같이 쓴다.
+  const KIND = { blog: ['블로그', ''], pr: ['PR', ''], doc: ['팀 문서', ' gr'] };
+  const dateKo = (d) => { const [y, m, day] = d.split('-'); return `${y}년 ${+m}월 ${+day}일`; };
+  const matRow = ([kind, team, date, title, line], extra = '') => `<div class="mrow"><div class="m"><span class="badge${KIND[kind][1]}">${KIND[kind][0]}</span><b>${team}</b><span>${dateKo(date)}</span></div>
+    <div class="ti">${kind === 'blog' ? '<i class="fav"></i>' : `<svg class="gh" viewBox="0 0 16 16">${GH}</svg>`}<span>${title}</span></div><p class="su">${line}</p>${extra}</div>`;
+
+  // 한 번만 그려 두는 것들
+  $('#copies').innerHTML = COPIES.map(([h, p], i) => `<div class="dcopy"><div class="n">0${i + 1} / 0${COPIES.length}</div><h2>${h}</h2><p>${p}</p></div>`).join('');
+  $('#resWord').textContent = SEARCH_WORD;
+  $('#kchips').innerHTML = [['ALL', '전체'], ['BLOG', '블로그'], ['DOC', 'PR과 팀 문서'], ['TALK', '테코톡']].map(([k, n]) => `<span class="chip" data-k="${k}">${n} <i>${KW_COUNT[k]}</i></span>`).join('');
+  $('#jobs').innerHTML = JOBS.map(([co, bg, fg, role, dl, title, tags, n]) => `<div class="jc stag"><div class="top"><span class="jlogo" style="background:${bg};color:${fg}">${co[0]}</span><div><div class="co">${co}</div><div class="ro"><span>${role}</span><span>정규직</span></div></div><span class="dl">${dl}</span></div>
+    <b>${title}</b><div class="tg">${tags.map((t) => `<span>#${t}</span>`).join('')}</div><div class="rq">찾는 역량 ${n}개 →</div></div>`).join('')
+    + '<div class="jc up stag"><div class="top"><span class="jlogo">?</span><div><div class="co">기업명</div><div class="ro" style="color:var(--g400)"><span>신입 | 개발 | 정규직</span></div></div><span class="dl">준비 중</span></div><b>곧 추가될 공고예요</b><div class="tg"><span>#키워드</span><span>#키워드</span><span>#키워드</span></div><div class="rq">찾는 역량 분석 중</div></div>';
+  { const [co, bg, fg, , , title] = JOBS[0];
+    $('#jh').innerHTML = `<span class="jlogo" style="background:${bg};color:${fg}">${co[0]}</span><div><div class="t">${title}</div><div class="d">${co} · 상시 채용</div><span class="l">공고 원문 보기 ↗</span></div>`; }
+  $('#reqs').innerHTML = JOB_REQS.map((r) => `<span class="rqp" data-r="${r}">${r}</span>`).join('');
+  $('#ticks').innerHTML = COPIES.map(() => '<i></i>').join('');
+  const card = {};
+  for (const [slug, [name, cohort, like, tagline]] of Object.entries(P)) {
+    const c = document.createElement('div'); c.className = 'card'; c.dataset.slug = slug;
+    c.innerHTML = `<div class="th"><img src="assets/p-${slug}.jpg" alt=""></div><small>우아한테크코스 ${cohort}기</small><b>${name}</b><p>${tagline}</p><em>좋아요 ${like}</em>`;
+    card[slug] = c; grid.append(c);
+  }
+  $('#roles').innerHTML = [['ALL', '전체'], ...Object.entries(GROUPS).map(([k, v]) => [k, v[0]])].map(([k, n]) => `<div class="it" data-role="${k}">${n}</div>`).join('');
+  $('#exps').innerHTML = EXPS.map(([cat, title, bullets, srcs]) => `<div class="exp stag"><small>${cat}</small><b>${title}</b><ul>${bullets.map((b) => `<li>${b}</li>`).join('')}</ul>
+    <span class="pill"><span class="dots">${srcs.map(() => '<span class="sb">PR</span>').join('')}</span>출처 ${srcs.length}개 <em>▾</em></span>
+    <div class="srcbox"><div><ul>${srcs.map(([t, n]) => `<li><span class="sb">PR</span><span>${t}</span><em>#${n}</em></li>`).join('')}</ul></div></div></div>`).join('');
+
+  // 화면 값 바꾸기
+  const setCopy = (k) => { $$('.dcopy').forEach((e, i) => e.classList.toggle('cur', i === k)); $$('#ticks i').forEach((e, i) => e.classList.toggle('cur', i === k)); $('#crumb').textContent = CRUMBS[k]; };
+  const setUrl = (u) => { $('#url').textContent = u; };
+  let tab = 'keyword', kwFilter = null;   // kwFilter 가 있으면 기술 검색 결과를 보여 주는 중이다.
+  function showPanes() {
+    $('#paneKw').classList.toggle('off', !(tab === 'keyword' && !kwFilter)); $('#paneRes').classList.toggle('off', !(tab === 'keyword' && kwFilter));
+    $('#paneJob').classList.toggle('off', tab !== 'job'); $('#paneProj').classList.toggle('off', tab !== 'project');
+    setUrl('shout-ou.tz/explore' + (tab === 'keyword' ? (kwFilter ? `?q=${SEARCH_WORD}` : '') : `?tab=${tab}`));
+  }
+  function setTab(t) {
+    tab = t;
+    $$('#xtabs span').forEach((e) => e.classList.toggle('act', e.dataset.t === t));
+    $('#ph').textContent = TABS[t][0];
+    $('#chips').innerHTML = `<small>${TABS[t][1]}</small>` + TABS[t][2].map((c) => `<span class="chip">${c}</span>`).join('');
+    showPanes();
+  }
+  // 기술 검색 결과. filter 는 ALL, DOC 중 하나이고 null 이면 검색 전 화면이다.
+  function setKwResult(filter) {
+    kwFilter = filter; showPanes();
+    $$('#chips .chip').forEach((e) => e.classList.toggle('act', !!filter && e.textContent === SEARCH_WORD));
+    $$('#kchips .chip').forEach((e) => e.classList.toggle('act', e.dataset.k === filter));
+    const sec = (name, n, rows) => `<div class="rsec stag"><h5>${name} <span class="cnt">${n}</span></h5>${rows.map((r) => matRow(r)).join('')}</div>`;
+    $('#resBody').innerHTML = !filter ? '' : (filter === 'ALL' ? sec('블로그', KW_COUNT.BLOG, KW_BLOGS) : '') + sec('PR과 팀 문서', KW_COUNT.DOC, KW_DOCS);
+  }
+  // 채용공고 상세에서 고른 역량들. 고른 역량의 자료를 하나로 모아 종류별로 보여 준다.
+  function setReqs(sel) {
+    $$('#reqs .rqp').forEach((e) => e.classList.toggle('act', sel.includes(e.dataset.r)));
+    const all = sel.flatMap((r) => JOB_MATS[r].map((m) => [m, r])).sort((a, b) => b[0][2].localeCompare(a[0][2]));
+    const blogs = all.filter(([m]) => m[0] === 'blog'), docs = all.filter(([m]) => m[0] !== 'blog');
+    $('#jdots').innerHTML = [['전체', all.length], ['블로그', blogs.length], ['PR과 팀 문서', docs.length], ['테코톡', 0]].map(([n, c], i) => `<span${i ? '' : ' class="act"'}>${n} <i>${c}</i></span>`).join('');
+    const sec = (name, list) => (list.length ? `<div class="jsec stag"><h5>${name} <span class="cnt">${list.length}</span></h5>${list.map(([m, r]) => matRow(m, `<span class="ex">관련 역량 · ${r}</span>`)).join('')}</div>` : '');
+    $('#jbody').innerHTML = sec('블로그', blogs) + sec('PR과 팀 문서', docs);
+  }
+  const setQuery = (v) => { $('#q').textContent = v; $('#ph').hidden = v !== ''; };
+  const setFocus = (on) => $('#inp').classList.toggle('focus', on);
+  const setCount = (n, cap) => { $('#cnt').textContent = n; $('#cap').innerHTML = cap ? `<b>${cap}</b> 키워드로 찾은 결과` : ''; };
+  function setRole(role) {
+    $$('#roles .it').forEach((e) => e.classList.toggle('act', e.dataset.role === role));
+    const shown = role === 'ALL' ? Object.entries(GROUPS) : [[role, GROUPS[role]]];
+    $('#groups').innerHTML = shown.map(([k, [name, n, topics]]) => `<div class="grp"><p>${name} <span>${n}</span></p>${(role === 'ALL' ? topics.slice(0, 4) : topics).map(([t, c]) => `<div class="it" data-topic="${t}">${t}<span>${c}</span></div>`).join('')}</div>`).join('');
+  }
+  function setTopic(t) {
+    $$('#groups .it').forEach((e) => e.classList.toggle('act', e.dataset.topic === t));
+    $$('#chips .chip').forEach((e) => e.classList.toggle('act', e.textContent === t));
+  }
+  async function setList(slugs) {
+    const cards = [...grid.children];
+    if (instant) { cards.forEach((c) => { c.hidden = !slugs.includes(c.dataset.slug); c.className = 'card'; c.style.transform = ''; }); slugs.forEach((s) => grid.append(card[s])); return; }
+    const leaving = cards.filter((c) => !c.hidden && !slugs.includes(c.dataset.slug));
+    leaving.forEach((c) => c.classList.add('out')); await wait(240);
+    const first = new Map(cards.filter((c) => !c.hidden && !leaving.includes(c)).map((c) => [c, c.getBoundingClientRect()]));
+    leaving.forEach((c) => { c.hidden = true; c.classList.remove('out'); });
+    slugs.forEach((s) => { const c = card[s]; if (c.hidden) { c.hidden = false; c.classList.add('in0'); } grid.append(c); });
+    slugs.forEach((s) => { const c = card[s], f = first.get(c); if (!f) return; const l = c.getBoundingClientRect(); c.style.transition = 'none'; c.style.transform = `translate(${f.left - l.left}px,${f.top - l.top}px)`; });
+    grid.offsetWidth;
+    slugs.forEach((s, i) => { const c = card[s]; c.style.transition = ''; c.style.transform = ''; setTimeout(() => c.classList.remove('in0'), 160 + i * 70); });
+    await wait(700);
+  }
+  const setPage = (p) => {
+    $('#pgExplore').classList.toggle('show', p === 'explore'); $('#pgDetail').classList.toggle('show', p === 'detail'); $('#pgJob').classList.toggle('show', p === 'job');
+    if (p === 'job') setUrl('shout-ou.tz/job-postings/1');
+  };
+  // 창 안에서 화면을 올려, el 이 창 위에서 gap(rem) 만큼 떨어진 곳에 오게 한다.
+  function scrollCam(cam, el, gap = 0) {
+    const y = el ? Math.max(0, (el.getBoundingClientRect().top - cam.getBoundingClientRect().top) / rem() + 2 - gap) : 0;
+    cam.style.transform = `translateY(${-y}rem)`;
+  }
+  async function stagger(els, step = 110) {
+    for (const e of els) { e.classList.add('in'); await wait(step); }
+  }
+  function setDetailTab(t) {
+    $$('#utabs span').forEach((e) => e.classList.toggle('act', e.dataset.t === t));
+    $('#paneExp').classList.toggle('off', t !== 'exp'); $('#paneMat').classList.toggle('off', t !== 'mat');
+    setUrl('shout-ou.tz/projects/@shout-outz' + (t === 'mat' ? '?tab=material' : ''));
+  }
+  const openSrc = (i, on) => { const e = $$('.exp')[i]; $('.srcbox', e).classList.toggle('open', on); $('.pill em', e).textContent = on ? '▴' : '▾'; };
+
+  // 커서
+  async function move(el, fx = 0.5, fy = 0.5, ms = 750) {
+    const r = el.getBoundingClientRect(), s = stage.getBoundingClientRect();
+    cur.style.transitionDuration = instant ? '0s' : `${ms}ms, .3s`;
+    cur.style.transform = `translate(${r.left - s.left + r.width * fx}px,${r.top - s.top + r.height * fy}px)`;
+    cur.classList.add('show');
+    await wait(ms + 60);
+  }
+  async function click() { cur.classList.add('down'); await wait(120); cur.classList.remove('down'); await wait(90); }
+
+  function reset() {
+    setPage('explore'); setDetailTab('exp'); setTab('keyword'); setKwResult(null); setReqs([JOB_REQS[0]]); setQuery(''); setFocus(false); setRole('ALL'); setTopic(null); setCount(80, '');
+    $$('.card').forEach((c) => c.classList.remove('hov')); $$('.hov').forEach((e) => e.classList.remove('hov'));
+    scrollCam($('#camX')); scrollCam($('#camD')); scrollCam($('#camJ'));
+    $$('#pgDetail .stag, #pgJob .stag, #pgExplore .stag').forEach((e) => e.classList.remove('in')); EXPS.forEach((_, i) => openSrc(i, false));
+    cur.classList.remove('show'); cur.style.transform = `translate(${52 * rem()}px,${44 * rem()}px)`;
+    return setList(LIST_ALL);
+  }
+
+  const steps = [
+    // 1. 기술 검색: 기술 이름으로 찾고, 종류를 골라 PR과 팀 문서만 보기
+    async () => {
+      setCopy(0); await wait(900);
+      await move($('#inp'), 0.5, 0.62, 700); await click(); setFocus(true); await wait(280);
+      for (const f of typeFrames(SEARCH_WORD)) { setQuery(f); await wait(95); }
+      await wait(300);
+      await move($('#go'), 0.6, 0.65, 520); await click(); setFocus(false);
+      setKwResult('ALL'); await wait(250);
+      scrollCam($('#camX'), $('#xtabs'), 1.25);
+      await stagger($$('#paneRes .stag'), 130); await wait(1100);
+      await move($('#kchips [data-k=DOC]'), 0.62, 0.62, 650); await click();
+      setKwResult('DOC'); await stagger($$('#paneRes .stag'), 130);
+    },
+    // 2. 채용공고로 찾기: 공고를 열고, 찾는 역량을 골라 그 역량의 자료 보기
+    async () => {
+      setCopy(1); await wait(400);
+      await move($('#xtabs [data-t=job]'), 0.6, 0.7, 700); await click(); setKwResult(null); setQuery(''); setTab('job'); await wait(200);
+      await stagger($$('#paneJob .stag'), 70); await wait(500);
+      const c = $('#paneJob .jc'); await move(c, 0.62, 0.55, 650); c.classList.add('hov'); await wait(300); await click();
+      setPage('job'); cur.classList.remove('show'); await wait(350); c.classList.remove('hov');
+      await stagger($$('#pgJob .stag'), 120); await wait(700);
+      const p = $(`#reqs [data-r="${JOB_REQ}"]`); await move(p, 0.6, 0.62, 650); p.classList.add('hov'); await wait(220); await click(); p.classList.remove('hov');
+      setReqs([JOB_REQS[0], JOB_REQ]); await wait(200);
+      scrollCam($('#camJ'), $('#jreq'), 0.5); cur.classList.remove('show');
+      await stagger($$('#pgJob .stag'), 110);
+    },
+    // 3. 탐색으로 돌아와 프로젝트 탭에서 이름, 소개, 기술로 찾기
+    async () => {
+      setCopy(2); await wait(400);
+      await move($('.gnb .act'), 0.55, 0.62, 750); await click();
+      setPage('explore'); setTab('keyword'); scrollCam($('#camX')); await wait(750);
+      await move($('#xtabs [data-t=project]'), 0.72, 0.7); await click(); setTab('project'); await wait(650);
+      await move($('#inp'), 0.5, 0.62, 600); await click(); setFocus(true); await wait(280);
+      for (const f of typeFrames(SEARCH_WORD)) { setQuery(f); await wait(105); }
+      await wait(320);
+      await move($('#go'), 0.6, 0.65, 520); await click(); setFocus(false);
+      setCount(LIST_SEARCH.length, SEARCH_WORD); await setList(LIST_SEARCH);
+    },
+    // 2. 직군을 고르고 기술 주제로 거르기
+    async () => {
+      setCopy(1); await wait(350);
+      scrollCam($('#camX'), $('#xtabs'), 1.25); await wait(950);
+      await move($('#roles [data-role=BE]'), 0.7, 0.6, 700); await click(); setRole('BE'); await wait(550);
+      await move($(`#groups [data-topic="${TOPIC}"]`), 0.62, 0.62, 620); await click();
+      setTopic(TOPIC); setQuery(''); setCount(TOPIC_COUNT, TOPIC); await setList(LIST_TOPIC);
+    },
+    // 3. 프로젝트를 열어 경험 읽기
+    async () => {
+      setCopy(2); await wait(350);
+      await move(card['shout-outz'], 0.62, 0.42, 800); card['shout-outz'].classList.add('hov'); await wait(380); await click();
+      setPage('detail'); setDetailTab('exp'); cur.classList.remove('show'); await wait(350);
+      card['shout-outz'].classList.remove('hov');
+      openSrc(0, true);   // 실제 화면처럼 첫 경험의 출처는 펼쳐 둔다.
+      await stagger($$('#paneExp .stag'), 160);
+    },
+    // 4. 출처 펼치기
+    async () => {
+      setCopy(3); await wait(350);
+      const e = $$('.exp')[1]; scrollCam($('#camD'), e, 0.25); await wait(950);
+      await move($('.pill', e), 0.8, 0.6, 700); $('.pill', e).classList.add('hov'); await wait(250); await click(); openSrc(1, true); await wait(650);
+      const li = $$('.srcbox li', e)[1]; await move(li, 0.72, 0.6, 550); $('.pill', e).classList.remove('hov'); li.classList.add('hov');
+    },
+    // 5. 자료 탭에서 같은 주제의 다른 자료 보기
+    async () => {
+      setCopy(4); await wait(350);
+      $$('.srcbox li').forEach((l) => l.classList.remove('hov'));
+      scrollCam($('#camD')); await wait(950);
+      await move($('#utabs [data-t=mat]'), 0.7, 0.65, 700); await click(); setDetailTab('mat'); await wait(300);
+      scrollCam($('#camD'), $('#utabs'), 1); cur.classList.remove('show');
+      await stagger($$('#paneMat .stag'), 190);
+    },
+  ];
+
+  // k 단계의 시작 모습을 한 번에 만든 뒤, k 단계를 재생한다.
+  async function go(k) {
+    const w = run.begin();
+    if (!(at === k - 1 && !busy && !STATIC)) {
+      instant = true; stage.classList.add('instant'); wait = () => Promise.resolve();
+      await reset(); for (let i = 0; i < k + (STATIC ? 1 : 0); i++) await steps[i]();
+      stage.offsetWidth; stage.classList.remove('instant'); instant = false;
+      if (STATIC) { setCopy(k); at = k; return; }
+    }
+    wait = w; busy = true; at = k - 1;
+    await guard(steps[k]().then(() => { at = k; busy = false; }));
+  }
+  reset();
+  return { go, stop() { run.cancel(); busy = true; } };
+})();
+
+/* ============ 넘기기와 진행 표시 ============ */
+const stops = $$('[data-stop]');
+const pin = $('#pin');
+let current = -1;
+const topOf = (i) => i * innerHeight;
+function activate(i) {
+  if (i === current || i < 0 || i >= stops.length) return;
+  const prev = stops[current], el = stops[i];
+  current = i;
+  if (prev && prev.dataset.scene) scenes[prev.dataset.scene].leave();
+  const isDemo = el.dataset.demo !== undefined;
+  pin.classList.toggle('on', isDemo);
+  if (isDemo) demo.go(+el.dataset.demo); else demo.stop();
+  if (!isDemo) el.classList.add('on');
+  if (el.dataset.scene) scenes[el.dataset.scene].enter();
+  // 화면 밖으로 완전히 나간 뒤에 지난 슬라이드를 처음 모습으로 돌려 둔다.
+  setTimeout(() => stops.forEach((s, n) => { if (n !== current) s.classList.remove('on'); }), 900);
+  $('#pg').style.width = `${(i / (stops.length - 1)) * 100}%`;
+  $('#no').textContent = `${String(i + 1).padStart(2, '0')} / ${String(stops.length).padStart(2, '0')}`;
+}
+const goTo = (i, smooth = true) => scrollTo({ top: topOf(Math.max(0, Math.min(stops.length - 1, i))), behavior: smooth ? 'smooth' : 'instant' });
+let ticking = false;
+addEventListener('scroll', () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { ticking = false; activate(Math.round(scrollY / innerHeight)); }); }, { passive: true });
+
+// 발표 시간. T 로 켜고 끈다. 처음 넘길 때부터 센다.
+let t0 = 0;
+setInterval(() => { if (!t0) return; const s = Math.floor((Date.now() - t0) / 1000), tm = $('#tm'); tm.textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`; tm.classList.toggle('over', s >= 180); }, 500);
+
+addEventListener('keydown', (e) => {
+  if (e.metaKey || e.ctrlKey || e.altKey) return;
+  const next = ['ArrowDown', 'ArrowRight', 'PageDown', ' ', 'Enter'], back = ['ArrowUp', 'ArrowLeft', 'PageUp', 'Backspace'];
+  if (next.includes(e.key)) { e.preventDefault(); if (!t0) t0 = Date.now(); goTo(current + 1); }
+  else if (back.includes(e.key)) { e.preventDefault(); goTo(current - 1); }
+  else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+  else if (e.key === 'End') { e.preventDefault(); goTo(stops.length - 1); }
+  else if (e.key === 'r' || e.key === 'R') { const i = current; current = -1; activate(i); }               // 지금 장면 다시 재생
+  else if (e.key === 't' || e.key === 'T') { $('#tm').classList.toggle('show'); }
+  else if (e.key === '0') { t0 = 0; $('#tm').textContent = '0:00'; $('#tm').classList.remove('over'); }       // 시간 처음으로
+  else if (e.key === 'f' || e.key === 'F') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+});
+addEventListener('resize', () => goTo(current, false));
+history.scrollRestoration = 'manual';
+addEventListener('load', () => {
+  const start = +params.get('stop') || 0;
+  if (start) { document.documentElement.style.scrollSnapType = 'none'; goTo(start - 1, false); requestAnimationFrame(() => { document.documentElement.style.scrollSnapType = ''; }); }
+  activate(start ? start - 1 : Math.round(scrollY / innerHeight));
+});
+</script>
+</body>
+</html>
