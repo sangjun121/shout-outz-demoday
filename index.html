@@ -60,6 +60,7 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .two h2{font-size:3.25rem;margin-top:1.5rem}
 .two .lead{margin-top:1.75rem}
 .two .lead b{color:var(--g900);font-weight:700}
+.s-target h2{font-size:2.75rem;white-space:nowrap}
 .think{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;display:flex;flex-direction:column;gap:1.5rem}
 /* 말풍선: 둥근 상자 아래에 꼬리를 단다. 꼬리는 45도 돌린 작은 사각형의 아래 두 변만 테두리를 그린 것이다. */
 .think .bub{position:relative;align-self:flex-start;background:#fff;border:1px solid var(--g200);border-radius:1.5rem;padding:1rem 1.5rem;font-size:1.1875rem;font-weight:500;color:var(--g800);
@@ -69,15 +70,12 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .think .bub:nth-child(2)::after{left:auto;right:2rem}
 .think .ask{margin-top:1.5rem;border-left:.25rem solid var(--b500);padding:.25rem 0 .25rem 1.5rem;font-size:1.625rem;font-weight:700;line-height:1.5;letter-spacing:-.01em}
 .think .ask b{color:var(--b600);font-weight:800}
-.rcol{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;display:flex;flex-direction:column;gap:1.5rem}
-.rcol .composer{position:static;translate:none;width:auto}
-.rcol .composer .field{min-height:6.5rem}
+.rcol{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;display:flex;flex-direction:column;gap:1rem}
 /* AI 추천 질문: 서비스의 추천 카드(흰 카드, 파란 배지, Q. 제목, 본문) 모양 */
-.aiq{opacity:0;transform:translateY(1rem);transition:opacity .7s var(--arrive),transform .7s var(--arrive)}
-.aiq.in{opacity:1;transform:none}
 .aiq .hd b{display:block;font-size:1rem;font-weight:700}
-.aiq .hd span{display:block;font-size:.875rem;color:var(--g500);margin-top:.2rem}
-.aiq .qc{margin-top:.875rem;background:#fff;border:1px solid var(--g200);border-radius:.75rem;padding:1.25rem;display:flex;flex-direction:column;gap:.625rem}
+.aiq .hd b{font-size:1.125rem}
+.aiq .hd span{display:block;font-size:.9375rem;color:var(--g500);margin-top:.2rem}
+.aiq .qc{background:#fff;box-shadow:0 1.25rem 2.5rem -1.75rem oklch(13% .028 261.7/.25);border:1px solid var(--g200);border-radius:.75rem;padding:1.25rem;display:flex;flex-direction:column;gap:.625rem}
 .aiq .h{display:flex;justify-content:space-between;align-items:center;font-size:.8125rem}
 .aiq .h span{background:var(--b50);color:var(--b600);border-radius:.25rem;padding:.125rem .5rem;font-weight:700}
 .aiq .h em{font-style:normal;color:var(--g400)}
@@ -394,8 +392,8 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
   <div class="frame">
     <div class="txt">
       <p class="eyebrow rv">시작</p>
-      <h2 class="rv" style="--i:1">IT 취업 준비생을 위한<br>정보 카탈로그 서비스로<br>시작했습니다.</h2>
-      <p class="lead rv" style="--i:2">핵심 타깃은 <b>프로젝트와 포트폴리오를 시작하기 전,<br>막연한 취업 준비생</b>이었어요.</p>
+      <h2 class="rv" style="--i:1">취업 준비의 막막함을 덜어주는<br>정보 카탈로그로 시작했습니다.</h2>
+      <p class="lead rv" style="--i:2">무엇부터 준비해야 할지, 어떤 프로젝트를 해야 할지<br>고민하는 취업 준비생을 위한 서비스였어요.</p>
     </div>
     <div class="think">
       <div class="bub rv" style="--i:3">포트폴리오에는 어떤 경험을 담아야 할까?</div>
@@ -422,7 +420,7 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
   </div>
 </section>
 
-<!-- 4. 결과: 답변은 달렸지만 질문이 남지 않음, AI 추천 질문 도입 -->
+<!-- 4. 문제: 답변은 달렸지만 질문 작성 비율이 낮음 -->
 <section class="slide two s-problem" data-stop data-scene="problem">
   <div class="frame">
     <div class="txt">
@@ -432,27 +430,44 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
         <div class="big"><b><span class="num">97.3</span>%</b><span>질문을 제출하지 않고 나간 사용자</span></div>
         <div class="small"><b>150%</b><span>평균 답변 비율</span></div>
       </div>
-      <p class="lead rv" style="--i:3">“질문이 잘 떠오르지 않고 막연하다”는 피드백에,<br><b>AI 추천 질문</b>을 도입해 <b id="aiImprove"></b> 개선했습니다.</p>
+      <p class="lead rv" style="--i:3">“질문이 잘 떠오르지 않고 막연하다”는<br>사용자 피드백을 확인했어요.</p>
     </div>
-    <div class="rcol">
-      <div class="composer rv" style="--i:2">
-        <div class="who"><img src="assets/avatar-charles.jpg" alt=""><div><b>샤를</b> 님의 질문</div></div>
-        <div class="field"><span class="tx"></span><span class="caret"></span></div>
-        <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">질문 등록</span></div>
+    <div class="composer rv" style="--i:2">
+      <div class="who"><img src="assets/avatar-charles.jpg" alt=""><div><b>샤를</b> 님의 질문</div></div>
+      <div class="field"><span class="tx"></span><span class="caret"></span></div>
+      <div class="foot"><span>막연한 취업 준비, 망설이지 말고 먼저 물어보세요.</span><span class="btn off">질문 등록</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 해결: AI 추천 질문 도입 -->
+<section class="slide two s-solve" data-stop>
+  <div class="frame">
+    <div class="txt">
+      <p class="eyebrow rv">해결</p>
+      <h2 class="rv" style="--i:1">AI 추천 질문을 도입해,<br>질문의 부담을 덜었습니다.</h2>
+      <div class="stat rv" style="--i:2">
+        <div class="big"><b id="aiImprove"></b><span>AI 추천 질문 도입 뒤 개선</span></div>
       </div>
-      <div class="aiq" id="aiq">
-        <div class="hd"><b>이런 질문도 궁금한가요?</b><span>AI가 제안한 질문을 살펴보고, 함께 이야기해 보세요.</span></div>
-        <div class="qc">
-          <div class="h"><span>AI 추천 질문</span><em>아직 등록되지 않았어요</em></div>
-          <p><i>Q.</i>신입 면접에서 프로젝트 경험은 어떻게 설명하면 좋을까요?</p>
-          <small>프로젝트에서 맡은 역할과 기술을 고른 이유를 면접에서 어떻게 풀어내야 할지 고민이에요. 선배 크루들은 어떤 흐름으로 설명했는지, 꼬리 질문에는 어떻게 대비했는지 궁금합니다.</small>
-        </div>
+      <p class="lead rv" style="--i:3">질문이 떠오르지 않는 사용자에게,<br>AI가 먼저 질문을 제안해요.</p>
+    </div>
+    <div class="rcol aiq">
+      <div class="hd rv" style="--i:2"><b>이런 질문도 궁금한가요?</b><span>AI가 제안한 질문을 살펴보고, 함께 이야기해 보세요.</span></div>
+      <div class="qc rv" style="--i:4">
+        <div class="h"><span>AI 추천 질문</span><em>아직 등록되지 않았어요</em></div>
+        <p><i>Q.</i>신입 면접에서 프로젝트 경험은 어떻게 설명하면 좋을까요?</p>
+        <small>프로젝트에서 맡은 역할과 기술을 고른 이유를 면접에서 어떻게 풀어내야 할지 고민이에요. 선배 크루들은 어떤 흐름으로 설명했는지, 꼬리 질문에는 어떻게 대비했는지 궁금합니다.</small>
+      </div>
+      <div class="qc rv" style="--i:7">
+        <div class="h"><span>AI 추천 질문</span><em>아직 등록되지 않았어요</em></div>
+        <p><i>Q.</i>포트폴리오, 프로젝트마다 어떤 내용을 담으셨나요?</p>
+        <small>포트폴리오를 준비하면서 프로젝트 경험을 어떻게 정리할지 고민하고 있습니다. 구현한 기능을 나열하기보다는 고민하고 해결한 과정을 보여주고 싶은데, 어디까지 자세히 써야 할지 어렵더라고요.</small>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 5. 전환: 프로젝트 탭 개편 -->
+<!-- 6. 전환: 프로젝트 탭 개편 -->
 <section class="slide s-pivot" data-stop>
   <div class="frame">
     <div class="txt">
@@ -489,7 +504,7 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
   </div>
 </section>
 
-<!-- 6. 시연: 한 화면을 고정해 두고 일곱 단계로 나눠 보여 준다 -->
+<!-- 7. 시연: 한 화면을 고정해 두고 일곱 단계로 나눠 보여 준다 -->
 <section class="demo">
   <div class="pin" id="pin">
     <div class="frame" id="stage">
@@ -609,7 +624,7 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
   <div class="snaps"><i data-stop data-demo="0"></i><i data-stop data-demo="1"></i><i data-stop data-demo="2"></i><i data-stop data-demo="3"></i><i data-stop data-demo="4"></i><i data-stop data-demo="5"></i><i data-stop data-demo="6"></i></div>
 </section>
 
-<!-- 7. 마무리 -->
+<!-- 8. 마무리 -->
 <section class="slide s-end" data-stop>
   <div class="frame">
     <h2 class="rv">막연했던 취업 준비,<br>이제 프로젝트 탭에서 <span class="grad">필요한 정보만 바로 찾아보세요.</span></h2>
@@ -783,12 +798,12 @@ const scenes = {};
   };
 }
 {
-  const run = makeRunner(), el = $('.s-problem'), tx = $('.tx', el), btn = $('.btn', el), num = $('.num', el), aiq = $('#aiq');
+  const run = makeRunner(), el = $('.s-problem'), tx = $('.tx', el), btn = $('.btn', el), num = $('.num', el);
   $('#aiImprove').textContent = AI_IMPROVE;
   scenes.problem = {
     enter() {
-      if (STATIC) { tx.innerHTML = '<span class="ph">궁금한 점을 질문해 보세요</span>'; num.textContent = '97.3'; aiq.classList.add('in'); return; }
-      const wait = run.begin(); tx.textContent = QUESTION; btn.classList.remove('off'); num.textContent = '0.0'; aiq.classList.remove('in');
+      if (STATIC) { tx.innerHTML = '<span class="ph">궁금한 점을 질문해 보세요</span>'; num.textContent = '97.3'; return; }
+      const wait = run.begin(); tx.textContent = QUESTION; btn.classList.remove('off'); num.textContent = '0.0';
       guard((async () => {
         await wait(900);
         const t0 = performance.now();
@@ -796,7 +811,6 @@ const scenes = {};
         await wait(500);
         for (let n = QUESTION.length - 1; n >= 0; n--) { tx.textContent = QUESTION.slice(0, n); await wait(34); }
         btn.classList.add('off'); tx.innerHTML = '<span class="ph">궁금한 점을 질문해 보세요</span>';
-        await wait(900); aiq.classList.add('in');   // 막연함을 덜어 주려고 넣은 AI 추천 질문
       })());
     },
     leave() { run.cancel(); },
