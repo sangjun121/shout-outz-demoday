@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>샤라웃, 부스 홍보 영상</title>
+<link rel="icon" href="assets/logo.png">
+<style>
+/* 부스 화면에 띄워 두는 페이지. 영상을 화면에 꽉 맞춰 소리 없이 계속 되풀이한다. */
+html,body{margin:0;height:100%;background:#fff;overflow:hidden}
+video{width:100vw;height:100vh;object-fit:contain;display:block;background:#fff}
+.idle{cursor:none}
+</style>
+</head>
+<body>
+<video id="v" src="video/shout-outz-booth.webm" autoplay muted loop playsinline preload="auto"></video>
+<script>
+const v = document.getElementById('v');
+// 화면을 누르거나 F 를 누르면 전체 화면으로 바꾼다.
+const full = () => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen());
+addEventListener('click', full);
+addEventListener('keydown', (e) => { if (e.key === 'f' || e.key === 'F') full(); else if (e.key === ' ') { e.preventDefault(); v.paused ? v.play() : v.pause(); } });
+// 마우스를 3초 동안 움직이지 않으면 커서를 숨긴다.
+let t; addEventListener('mousemove', () => { document.body.classList.remove('idle'); clearTimeout(t); t = setTimeout(() => document.body.classList.add('idle'), 3000); });
+// 자동 재생이 막힌 브라우저에서는 처음 한 번 눌렀을 때 재생한다.
+v.play().catch(() => addEventListener('click', () => v.play(), { once: true }));
+</script>
+</body>
+</html>
