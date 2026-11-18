@@ -14,10 +14,10 @@ const W = 1920, H = 1080, FPS = 30;
 const SPEED = 1;     // 녹화한 화면을 이 배율로 빠르게 돌려 담는다. 1 이면 원래 속도다.
 const REST = 1900;   // 시연 단계에서 움직임이 끝난 뒤 머무는 시간(ms). 1300 보다 작게는 못 한다.
 // [넘어갈 장면 번호(1부터), 머무는 시간(ms)]. 'auto' 는 시연 단계로, 움직임이 끝난 뒤 REST 만큼만 머문다.
-// 3~5번(첫 시도, 문제, 해결)은 발표용 이야기라 뺀다.
+// 3~6번(첫 시도, 문제, 해결, 배운 점)은 발표용 이야기라 뺀다.
 const PLAN = MODE === 'test'
-  ? [[1, 3500], [2, 5000], [7, 12500]]
-  : [[1, 3500], [2, 4800], [6, 5500], [7, 'auto'], [8, 'auto'], [9, 'auto'], [10, 'auto'], [11, 'auto'], [12, 'auto'], [13, 'auto'], [14, 5000]];
+  ? [[1, 3500], [2, 5000], [8, 12500]]
+  : [[1, 3500], [2, 4800], [7, 5500], [8, 'auto'], [9, 'auto'], [10, 'auto'], [11, 'auto'], [12, 'auto'], [13, 'auto'], [14, 'auto'], [15, 5000]];
 
 const frames = fs.mkdtempSync(path.join(os.tmpdir(), 'booth-frames-'));
 const b = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });

@@ -60,7 +60,18 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .two h2{font-size:3.25rem;margin-top:1.5rem}
 .two .lead{margin-top:1.75rem}
 .two .lead b{color:var(--g900);font-weight:700}
-.s-target h2{font-size:2.75rem;white-space:nowrap}
+.s-target h2,.s-learn h2{font-size:2.75rem;white-space:nowrap}
+.learn{gap:0;align-items:stretch}
+.lc{background:#fff;border:1px solid var(--g200);border-radius:1.125rem;padding:1.5rem 1.75rem;box-shadow:0 1.25rem 2.5rem -1.75rem oklch(13% .028 261.7/.25)}
+.lc small{display:block;font-size:.9375rem;font-weight:700;color:var(--b600)}
+.lc p{font-size:1.1875rem;line-height:1.6;color:var(--g700);margin-top:.625rem}
+.lc p b{color:var(--g900);font-weight:700}
+.down{display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1.125rem 0;font-size:.9375rem;font-weight:600;color:var(--g500)}
+.down svg{width:1.25rem;height:1.25rem}
+.gnb2{display:flex;align-items:center;gap:.25rem;margin-top:1rem;font-size:1rem;font-weight:500;color:var(--g500)}
+.gnb2 img{width:1.625rem;height:1.625rem;margin-right:.5rem}
+.gnb2 span{padding:.4rem .75rem;border-radius:.5rem}
+.gnb2 .act{background:var(--b50);color:var(--b600);font-weight:700;box-shadow:0 0 0 .1875rem var(--b100)}
 .think{position:absolute;right:7rem;top:50%;translate:0 -50%;width:35rem;display:flex;flex-direction:column;gap:1.5rem}
 /* 말풍선: 둥근 상자 아래에 꼬리를 단다. 꼬리는 45도 돌린 작은 사각형의 아래 두 변만 테두리를 그린 것이다. */
 .think .bub{position:relative;align-self:flex-start;background:#fff;border:1px solid var(--g200);border-radius:1.5rem;padding:1rem 1.5rem;font-size:1.1875rem;font-weight:500;color:var(--g800);
@@ -116,6 +127,19 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .raw{transition-delay:.9s}.arrow{transition-delay:1.5s}.xpc{transition-delay:1.9s}
 .on .raw,.on .xpc,.on .arrow{opacity:1;transform:none}
 .raw .box{padding:.375rem 1.5rem}
+.old .box{padding:1.5rem}
+.oh{display:flex;gap:1.125rem;align-items:center}
+.oh img{width:6.5rem;height:4.0625rem;border-radius:.625rem;object-fit:cover;flex:none}
+.oh small{font-size:.8125rem;font-weight:600;color:var(--b600)}
+.oh b{display:block;font-size:1.25rem;font-weight:700;margin-top:.125rem}
+.oh p{font-size:.875rem;line-height:1.5;color:var(--g600);margin-top:.25rem}
+.ol{display:flex;gap:.5rem;margin-top:1rem}
+.ol span{border:1px solid var(--g200);border-radius:.5rem;padding:.375rem .75rem;font-size:.8125rem;font-weight:500;color:var(--g700)}
+.os{margin-top:1.25rem;border-top:1px solid var(--g100);padding-top:1rem}
+.os h6{font-size:.9375rem;font-weight:700;margin-bottom:.625rem}
+.os i{display:block;height:.625rem;border-radius:.3rem;background:var(--g100);margin-top:.5rem}
+.os div{display:flex;gap:.5rem}
+.os u{display:block;width:3.5rem;height:1.625rem;border-radius:99rem;background:var(--g100)}
 .raw .mrow{padding:1.125rem 0}
 .raw .mrow:first-child{border-top:0}
 .raw .mrow .ti{font-size:1.0625rem}
@@ -360,13 +384,16 @@ img.jlogo.fill{padding:0;object-fit:cover}
 .s-end{background:radial-gradient(64rem 40rem at 50% 108%,var(--b50),transparent 70%)}
 .s-end .frame{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .s-end h2{font-size:3.75rem;line-height:1.35}
-.three{display:flex;gap:1.25rem;margin-top:3.25rem}
+.three{display:flex;gap:1.25rem;margin-top:2.75rem}
 .three div{width:16.5rem;border:1px solid var(--g200);background:#fff;border-radius:1.125rem;padding:1.5rem 1.5rem 1.625rem;text-align:left}
 .three b{font-size:1.25rem;font-weight:700}
 .three p{font-size:1rem;line-height:1.6;color:var(--g600);margin-top:.5rem}
 .three small{font-size:.875rem;font-weight:700;color:var(--b600);display:block;margin-bottom:.625rem}
-.addr{margin-top:3.25rem;display:flex;align-items:center;gap:.875rem;font-size:1.5rem;font-weight:700}
-.addr img{width:2.5rem;height:2.5rem}
+.addr{margin-top:2.5rem;display:flex;align-items:center;gap:1.5rem;text-align:left}
+.addr .qr{width:9rem;height:9rem;border:1px solid var(--g200);border-radius:.875rem;background:#fff;padding:.375rem;image-rendering:pixelated}
+.addr span{display:flex;align-items:center;gap:.75rem;font-size:1.5rem;font-weight:700}
+.addr span img{width:2.25rem;height:2.25rem}
+.addr small{display:block;font-size:1rem;color:var(--g500);margin-top:.5rem}
 
 /* ---------- 진행 표시 ---------- */
 .hud{position:fixed;left:0;right:0;bottom:0;z-index:50;pointer-events:none}
@@ -477,25 +504,49 @@ img.jlogo.fill{padding:0;object-fit:cover}
   </div>
 </section>
 
-<!-- 6. 전환: 프로젝트 탭 개편 -->
+<!-- 6. 배운 점: 가장 직접적인 형태로 줄 때 가치가 크다, 그래서 프로젝트 탭에도 -->
+<section class="slide two s-learn" data-stop>
+  <div class="frame">
+    <div class="txt">
+      <p class="eyebrow rv">배운 점</p>
+      <h2 class="rv" style="--i:1">사용자는 <span class="grad">가장 직접적인 형태</span>의<br>데이터에서 큰 가치를 얻습니다.</h2>
+      <p class="lead rv" style="--i:2">그래서 탭 전환율이 가장 높았던 <b>프로젝트 탭</b>에도<br>같은 가치를 전하기로 했습니다.</p>
+    </div>
+    <div class="rcol learn">
+      <div class="lc rv" style="--i:3">
+        <small>AI 추천 질문에서 확인한 것</small>
+        <p>막연한 사용자에게 질문을 먼저 건네자,<br>이탈률이 <b>97.3% → 88.6%</b>로 낮아졌어요.</p>
+      </div>
+      <div class="down rv" style="--i:6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg><span>같은 가치를</span></div>
+      <div class="lc tabs-c rv" style="--i:8">
+        <small>탭 전환율이 가장 높았던 탭</small>
+        <div class="gnb2"><img src="assets/logo.png" alt=""><span>홈</span><span>탐색</span><span>커뮤니티</span><span class="act">프로젝트</span><span>매거진</span><span>소식</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 전환: 정적이던 프로젝트 탭을 바로 활용할 수 있는 형태로 개편 -->
 <section class="slide s-pivot" data-stop>
   <div class="frame">
     <div class="txt">
-      <p class="eyebrow rv">같은 맥락에서</p>
-      <h2 class="rv" style="--i:1">공개된 프로젝트 정보를 한곳에 모아,<br><span class="grad">바로 쓸 수 있는 경험</span>으로 가공했습니다.</h2>
-      <p class="lead rv" style="--i:2">크루들의 프로젝트 경험을 <b>직관적으로</b> 전하기 위해, <b>프로젝트 탭을 본격적으로 개편했습니다.</b></p>
+      <p class="eyebrow rv">프로젝트 탭 개편</p>
+      <h2 class="rv" style="--i:1">정적이던 프로젝트 탭을,<br><span class="grad">바로 활용할 수 있는 형태</span>로 전격 개편했습니다.</h2>
+      <p class="lead rv" style="--i:2">공개된 프로젝트 정보를 수집해, <b>사용자가 바로 활용할 수 있는 경험</b>으로 제공해요.</p>
     </div>
     <div class="flow">
-      <div class="raw">
-        <p class="cap">GitHub에 공개된 PR</p>
+      <div class="raw old">
+        <p class="cap">개편 전, 소개만 있던 프로젝트 탭</p>
         <div class="box">
-          <div class="mrow"><div class="m"><span class="badge">PR</span><b>샤라웃</b><span>2026년 10월 21일</span></div><div class="ti"><svg class="gh"></svg><span>[BE/refactor] 피드 인기순 정렬을 저장된 좋아요와 댓글 수로 조회 (#504)</span></div></div>
-          <div class="mrow"><div class="m"><span class="badge">PR</span><b>샤라웃</b><span>2026년 10월 16일</span></div><div class="ti"><svg class="gh"></svg><span>[BE/refactor] 피드 목록의 '내가 누른 반응' 확인용 사용자 기준 인덱스 추가 (#477)</span></div></div>
+          <div class="oh"><img src="assets/p-shout-outz.jpg" alt=""><div><small>우아한테크코스 8기</small><b>샤라웃</b><p>우아한테크코스 크루들의 경험을 나누는 IT 취업 준비 커뮤니티</p></div></div>
+          <div class="ol"><span>서비스 바로가기 ↗</span><span>GitHub 저장소 ↗</span></div>
+          <div class="os"><h6>프로젝트 소개</h6><i></i><i></i><i style="width:62%"></i></div>
+          <div class="os"><h6>기술 스택</h6><div><u></u><u style="width:4.5rem"></u><u style="width:3rem"></u><u style="width:5rem"></u></div></div>
         </div>
       </div>
       <div class="arrow"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></div>
       <div class="xpc">
-        <p class="cap">프로젝트 탭의 경험</p>
+        <p class="cap">개편 후, 바로 활용하는 경험</p>
         <div class="box">
           <small>쿼리 최적화</small>
           <h3>피드 조회 최적화와 동시성 정합성 검증</h3>
@@ -514,7 +565,7 @@ img.jlogo.fill{padding:0;object-fit:cover}
   </div>
 </section>
 
-<!-- 7. 시연: 한 화면을 고정해 두고 일곱 단계로 나눠 보여 준다 -->
+<!-- 8. 시연: 한 화면을 고정해 두고 일곱 단계로 나눠 보여 준다 -->
 <section class="demo">
   <div class="pin" id="pin">
     <div class="frame" id="stage">
@@ -634,7 +685,7 @@ img.jlogo.fill{padding:0;object-fit:cover}
   <div class="snaps"><i data-stop data-demo="0"></i><i data-stop data-demo="1"></i><i data-stop data-demo="2"></i><i data-stop data-demo="3"></i><i data-stop data-demo="4"></i><i data-stop data-demo="5"></i><i data-stop data-demo="6"></i></div>
 </section>
 
-<!-- 8. 마무리 -->
+<!-- 9. 마무리 -->
 <section class="slide s-end" data-stop>
   <div class="frame">
     <h2 class="rv">막연했던 취업 준비,<br>이제 프로젝트 탭에서 <span class="grad">필요한 정보만 바로 찾아보세요.</span></h2>
@@ -643,7 +694,10 @@ img.jlogo.fill{padding:0;object-fit:cover}
       <div class="rv" style="--i:3"><small>채용공고로</small><b>채용공고로 찾기</b><p>공고가 찾는 역량을 키운 크루들의 경험을 봐요.</p></div>
       <div class="rv" style="--i:4"><small>프로젝트로</small><b>전체 프로젝트 보기</b><p>프로젝트의 경험을 읽고, 출처와 자료까지 따라가요.</p></div>
     </div>
-    <div class="addr rv" style="--i:6"><img src="assets/logo.png" alt="">shout-ou.tz</div>
+    <div class="addr rv" style="--i:6">
+      <img class="qr" src="assets/qr.png" alt="샤라웃 바로가기 QR 코드">
+      <div><span><img src="assets/logo.png" alt="">shout-ou.tz</span><small>QR 코드로 바로 접속해 보세요</small></div>
+    </div>
   </div>
 </section>
 
