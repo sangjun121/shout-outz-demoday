@@ -177,7 +177,7 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .pill em{font-style:normal;font-size:.75rem;color:var(--g400)}
 
 /* ---------- 5. 시연 ---------- */
-.demo{position:relative;height:400vh}
+.demo{position:relative;height:300vh}
 .pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--g50)}
 .snaps{position:absolute;inset:0;pointer-events:none}
 .snaps i{display:block;height:100vh;scroll-snap-align:start;scroll-snap-stop:always}
@@ -599,7 +599,7 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
   </div>
 </section>
 
-<!-- 8~11. 시연: 한 화면을 고정해 두고 네 단계로 나눠 보여 준다 -->
+<!-- 8~10. 시연: 한 화면을 고정해 두고 세 단계로 나눠 보여 준다 -->
 <section class="demo">
   <div class="pin" id="pin">
     <div class="frame" id="stage">
@@ -746,18 +746,19 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
       <div class="cursor" id="cursor"><svg viewBox="0 0 24 24"><path d="M5 3.2v16.2l4.4-4.1 2.9 6.5 2.6-1.2-2.9-6.4h6L5 3.2Z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
     </div>
   </div>
-  <div class="snaps"><i data-stop data-demo="0"></i><i data-stop data-demo="1"></i><i data-stop data-demo="2"></i><i data-stop data-demo="3"></i></div>
+  <div class="snaps"><i data-stop data-demo="0"></i><i data-stop data-demo="1"></i><i data-stop data-demo="2"></i></div>
 </section>
 
-<!-- 12. 서비스의 우선 가치 -->
+<!-- 11. 서비스의 우선 가치 -->
 <section class="slide s-quote" data-stop>
   <div class="frame">
     <p class="eyebrow rv">샤라웃의 우선 가치</p>
-    <h2 class="rv" style="--i:2">사용자의 환경에 맞게,<br><span class="grad">지금 바로 사용할 수 있는 형태</span>로 제공했습니다.</h2>
+    <h2 class="rv" style="--i:2">사용자가 데이터를 활용하는<br><span class="grad">Depth를 줄여</span> 문제를 해결</h2>
+    <p class="sub rv" style="--i:5">사용자가 지금 바로 사용 가능한 형태로</p>
   </div>
 </section>
 
-<!-- 13. 마무리 -->
+<!-- 12. 마무리 -->
 <section class="slide s-end" data-stop>
   <div class="frame">
     <h2 class="rv">막연했던 취업 준비,<br>이제 프로젝트 탭에서 <span class="grad">필요한 정보만 바로 찾아보세요.</span></h2>
@@ -783,10 +784,9 @@ const COPIES = [
   ['궁금한 기술 키워드로\n바로 찾아볼 수 있어요', '블로그와 PR, 팀 문서를 찾고\n상세 내용까지 바로 확인해요.'],
   ['내 프로젝트는\n이력서, 포트폴리오 형태로', '이력서 문장으로 보고,\n누르면 포트폴리오로 펼쳐져요.'],
   ['채용 공고가 찾는 역량을\n어떻게 채워야 할지\n막막한가요?', '공고의 역량 키워드로도\n이런 경험을 바로 찾아볼 수 있어요.'],
-  ['이 경험들은\n공개된 정보에서 왔어요', 'GitHub, 팀 블로그, 테코톡을\n가공한 결과물이에요.'],
 ];
 // 왼쪽 위 "탐색 > ..." 에 단계마다 보여 줄 이름
-const CRUMBS = ['기술 검색', '프로젝트 탭', '채용공고로 찾기', '프로젝트 탭'];
+const CRUMBS = ['기술 검색', '프로젝트 탭', '채용공고로 찾기'];
 const SEARCH_WORD = '동시성';                                       // 기술 검색에서 타이핑하는 검색어
 const TOPIC = '동시성 제어/락';
 // 운영 서비스에 실제로 올라와 있는 프로젝트(이름, 기수, 좋아요, 소개)
@@ -1216,18 +1216,6 @@ const demo = (() => {
       await move($('.ti', row), 0.25, 0.6, 650); row.classList.add('hov'); await wait(320); await click(); row.classList.remove('hov');
       openModal('daynomy'); cur.classList.remove('show'); await wait(1500);
       scrollModal($('#mdlLearn')); await wait(700);
-    },
-    // 4. 다시 프로젝트의 자료 탭: 경험의 바탕이 된 공개 자료 목록을 끝까지 천천히 내려 보여 준다
-    async () => {
-      await wait(400);
-      closeModal(); scrollCam($('#camD')); setDetailTab('exp'); setPage('detail'); await wait(1000);
-      await move($('#utabs [data-t=mat]'), 0.7, 0.65, 700); await click(); setDetailTab('mat'); await wait(300);
-      scrollCam($('#camD'), $('#utabs'), 1); cur.classList.remove('show');
-      await stagger($$('#paneMat .stag'), 190); await wait(900);
-      const rows = $$('#paneMat .mrow');
-      $('#camD').style.transition = instant ? '' : 'transform 7s cubic-bezier(.35,0,.3,1)';
-      scrollCam($('#camD'), rows[rows.length - 1], 31); await wait(7300);
-      $('#camD').style.transition = '';
     },
   ];
 
