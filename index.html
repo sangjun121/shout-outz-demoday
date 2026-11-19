@@ -410,10 +410,6 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .jc .rq{margin-top:auto;padding-top:.875rem;font-size:.8125rem;font-weight:600;color:var(--g700)}
 .jc.up.in{opacity:.5}
 .jc.up .jlogo{background:var(--g200);color:var(--g400)}
-img.jlogo{background:#fff;border:1px solid var(--g100);object-fit:contain;padding:.3rem}
-img.jlogo.fill{padding:0;object-fit:cover}
-.jh img.jlogo{padding:.7rem}
-.jh img.jlogo.fill{padding:0}
 .jwrap{display:grid;grid-template-columns:3fr 1fr;gap:2.25rem}
 .jmain{min-width:0}
 .jh{display:flex;align-items:center;gap:1.5rem}
@@ -819,7 +815,7 @@ const LIST_TOPIC = ['shout-outz', 'sssok', 'jarihana', 'rilog', 'pheeeew', 'bom-
 const TOPIC_COUNT = 14;                                            // 예시 값. 주제 API 가 운영에 나가면 실제 수로 바꾼다.
 const TABS = {   // 검색창 문구, 추천 검색어 앞 문구, 추천 검색어
   keyword: ['예: LLM, 동시성, 무중단 배포', '이런 주제를 찾아보세요', ['LLM', '동시성', '부하 테스트', '무중단 배포', '쿼리 최적화', '모니터링']],
-  job: ['회사, 직무, 기술로 검색 (예: 토스, 프론트엔드, Kafka)', '이런 공고를 찾아보세요', ['토스뱅크', '토스증권', 'Kotlin', 'Spring', 'TypeScript']],
+  job: ['회사, 직무, 기술로 검색 (예: 백엔드, 프론트엔드, Kafka)', '이런 공고를 찾아보세요', ['백엔드', '프론트엔드', 'Kotlin', 'Spring', 'TypeScript']],
   project: ['프로젝트 이름, 소개, 기술로 찾아보세요', '이런 주제를 찾아보세요', ['JPA/Hibernate', '동시성 제어/락', '인덱스/쿼리 최적화', 'DB 설계/정규화', '트랜잭션/데드락']],
 };
 // 기술 검색 '동시성' 결과. 운영 서비스(shout-ou.tz)의 실제 검색 결과에서 주제와 맞는 것만 골랐다(2026-11-19 기준).
@@ -875,13 +871,13 @@ const DEPLOY_DOCS = [
   ['pr', '총총', '2026-10-21', '[fix] Nginx 프로세스 조회 실패로 인한 무중단 배포 중단 수정', 'Docker, Nginx, CodeDeploy의 프로세스 조회 오류를 재현하고 검증한 과정이라, 무중단 배포 장애를 해결할 때 참고하기 좋아요.'],
 ];
 // 채용공고. 공고와 역량은 프론트 목 데이터(frontend/src/api/mock/job-posting.ts)의 예시이고, 역량별 자료는 위와 같은 실제 자료다.
-// 한 줄: [회사, 로고 파일 이름, 로고 채움 방식, 직군, 마감, 제목, 해시태그, 찾는 역량 수]. 로고는 각 회사 공식 사이트의 아이콘이다.
+// 한 줄: [회사(가상의 이름), 로고 배경색, 로고 글자, 직군, 마감, 제목, 해시태그, 찾는 역량 수]. 실제 회사 이름과 로고는 쓰지 않는다.
 const JOBS = [
-  ['토스뱅크', 'toss', '', 'Backend', '상시', 'Server Developer (Product)', ['Server', 'Kotlin', 'Spring', 'Product'], 7],
-  ['토스증권', 'tossinvest', '', 'Frontend', '상시', 'Frontend Developer', ['Frontend', 'TypeScript', 'JavaScript'], 7],
-  ['우아한형제들', 'woowahan', '', 'Backend', 'D-3', '배달 서비스 백엔드 신입 개발자', ['Java', 'Spring', 'MySQL'], 4],
-  ['당근', 'daangn', '', 'Frontend', 'D-day', 'Web Frontend Engineer', ['React', 'TypeScript', 'Web'], 3],
-  ['카카오', 'kakao', 'fill', 'Android', 'D-14', 'Android Developer', ['Android', 'Kotlin', 'Compose'], 3],
+  ['A사', '#2563EB', 'A', 'Backend', '상시', 'Server Developer (Product)', ['Server', 'Kotlin', 'Spring', 'Product'], 7],
+  ['B사', '#0EA5E9', 'B', 'Frontend', '상시', 'Frontend Developer', ['Frontend', 'TypeScript', 'JavaScript'], 7],
+  ['C사', '#10B981', 'C', 'Backend', 'D-3', '백엔드 신입 개발자', ['Java', 'Spring', 'MySQL'], 4],
+  ['D사', '#F59E0B', 'D', 'Frontend', 'D-day', 'Web Frontend Engineer', ['React', 'TypeScript', 'Web'], 3],
+  ['E사', '#8B5CF6', 'E', 'Android', 'D-14', 'Android Developer', ['Android', 'Kotlin', 'Compose'], 3],
 ];
 const JOB_REQS = ['Kotlin, Spring', '동시성 제어', 'DB 설계, 쿼리 튜닝', '무중단 배포', '실시간 통신', '모니터링, 장애 대응', '협업, 코드 리뷰'];
 const JOB_REQ = '동시성 제어';                                     // 시연에서 추가로 고르는 역량
@@ -1038,11 +1034,11 @@ const demo = (() => {
   $('#copies').innerHTML = COPIES.map(([h, p], i) => `<div class="dcopy"><div class="n">0${i + 1} / 0${COPIES.length}</div><h2>${h}</h2><p>${p}</p></div>`).join('');
   $('#resWord').textContent = SEARCH_WORD;
   $('#kchips').innerHTML = [['ALL', '전체'], ['BLOG', '블로그'], ['DOC', 'PR과 팀 문서'], ['TALK', '테코톡']].map(([k, n]) => `<span class="chip" data-k="${k}">${n} <i>${KW_COUNT[k]}</i></span>`).join('');
-  $('#jobs').innerHTML = JOBS.map(([co, logo, fit, role, dl, title, tags, n]) => `<div class="jc stag"><div class="top"><img class="jlogo ${fit}" src="assets/logo-co-${logo}.png" alt=""><div><div class="co">${co}</div><div class="ro"><span>${role}</span><span>정규직</span></div></div><span class="dl">${dl}</span></div>
+  $('#jobs').innerHTML = JOBS.map(([co, bg, ch, role, dl, title, tags, n]) => `<div class="jc stag"><div class="top"><span class="jlogo" style="background:${bg};color:#fff">${ch}</span><div><div class="co">${co}</div><div class="ro"><span>${role}</span><span>정규직</span></div></div><span class="dl">${dl}</span></div>
     <b>${title}</b><div class="tg">${tags.map((t) => `<span>#${t}</span>`).join('')}</div><div class="rq">찾는 역량 ${n}개 →</div></div>`).join('')
     + '<div class="jc up stag"><div class="top"><span class="jlogo">?</span><div><div class="co">기업명</div><div class="ro" style="color:var(--g400)"><span>신입 | 개발 | 정규직</span></div></div><span class="dl">준비 중</span></div><b>곧 추가될 공고예요</b><div class="tg"><span>#키워드</span><span>#키워드</span><span>#키워드</span></div><div class="rq">찾는 역량 분석 중</div></div>';
-  { const [co, logo, fit, , , title] = JOBS[0];
-    $('#jh').innerHTML = `<img class="jlogo ${fit}" src="assets/logo-co-${logo}.png" alt=""><div><div class="t">${title}</div><div class="d">${co} · 상시 채용</div><span class="l">공고 원문 보기 ↗</span></div>`; }
+  { const [co, bg, ch, , , title] = JOBS[0];
+    $('#jh').innerHTML = `<span class="jlogo" style="background:${bg};color:#fff">${ch}</span><div><div class="t">${title}</div><div class="d">${co} · 상시 채용</div><span class="l">공고 원문 보기 ↗</span></div>`; }
   $('#reqs').innerHTML = JOB_REQS.map((r) => `<span class="rqp" data-r="${r}">${r}</span>`).join('');
   $('#ticks').innerHTML = COPIES.map(() => '<i></i>').join('');
   const card = {};
