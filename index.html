@@ -320,7 +320,18 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .mrow{padding:1rem 0;border-top:1px solid var(--g100);display:flex;flex-direction:column;gap:.5rem}
 .mrow.hov .ti span{text-decoration:underline}
 /* 7페이지: 실제 화면 캡처를 브라우저 틀에 넣는다 */
-.shot{margin-top:1.25rem}
+.s-apply .rcol{width:38rem}
+/* 실제 화면 두 장을 겹쳐 두고, 커서가 카드를 누르면 소개 화면으로 바뀌는 모습을 보여 준다. */
+.scr{position:relative}
+.scr .after{position:absolute;inset:0;opacity:0}
+.sbar .u2{position:absolute;left:2.875rem;margin-left:.625rem;opacity:0}
+.sbar{position:relative}
+.scur{position:absolute;left:0;top:0;width:1.375rem;height:1.375rem;opacity:0;filter:drop-shadow(0 .15rem .25rem oklch(13% .028 261.7/.35))}
+.on .scur{animation:scur 2.3s 1.7s var(--travel) forwards}
+.on .scr .after,.on .sbar .u2{animation:sfade .45s 3.55s forwards}
+.on .sbar .u1{animation:sfade .3s 3.55s reverse both}
+@keyframes sfade{from{opacity:0}to{opacity:1}}
+@keyframes scur{0%{opacity:0;transform:translate(27rem,19rem)}12%{opacity:1}62%{opacity:1;transform:translate(15.2rem,11rem)}71%{transform:translate(15.2rem,11rem) scale(.84)}80%{opacity:1;transform:translate(15.2rem,11rem)}100%{opacity:0;transform:translate(15.2rem,11rem)}}
 .shot>small{display:block;font-size:.9375rem;font-weight:700;color:var(--b600);margin-bottom:.625rem}
 .sbox{border:1px solid var(--g200);border-radius:.875rem;overflow:hidden;background:#fff;box-shadow:0 1.5rem 3rem -1.75rem oklch(13% .028 261.7/.28)}
 .sbar{height:1.75rem;display:flex;align-items:center;gap:.3rem;padding:0 .75rem;background:var(--g50);border-bottom:1px solid var(--g200)}
@@ -576,16 +587,19 @@ img.jlogo.fill{padding:0;object-fit:cover}
     <div class="txt">
       <p class="eyebrow rv">같은 맥락에서</p>
       <h2 class="rv" style="--i:1">이 가치를 <span class="grad">프로젝트 탭</span>에서도<br>제공하기로 했습니다.</h2>
-      <p class="lead rv" style="--i:2">탭 전환율이 가장 높았던 탭이지만,<br>이름과 소개, 기술 스택 같은 <b>정적인 정보</b>만 보여 주고 있었어요.</p>
+      <p class="lead rv" style="--i:2">탭 전환율이 가장 높았던 탭이지만,<br>카드를 눌러도 <b>단순한 소개</b>만 보여 주고 있었어요.</p>
     </div>
-    <div class="rcol learn">
-      <div class="lc tabs-c rv" style="--i:3">
-        <small>탭 전환율이 가장 높았던 탭</small>
-        <div class="gnb2"><img src="assets/logo.png" alt=""><span>홈</span><span>탐색</span><span>커뮤니티</span><span class="act">프로젝트</span><span>매거진</span><span>소식</span></div>
-      </div>
-      <div class="shot rv" style="--i:6">
+    <div class="rcol">
+      <div class="shot rv" style="--i:3">
         <small>개편 전 프로젝트 탭 (실제 화면)</small>
-        <div class="sbox"><div class="sbar"><i></i><i></i><i></i><span>shout-ou.tz/projects</span></div><img src="assets/real-projects.jpg" alt="프로젝트 이름, 소개, 기술 스택만 나열된 개편 전 프로젝트 목록 화면"></div>
+        <div class="sbox">
+          <div class="sbar"><i></i><i></i><i></i><span class="u1">shout-ou.tz/projects</span><span class="u2">shout-ou.tz/projects/@devica</span></div>
+          <div class="scr">
+            <img src="assets/real-projects.jpg" alt="프로젝트 이름, 소개, 기술 스택만 나열된 개편 전 프로젝트 목록 화면">
+            <img class="after" src="assets/real-intro.jpg" alt="카드를 누르면 나오던, 소개와 참여 크루와 기술 스택만 있는 화면">
+            <svg class="scur" viewBox="0 0 24 24"><path d="M5 3.2v16.2l4.4-4.1 2.9 6.5 2.6-1.2-2.9-6.4h6L5 3.2Z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
       </div>
     </div>
   </div>
