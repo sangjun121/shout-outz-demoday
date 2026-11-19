@@ -60,7 +60,18 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .two h2{font-size:3.25rem;margin-top:1.5rem}
 .two .lead{margin-top:1.75rem}
 .two .lead b{color:var(--g900);font-weight:700}
-.s-target h2,.s-learn h2{font-size:2.75rem;white-space:nowrap}
+.s-target h2,.s-apply h2{font-size:2.75rem;white-space:nowrap}
+/* 문장 하나를 가운데에 크게 두는 장면(교훈, 우선 가치) */
+.s-quote{background:radial-gradient(64rem 40rem at 50% 108%,var(--b50),transparent 70%)}
+.s-quote .frame{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.s-quote h2{font-size:3.5rem;line-height:1.4;margin-top:1.5rem}
+.s-quote .sub{font-size:1.25rem;color:var(--g600);margin-top:2.25rem}
+.s-quote .sub b{color:var(--g900);font-weight:700}
+.vals{display:flex;gap:.75rem;margin-top:2.5rem}
+.vals span{border:1px solid var(--g200);background:#fff;border-radius:99rem;padding:.625rem 1.25rem;font-size:1.0625rem;font-weight:600;color:var(--g700)}
+.learn .lc+.lc{margin-top:1.25rem}
+.lc.old .oh{margin-top:1rem}
+.lc.old .os{margin-top:1rem;padding-top:.875rem}
 .learn{gap:0;align-items:stretch}
 .lc{background:#fff;border:1px solid var(--g200);border-radius:1.125rem;padding:1.5rem 1.75rem;box-shadow:0 1.25rem 2.5rem -1.75rem oklch(13% .028 261.7/.25)}
 .lc small{display:block;font-size:.9375rem;font-weight:700;color:var(--b600)}
@@ -168,7 +179,7 @@ h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.28}
 .pill em{font-style:normal;font-size:.75rem;color:var(--g400)}
 
 /* ---------- 5. 시연 ---------- */
-.demo{position:relative;height:700vh}
+.demo{position:relative;height:400vh}
 .pin{position:sticky;top:0;height:100vh;overflow:hidden;background:var(--g50)}
 .snaps{position:absolute;inset:0;pointer-events:none}
 .snaps i{display:block;height:100vh;scroll-snap-align:start;scroll-snap-stop:always}
@@ -504,68 +515,39 @@ img.jlogo.fill{padding:0;object-fit:cover}
   </div>
 </section>
 
-<!-- 6. 배운 점: 가장 직접적인 형태로 줄 때 가치가 크다, 그래서 프로젝트 탭에도 -->
-<section class="slide two s-learn" data-stop>
+<!-- 6. 교훈: 바로 활용 가능한 형태의 데이터에서 큰 가치를 얻는다 -->
+<section class="slide s-quote" data-stop>
+  <div class="frame">
+    <p class="eyebrow rv">가장 큰 교훈</p>
+    <h2 class="rv" style="--i:2">사용자는 <span class="grad">바로 활용 가능한 형태</span>의<br>데이터에서 큰 가치를 얻습니다.</h2>
+    <p class="sub rv" style="--i:5">AI 추천 질문으로 질문을 먼저 건네자, 이탈률이 <b>97.3% → 88.6%</b>로 낮아졌어요.</p>
+  </div>
+</section>
+
+<!-- 7. 같은 가치를 탭 전환율이 가장 높았던 프로젝트 탭에도 -->
+<section class="slide two s-apply" data-stop>
   <div class="frame">
     <div class="txt">
-      <p class="eyebrow rv">배운 점</p>
-      <h2 class="rv" style="--i:1">사용자는 <span class="grad">가장 직접적인 형태</span>의<br>데이터에서 큰 가치를 얻습니다.</h2>
-      <p class="lead rv" style="--i:2">그래서 탭 전환율이 가장 높았던 <b>프로젝트 탭</b>에도<br>같은 가치를 전하기로 했습니다.</p>
+      <p class="eyebrow rv">같은 맥락에서</p>
+      <h2 class="rv" style="--i:1">이 가치를 <span class="grad">프로젝트 탭</span>에서도<br>제공하기로 했습니다.</h2>
+      <p class="lead rv" style="--i:2">탭 전환율이 가장 높았던 탭이지만,<br>프로젝트 소개 같은 <b>정적인 정보</b>만 보여 주고 있었어요.</p>
     </div>
     <div class="rcol learn">
-      <div class="lc rv" style="--i:3">
-        <small>AI 추천 질문에서 확인한 것</small>
-        <p>막연한 사용자에게 질문을 먼저 건네자,<br>이탈률이 <b>97.3% → 88.6%</b>로 낮아졌어요.</p>
-      </div>
-      <div class="down rv" style="--i:6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg><span>같은 가치를</span></div>
-      <div class="lc tabs-c rv" style="--i:8">
+      <div class="lc tabs-c rv" style="--i:3">
         <small>탭 전환율이 가장 높았던 탭</small>
         <div class="gnb2"><img src="assets/logo.png" alt=""><span>홈</span><span>탐색</span><span>커뮤니티</span><span class="act">프로젝트</span><span>매거진</span><span>소식</span></div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- 7. 전환: 정적이던 프로젝트 탭을 바로 활용할 수 있는 형태로 개편 -->
-<section class="slide s-pivot" data-stop>
-  <div class="frame">
-    <div class="txt">
-      <p class="eyebrow rv">프로젝트 탭 개편</p>
-      <h2 class="rv" style="--i:1">정적이던 프로젝트 탭을,<br><span class="grad">바로 활용할 수 있는 형태</span>로 전격 개편했습니다.</h2>
-      <p class="lead rv" style="--i:2">공개된 프로젝트 정보를 수집해, <b>사용자가 바로 활용할 수 있는 경험</b>으로 제공해요.</p>
-    </div>
-    <div class="flow">
-      <div class="raw old">
-        <p class="cap">개편 전, 소개만 있던 프로젝트 탭</p>
-        <div class="box">
-          <div class="oh"><img src="assets/p-shout-outz.jpg" alt=""><div><small>우아한테크코스 8기</small><b>샤라웃</b><p>우아한테크코스 크루들의 경험을 나누는 IT 취업 준비 커뮤니티</p></div></div>
-          <div class="ol"><span>서비스 바로가기 ↗</span><span>GitHub 저장소 ↗</span></div>
-          <div class="os"><h6>프로젝트 소개</h6><i></i><i></i><i style="width:62%"></i></div>
-          <div class="os"><h6>기술 스택</h6><div><u></u><u style="width:4.5rem"></u><u style="width:3rem"></u><u style="width:5rem"></u></div></div>
-        </div>
-      </div>
-      <div class="arrow"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></div>
-      <div class="xpc">
-        <p class="cap">개편 후, 바로 활용하는 경험</p>
-        <div class="box">
-          <small>쿼리 최적화</small>
-          <h3>피드 조회 최적화와 동시성 정합성 검증</h3>
-          <ul class="hl">
-            <li>피드 인기순 조회의 좋아요, 댓글 전체 집계를 반정규화와 인덱스 조회로 대체해 피드 15,000개에서 18.34ms → 0.32ms로 줄임</li>
-            <li>DB 원자적 증감과 실제 변경 여부에 따른 집계 갱신을 8개 스레드의 동시 요청 테스트 7개로 검증함</li>
-          </ul>
-          <span class="pill"><span class="dots"><span class="sb">PR</span><span class="sb">PR</span></span>출처 2개 <em>▴</em></span>
-          <ul class="so">
-            <li><span class="sb">PR</span><span>[BE/refactor] 피드 목록의 '내가 누른 반응' 확인용 사용자 기준 인덱스 추가 (#477)</span><em>#478</em></li>
-            <li><span class="sb">PR</span><span>[BE/refactor] 피드 인기순 정렬을 저장된 좋아요와 댓글 수로 조회 (#504)</span><em>#505</em></li>
-          </ul>
-        </div>
+      <div class="lc old rv" style="--i:6">
+        <small>개편 전, 소개만 있던 프로젝트 탭</small>
+        <div class="oh"><img src="assets/p-shout-outz.jpg" alt=""><div><small>우아한테크코스 8기</small><b>샤라웃</b><p>우아한테크코스 크루들의 경험을 나누는 IT 취업 준비 커뮤니티</p></div></div>
+        <div class="os"><h6>프로젝트 소개</h6><i></i><i style="width:62%"></i></div>
+        <div class="os"><h6>기술 스택</h6><div><u></u><u style="width:4.5rem"></u><u style="width:3rem"></u><u style="width:5rem"></u></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 8. 시연: 한 화면을 고정해 두고 일곱 단계로 나눠 보여 준다 -->
+<!-- 8~11. 시연: 한 화면을 고정해 두고 네 단계로 나눠 보여 준다 -->
 <section class="demo">
   <div class="pin" id="pin">
     <div class="frame" id="stage">
@@ -682,10 +664,19 @@ img.jlogo.fill{padding:0;object-fit:cover}
       <div class="cursor" id="cursor"><svg viewBox="0 0 24 24"><path d="M5 3.2v16.2l4.4-4.1 2.9 6.5 2.6-1.2-2.9-6.4h6L5 3.2Z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg></div>
     </div>
   </div>
-  <div class="snaps"><i data-stop data-demo="0"></i><i data-stop data-demo="1"></i><i data-stop data-demo="2"></i><i data-stop data-demo="3"></i><i data-stop data-demo="4"></i><i data-stop data-demo="5"></i><i data-stop data-demo="6"></i></div>
+  <div class="snaps"><i data-stop data-demo="0"></i><i data-stop data-demo="1"></i><i data-stop data-demo="2"></i><i data-stop data-demo="3"></i></div>
 </section>
 
-<!-- 9. 마무리 -->
+<!-- 12. 서비스의 우선 가치 -->
+<section class="slide s-quote" data-stop>
+  <div class="frame">
+    <p class="eyebrow rv">샤라웃의 우선 가치</p>
+    <h2 class="rv" style="--i:2">사용자가 필요한 환경에, 가장 빠르게,<br><span class="grad">바로 활용할 수 있는 형태</span>로 데이터를 가공합니다.</h2>
+    <div class="vals rv" style="--i:5"><span>기술 키워드로</span><span>내 프로젝트의 이력서, 포트폴리오로</span><span>채용 공고의 역량으로</span></div>
+  </div>
+</section>
+
+<!-- 13. 마무리 -->
 <section class="slide s-end" data-stop>
   <div class="frame">
     <h2 class="rv">막연했던 취업 준비,<br>이제 프로젝트 탭에서 <span class="grad">필요한 정보만 바로 찾아보세요.</span></h2>
@@ -708,16 +699,13 @@ img.jlogo.fill{padding:0;object-fit:cover}
 const QUESTION = '첫 포트폴리오, 프로젝트 경험을 어떻게 써야 할까요?';
 // 시연 왼쪽 설명. 줄바꿈(\n)을 직접 넣어, 제목은 두세 줄, 설명은 항상 두 줄로 맞춘다.
 const COPIES = [
-  ['“무중단 배포”\n다른 팀은 어떻게\n구현했는지 궁금하세요?', '기술 이름으로 검색하면 블로그, PR,\n팀 문서, 테코톡을 한 번에 찾아요.'],
-  ['채용 공고가 찾는 역량을\n어떻게 채워야 할지\n막막한가요?', '공고의 역량을 고르면, 그 역량을 키운\n크루들의 경험이 나와요.'],
-  ['이 기술을 써 본 팀이\n궁금하세요?', '프로젝트 이름, 소개, 기술로\n바로 찾아보세요.'],
-  ['같은 문제를 겪은 팀이\n궁금하세요?', '기술 주제를 고르면,\n그 주제를 다룬 프로젝트만 남아요.'],
-  ['그 팀이 실제로 한 일이\n궁금하세요?', 'PR과 팀 문서, 블로그에서 찾은 경험을\n이력서 문장으로 읽어요.'],
-  ['그 경험의 근거가\n궁금하세요?', '모든 경험은 출처로 이어져요.\n누르면 실제 PR이 열려요.'],
-  ['다른 팀은 어떻게 풀었는지\n궁금하세요?', '같은 주제의 테코톡과\n다른 팀의 자료까지 이어서 봐요.'],
+  ['궁금한 기술 키워드로\n프로젝트를 바로 찾아요', '정적인 정보만 보여 주던 프로젝트 탭을\n기술 키워드로 찾을 수 있게 바꿨어요.'],
+  ['내 프로젝트는\n이력서, 포트폴리오 형태로', '바로 활용할 수 있게,\n경험을 문장으로 가공했어요.'],
+  ['채용 공고가 찾는 역량을\n어떻게 채워야 할지\n막막한가요?', '공고의 역량 키워드로도\n이런 경험을 바로 찾아볼 수 있어요.'],
+  ['이 경험들은\n공개된 정보에서 왔어요', 'GitHub, 팀 블로그, 테코톡을\n가공한 결과물이에요.'],
 ];
 // 왼쪽 위 "탐색 > ..." 에 단계마다 보여 줄 이름
-const CRUMBS = ['기술 검색', '채용공고로 찾기', '프로젝트 탭', '프로젝트 탭', '프로젝트 탭', '프로젝트 탭', '프로젝트 탭'];
+const CRUMBS = ['프로젝트 탭', '프로젝트 탭', '채용공고로 찾기', '프로젝트 탭'];
 const SEARCH_WORD = '무중단 배포';                                  // 기술 검색과 프로젝트 탭에서 타이핑하는 검색어
 const TOPIC = '동시성 제어/락';
 // 운영 서비스에 실제로 올라와 있는 프로젝트(이름, 기수, 좋아요, 소개)
@@ -772,7 +760,7 @@ const JOBS = [
   ['카카오', 'kakao', 'fill', 'Android', 'D-14', 'Android Developer', ['Android', 'Kotlin', 'Compose'], 3],
 ];
 const JOB_REQS = ['Kotlin, Spring', '동시성 제어', 'DB 설계, 쿼리 튜닝', '무중단 배포', '실시간 통신', '모니터링, 장애 대응', '협업, 코드 리뷰'];
-const JOB_REQ = '무중단 배포';                                     // 시연에서 추가로 고르는 역량
+const JOB_REQ = '동시성 제어';                                     // 시연에서 추가로 고르는 역량
 const JOB_MATS = {
   'Kotlin, Spring': [
     ['doc', '총총', '2026-08-20', '0010. 내 스터디 목록에서 스터디별 집계 쿼리를 사용한다', 'GROUP BY, 프로젝션, N+1의 비용과 복잡성을 비교해, 제한된 데이터 규모에서 집계 방식을 고를 때 참고하기 좋아요.'],
@@ -781,6 +769,15 @@ const JOB_MATS = {
     ['pr', 'PhotoGather', '2025-12-12', 'refactor: Space 관련 리팩터링', 'JOIN FETCH, IN 쿼리, GROUP BY로 목록 조회를 개선한 과정이라, N+1 해결과 집계 누락 처리를 설계할 때 참고하기 좋아요.'],
     ['pr', 'PhotoGather', '2025-11-22', 'refactor: 방명록 조회 시 2N+1 문제 해결', 'DTO 프로젝션, 조인, 서브쿼리로 추가 조회를 줄인 과정이라, 페이지네이션의 N+1 문제를 해결할 때 참고하기 좋아요.'],
     ['pr', '페스타북', '2025-10-12', '[BE] Place 전체 조회 API 개선', 'N+1, fetch join, Grafana k6로 조회 전략을 비교한 과정이라, 성능과 유지보수를 함께 고려할 때 참고하기 좋아요.'],
+  ],
+  // 동시성 제어/락 주제의 실제 자료(같은 topics.json)에서 고른 여섯 개
+  '동시성 제어': [
+    ['doc', 'DAYNOMY', '2026-10-20', '포트폴리오 원장 변경 전에 포트폴리오 잠금 획득', '비관적 잠금, JPA, TransactionTemplate로 원장 정합성을 지키고 외부 API를 잠금 밖으로 분리할 때 참고하기 좋아요.'],
+    ['pr', 'Knot', '2026-10-18', '[BE] 전사 작업 DB 대기열과 재시작 복구', 'FIFO, lease, 독립 트랜잭션으로 DB 대기열과 재시작 복구를 다뤄, 작업 선점과 중복 결과 저장을 설계할 때 참고하기 좋아요.'],
+    ['doc', 'Rilog.', '2026-10-17', '조회수 메모리 집계 — #697', 'Caffeine, ReentrantLock, Future로 조회수 집계의 중복 방지, 동시성 제어와 실패 복구를 설계할 때 참고하기 좋아요.'],
+    ['doc', '찰캌', '2026-10-14', '기기 등록과 회원 탈퇴에서 로그인 잠금 순서를 맞추는 이유', 'PostgreSQL, TreeSet으로 잠금 순서를 맞추는 이유를 다뤄, 여러 요청의 교착을 예방하고 검증할 때 참고하기 좋아요.'],
+    ['doc', '자리하나?', '2026-10-13', 'ADR 0020. 초대 합류는 unique 제약과 낙관적 잠금으로 충돌을 처리한다', 'unique 제약, 낙관적 잠금, 트랜잭션 재시도로 정상 합류와 충돌을 구분해, 동시 요청의 정합성을 설계할 때 참고하기 좋아요.'],
+    ['pr', '쏙', '2026-10-12', 'fix: 다운로드 잡 동시 생성 제한 레이스 컨디션 수정', 'READ COMMITTED, 비관적 락, 래치로 사용자별 작업 제한을 검증한 과정이라, 동시 요청의 개수 제한을 설계할 때 참고하기 좋아요.'],
   ],
   '무중단 배포': [
     ...KW_DOCS.slice(0, 2),
@@ -1012,24 +1009,32 @@ const demo = (() => {
   }
 
   const steps = [
-    // 1. 기술 검색: 기술 이름으로 찾고, 종류를 골라 블로그만 보기
+    // 1. 프로젝트 탭에서 기술 키워드(주제)로 프로젝트 찾기
     async () => {
       await wait(900);
-      await move($('#inp'), 0.5, 0.62, 700); await click(); setFocus(true); await wait(280);
-      for (const f of typeFrames(SEARCH_WORD)) { setQuery(f); await wait(95); }
-      await wait(300);
-      await move($('#go'), 0.6, 0.65, 520); await click(); setFocus(false);
-      setKwResult('ALL'); await wait(250);
-      scrollCam($('#camX'), $('#xtabs'), 1.25);
-      await stagger($$('#paneRes .stag'), 130); await wait(1100);
-      await move($('#kchips [data-k=BLOG]'), 0.62, 0.62, 650); await click();
-      setKwResult('BLOG'); await stagger($$('#paneRes .stag'), 130); await wait(500);
-      scrollCam($('#camX'), $('#paneRes'), 1.25); cur.classList.remove('show');   // 블로그 글을 더 보이게 조금 내린다.
+      await move($('#xtabs [data-t=project]'), 0.72, 0.7); await click(); setTab('project'); await wait(700);
+      scrollCam($('#camX'), $('#xtabs'), 1.25); await wait(950);
+      await move($('#roles [data-role=BE]'), 0.7, 0.6, 700); await click(); setRole('BE'); await wait(550);
+      await move($(`#groups [data-topic="${TOPIC}"]`), 0.62, 0.62, 620); await click();
+      setTopic(TOPIC); setCount(TOPIC_COUNT, TOPIC); await setList(LIST_TOPIC);
     },
-    // 2. 채용공고로 찾기: 공고를 열고, 찾는 역량을 골라 그 역량의 자료 보기
+    // 2. 내 프로젝트를 열어, 이력서와 포트폴리오에 바로 쓸 수 있는 경험 읽기
+    async () => {
+      await wait(350);
+      await move(card['shout-outz'], 0.62, 0.42, 800); card['shout-outz'].classList.add('hov'); await wait(380); await click();
+      setPage('detail'); setDetailTab('exp'); cur.classList.remove('show'); await wait(350);
+      card['shout-outz'].classList.remove('hov');
+      openSrc(0, true);   // 실제 화면처럼 첫 경험의 출처는 펼쳐 둔다.
+      await stagger($$('#paneExp .stag'), 160); await wait(500);
+      scrollCam($('#camD'), $$('.exp')[1], 0.25);   // 고른 주제(동시성)와 맞는 경험으로 바로 내려간다.
+      await wait(900);
+    },
+    // 3. 탐색으로 돌아와 채용공고로 찾기: 공고를 열고, 찾는 역량을 골라 그 역량의 경험 보기
     async () => {
       await wait(400);
-      await move($('#xtabs [data-t=job]'), 0.6, 0.7, 700); await click(); setKwResult(null); setQuery(''); setTab('job'); await wait(200);
+      await move($('.gnb .act'), 0.55, 0.62, 750); await click();
+      setPage('explore'); setTopic(null); setTab('keyword'); scrollCam($('#camX')); await wait(900);
+      await move($('#xtabs [data-t=job]'), 0.6, 0.7, 700); await click(); setTab('job'); await wait(200);
       await stagger($$('#paneJob .stag'), 70); await wait(500);
       const c = $('#paneJob .jc'); await move(c, 0.62, 0.55, 650); c.classList.add('hov'); await wait(300); await click();
       setPage('job'); cur.classList.remove('show'); await wait(350); c.classList.remove('hov');
@@ -1039,48 +1044,10 @@ const demo = (() => {
       scrollCam($('#camJ'), $('#jreq'), 0.5); cur.classList.remove('show');
       await stagger($$('#pgJob .stag'), 110);
     },
-    // 3. 탐색으로 돌아와 프로젝트 탭에서 이름, 소개, 기술로 찾기
+    // 4. 다시 프로젝트의 자료 탭: 경험의 바탕이 된 공개 자료(GitHub, 팀 블로그, 테코톡) 보기
     async () => {
       await wait(400);
-      await move($('.gnb .act'), 0.55, 0.62, 750); await click();
-      setPage('explore'); setTab('keyword'); scrollCam($('#camX')); await wait(750);
-      await move($('#xtabs [data-t=project]'), 0.72, 0.7); await click(); setTab('project'); await wait(650);
-      await move($('#inp'), 0.5, 0.62, 600); await click(); setFocus(true); await wait(280);
-      for (const f of typeFrames(SEARCH_WORD)) { setQuery(f); await wait(105); }
-      await wait(320);
-      await move($('#go'), 0.6, 0.65, 520); await click(); setFocus(false);
-      setCount(LIST_SEARCH.length, SEARCH_WORD); await setList(LIST_SEARCH);
-    },
-    // 2. 직군을 고르고 기술 주제로 거르기
-    async () => {
-      await wait(350);
-      scrollCam($('#camX'), $('#xtabs'), 1.25); await wait(950);
-      await move($('#roles [data-role=BE]'), 0.7, 0.6, 700); await click(); setRole('BE'); await wait(550);
-      await move($(`#groups [data-topic="${TOPIC}"]`), 0.62, 0.62, 620); await click();
-      setTopic(TOPIC); setQuery(''); setCount(TOPIC_COUNT, TOPIC); await setList(LIST_TOPIC);
-    },
-    // 3. 프로젝트를 열어 경험 읽기
-    async () => {
-      await wait(350);
-      await move(card['shout-outz'], 0.62, 0.42, 800); card['shout-outz'].classList.add('hov'); await wait(380); await click();
-      setPage('detail'); setDetailTab('exp'); cur.classList.remove('show'); await wait(350);
-      card['shout-outz'].classList.remove('hov');
-      openSrc(0, true);   // 실제 화면처럼 첫 경험의 출처는 펼쳐 둔다.
-      await stagger($$('#paneExp .stag'), 160); await wait(500);
-      scrollCam($('#camD'), $$('.exp')[1], 0.25);   // 고른 주제(동시성)와 맞는 경험으로 바로 내려간다.
-    },
-    // 4. 출처 펼치기
-    async () => {
-      await wait(350);
-      const e = $$('.exp')[1]; scrollCam($('#camD'), e, 0.25); await wait(300);
-      await move($('.pill', e), 0.8, 0.6, 700); $('.pill', e).classList.add('hov'); await wait(250); await click(); openSrc(1, true); await wait(650);
-      const li = $$('.srcbox li', e)[1]; await move(li, 0.72, 0.6, 550); $('.pill', e).classList.remove('hov'); li.classList.add('hov');
-    },
-    // 5. 자료 탭에서 같은 주제의 다른 자료 보기
-    async () => {
-      await wait(350);
-      $$('.srcbox li').forEach((l) => l.classList.remove('hov'));
-      scrollCam($('#camD')); await wait(950);
+      scrollCam($('#camD')); setDetailTab('exp'); setPage('detail'); await wait(1000);
       await move($('#utabs [data-t=mat]'), 0.7, 0.65, 700); await click(); setDetailTab('mat'); await wait(300);
       scrollCam($('#camD'), $('#utabs'), 1); cur.classList.remove('show');
       await stagger($$('#paneMat .stag'), 190);
