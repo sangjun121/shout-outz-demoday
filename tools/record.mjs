@@ -12,12 +12,13 @@ const [, , HTML, OUT, MODE] = process.argv;
 const FFMPEG = path.join(os.homedir(), 'Library/Caches/ms-playwright/ffmpeg-1011/ffmpeg-mac');
 const W = 1920, H = 1080, FPS = 30;
 const SPEED = 1;     // 녹화한 화면을 이 배율로 빠르게 돌려 담는다. 1 이면 원래 속도다.
-const REST = 1900;   // 시연 단계에서 움직임이 끝난 뒤 머무는 시간(ms). 1300 보다 작게는 못 한다.
+const QUIET = 1800;  // 시연 화면에 이만큼(ms) 변화가 없으면 그 단계가 끝난 것으로 본다. 단계 안의 가장 긴 쉼(1.5초)보다 길어야 한다.
+const REST = 2300;   // 시연 단계에서 움직임이 끝난 뒤 머무는 시간(ms). QUIET 보다 작게는 못 한다.
 // [넘어갈 장면 번호(1부터), 머무는 시간(ms)]. 'auto' 는 시연 단계로, 움직임이 끝난 뒤 REST 만큼만 머문다.
-// 3~6번(첫 시도, 문제, 해결, 교훈)은 발표용 이야기라 뺀다. 8~10번이 시연이다.
+// 3~5번(첫 시도, 문제, 해결)은 발표용 이야기라 뺀다. 8~10번이 시연이다.
 const PLAN = MODE === 'test'
   ? [[1, 3500], [2, 5000], [8, 12500]]
-  : [[1, 3500], [2, 4800], [7, 5500], [8, 'auto'], [9, 'auto'], [10, 'auto'], [11, 5000], [12, 5000]];
+  : [[1, 3500], [2, 4800], [6, 4500], [7, 6200], [8, 'auto'], [9, 'auto'], [10, 'auto'], [11, 4500], [12, 5500]];
 
 const frames = fs.mkdtempSync(path.join(os.tmpdir(), 'booth-frames-'));
 const b = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' });
@@ -50,11 +51,11 @@ for (const [scene, hold] of PLAN) {
     cur = scene;
   }
   if (hold === 'auto') {
-    // 시연 화면에 1.3초 동안 아무 변화가 없으면 그 단계의 움직임이 끝난 것으로 본다(단계 안의 가장 긴 쉼이 1.1초다).
+    // 시연 화면에 QUIET 동안 아무 변화가 없으면 그 단계의 움직임이 끝난 것으로 본다.
     await p.waitForTimeout(600);
-    await p.evaluate(() => new Promise((res) => { let t = setTimeout(done, 1300); const o = new MutationObserver(() => { clearTimeout(t); t = setTimeout(done, 1300); });
-      function done() { o.disconnect(); res(); } o.observe(document.querySelector('#stage'), { subtree: true, attributes: true, childList: true, characterData: true }); }));
-    await p.waitForTimeout(REST - 1300);
+    await p.evaluate((ms) => new Promise((res) => { let t = setTimeout(done, ms); const o = new MutationObserver(() => { clearTimeout(t); t = setTimeout(done, ms); });
+      function done() { o.disconnect(); res(); } o.observe(document.querySelector('#stage'), { subtree: true, attributes: true, childList: true, characterData: true }); }), QUIET);
+    await p.waitForTimeout(REST - QUIET);
   } else await p.waitForTimeout(hold);
   console.log('scene', scene, ((Date.now() - t0) / 1000).toFixed(1) + 's');
 }
